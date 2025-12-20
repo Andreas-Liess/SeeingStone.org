@@ -1,0 +1,24 @@
+/* ============================================================================
+   SEEINGSTONE DESIGN SYSTEM - MAIN.CSS
+   Import all CSS modules in correct order
+   ============================================================================ */
+
+/* 1. Global Foundation (variables, reset, base elements) */
+@import url('global.css');
+
+/* 2. Layout System (grid, containers, sections) */
+@import url('layout.css');
+
+/* 3. Components (buttons, nav, cards, forms, etc.) */
+@import url('components.css');
+
+/* ============================================================================
+   USAGE IN HTML:
+
+   <link rel="stylesheet" href="css-new/main.css">
+
+   Or import individual files:
+   <link rel="stylesheet" href="css-new/global.css">
+   <link rel="stylesheet" href="css-new/layout.css">
+   <link rel="stylesheet" href="css-new/components.css">
+   ============================================================================ */

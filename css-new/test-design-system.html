@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeeingStone Design System v2.0 - Dark Mode</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    /* Test page specific styles */
+    .component-demo {
+      margin-bottom: var(--space-8);
+      padding: var(--space-4);
+      border: 1px dashed var(--color-border);
+      border-radius: var(--border-radius);
+    }
+    .component-demo h3 {
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--space-3);
+      color: var(--color-orange);
+    }
+    .example {
+      margin-top: var(--space-2);
+      padding: var(--space-3);
+      background-color: var(--color-bg-tertiary); /* Tertiary background for examples */
+      border-radius: var(--border-radius);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo flex items-center gap-3">
+        <svg width="80" height="80" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(38, 38)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 12 H22 V17 H26 V12 H38 V17 H42 V12 H50 V24 H46 V48 H52 V56 H12 V48 H18 V24 H14 V12 Z" fill="currentColor"/>
+          </g>
+        </svg>
+        <span>SeeingStone</span>
+      </a>
+      <div class="nav-menu">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#security" class="nav-link">Security</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#docs" class="nav-link">Docs</a>
+        <div class="nav-lang">
+          <button class="nav-lang-toggle">EN</button>
+        </div>
+        <button class="btn btn-primary btn-sm">Request Access</button>
+      </div>
+      <button class="nav-toggle">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section (Primary Dark) -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Network Intelligence You Can Trust</h1>
+      <p class="hero-subtitle">Privacy-first monitoring for modern infrastructure. No complexity theater, just real results.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg">Get Started Free</button>
+        <button class="btn btn-inverse btn-lg">View Documentation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Component Showcase (Secondary Dark Background) -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Design System Components</h2>
+        <p class="section-description">All components following Bloomberg-inspired dark minimalism</p>
+      </div>
+
+      <!-- Typography -->
+      <div class="component-demo">
+        <h3>Typography</h3>
+        <div class="example">
+          <h1>Heading 1 - 42px Bold</h1>
+          <h2>Heading 2 - 32px Bold</h2>
+          <h3>Heading 3 - 24px Bold</h3>
+          <h4>Heading 4 - 20px Bold</h4>
+          <h5>Heading 5 - 18px Bold</h5>
+          <h6>Heading 6 - 16px Bold</h6>
+          <p>Body text - 16px Regular. Lorem ipsum dolor sit amet, consectetur adipiscing elit. System fonts ensure native feel and zero loading time.</p>
+          <p><small>Small text - 14px for secondary information</small></p>
+          <p><a href="#">Link with orange color on hover</a></p>
+        </div>
+      </div>
+
+      <!-- Code & Monospace (New Feature) -->
+      <div class="component-demo">
+        <h3>Code & Evidence</h3>
+        <div class="example">
+          <p class="mb-2">Inline code: <code>api_key_v1_...</code> used for credentials.</p>
+          <p class="mb-2">Block code (Evidence):</p>
+<pre><code>{
+  "status": "active",
+  "region": "eu-central-1",
+  "encryption": "AES-256-GCM",
+  "last_check": "2025-12-19T14:30:00Z",
+  "threat_level": 0
+}</code></pre>
+          <p class="text-secondary">Using system monospace stack: <br> <code>ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas...</code></p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="component-demo">
+        <h3>Buttons</h3>
+        <div class="example flex gap-3 flex-wrap">
+          <button class="btn btn-primary">Primary Button</button>
+          <button class="btn btn-secondary">Secondary Button</button>
+          <button class="btn btn-inverse">Inverse Button</button>
+          <button class="btn btn-primary" disabled>Disabled</button>
+        </div>
+        <div class="example flex gap-3 flex-wrap mt-3">
+          <button class="btn btn-primary btn-sm">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary btn-lg">Large</button>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="component-demo">
+        <h3>Cards</h3>
+        <div class="grid grid-3 gap-4">
+          <div class="card">
+            <h4 class="card-title">Standard Card</h4>
+            <p class="card-content">Card with secondary dark background (`#1a1a1a`) and subtle border.</p>
+          </div>
+          <div class="card">
+            <h4 class="card-title">Hover State</h4>
+            <p class="card-content">Hover over me to see the subtle shadow and border transition.</p>
+          </div>
+          <div class="card card-dark">
+            <h4 class="card-title">Darker Variant</h4>
+            <p class="card-content">Useful for highlighting or nesting within secondary backgrounds.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forms -->
+      <div class="component-demo">
+        <h3>Forms</h3>
+        <div class="example" style="max-width: 500px;">
+          <form>
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input type="text" id="name" class="form-input" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input type="email" id="email" class="form-input" placeholder="you@example.com">
+              <small class="form-help">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea id="message" class="form-input" placeholder="Your message here..."></textarea>
+            </div>
+            <div class="form-checkbox">
+              <input type="checkbox" id="agree">
+              <label for="agree">I agree to the terms and conditions</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="component-demo">
+        <h3>Alerts</h3>
+        <div class="alert alert-info">
+          <strong>Info:</strong> This is an informational message.
+        </div>
+        <div class="alert alert-success">
+          <strong>Success:</strong> Your changes have been saved.
+        </div>
+        <div class="alert alert-warning">
+          <strong>Warning:</strong> Please review your settings.
+        </div>
+        <div class="alert alert-error">
+          <strong>Error:</strong> Something went wrong. Please try again.
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="component-demo">
+        <h3>Badges</h3>
+        <div class="example flex gap-3">
+          <span class="badge badge-primary">New</span>
+          <span class="badge badge-secondary">Beta</span>
+          <span class="badge badge-outline">Pro</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Core Features</h2>
+        <p class="section-description">Real functionality, no decorative complexity</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card-icon"></div>
+          <h3 class="feature-card-title">End-to-End Encryption</h3>
+          <p class="feature-card-description">All data encrypted in transit and at rest using industry-standard protocols.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon"></div>
+          <h3 class="feature-card-title">Real-Time Monitoring</h3>
+          <p class="feature-card-description">Live network intelligence with sub-second latency for critical alerts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon"></div>
+          <h3 class="feature-card-title">Precision Targeting</h3>
+          <p class="feature-card-description">Granular control over monitoring rules and alert thresholds.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon"></div>
+          <h3 class="feature-card-title">Detailed Analytics</h3>
+          <p class="feature-card-description">Comprehensive insights into network behavior and anomaly detection.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon"></div>
+          <h3 class="feature-card-title">Automatic Updates</h3>
+          <p class="feature-card-description">Stay protected with automatic security patches and feature updates.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon"></div>
+          <h3 class="feature-card-title">Global Coverage</h3>
+          <p class="feature-card-description">Distributed infrastructure across 20+ regions for low-latency monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Ready to Get Started?</h2>
+      <p class="cta-description">Join thousands of teams using SeeingStone for secure network monitoring</p>
+      <div class="cta-buttons">
+        <button class="btn btn-primary btn-lg">Start Free Trial</button>
+        <button class="btn btn-inverse btn-lg">Talk to Sales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div>
+          <h4 class="footer-section-title">Product</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Features</a>
+            <a href="#" class="footer-link">Security</a>
+            <a href="#" class="footer-link">Pricing</a>
+            <a href="#" class="footer-link">Documentation</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-section-title">Company</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">About</a>
+            <a href="#" class="footer-link">Blog</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-section-title">Legal</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Cookie Policy</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-section-title">Connect</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Twitter</a>
+            <a href="#" class="footer-link">LinkedIn</a>
+            <a href="#" class="footer-link">GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 SeeingStone. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

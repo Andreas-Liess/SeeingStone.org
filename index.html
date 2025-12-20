@@ -3,149 +3,151 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SeeingStone: AI Network Intelligence</title>
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/home.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>SeeingStone | Network Intelligence</title>
+    <link rel="stylesheet" href="css-new/main.css" />
+    <style>
+        /* Home Page Specifics - Ultra Minimal */
+        .hero-minimal {
+            min-height: calc(100vh - 140px); /* Fill screen minus header/footer */
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-title-massive {
+            font-size: clamp(3rem, 6vw, 5rem);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: var(--space-4);
+        }
+        
+        .hero-lead {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+            max-width: 640px;
+            margin-bottom: var(--space-6);
+        }
+        
+        /* Modal for Manifesto */
+        #manifesto-modal {
+            display: none;
+        }
+        #manifesto-modal.open {
+            display: flex;
+        }
+    </style>
   </head>
 
   <body>
-    <header>
-      <a href="index.html" class="logo">
-        <svg
-          width="50"
-          height="50"
-          viewBox="0 0 200 200"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g id="SeeingStone_Logo">
-            <circle cx="100" cy="100" r="25" fill="#FF6600" />
-            <path
-              d="M 100, 65 A 35,35 0 1,1 65,100"
-              fill="none"
-              stroke="#0057B8"
-              stroke-width="10"
-              stroke-linecap="round"
-            >
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="rotate"
-                from="0 100 100"
-                to="360 100 100"
-                dur="8s"
-                repeatCount="indefinite"
-              />
-            </path>
-            <path
-              d="M 100, 145 A 45,45 0 1,1 145,100"
-              fill="none"
-              stroke="#00A862"
-              stroke-width="10"
-              stroke-linecap="round"
-            >
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="rotate"
-                from="0 100 100"
-                to="-360 100 100"
-                dur="8s"
-                repeatCount="indefinite"
-              />
-            </path>
-          </g>
-        </svg>
-        <span>SeeingStone</span>
-      </a>
-      <nav>
-        <a href="pages/signup/index.html" class="btn btn--outline">Sign Up</a>
-        <div class="menu-container">
-          <button
-            class="hamburger"
-            id="hamburger-btn"
-            aria-label="Toggle navigation menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <div class="nav-dropdown" id="nav-dropdown">
-            <a href="index.html">Home</a>
-            <a href="pages/features/index.html">Features</a>
-            <a href="pages/security/index.html">Security</a>
-          </div>
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo flex items-center gap-2">
+          <svg width="80" height="80" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(38, 38)">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M14 12 H22 V17 H26 V12 H38 V17 H42 V12 H50 V24 H46 V48 H52 V56 H12 V48 H18 V24 H14 V12 Z" fill="#ffffff"/>
+            </g>
+          </svg>
+          <span>SeeingStone</span>
+        </a>
+        <div class="nav-menu">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="pages/features/index.html" class="nav-link">Features</a>
+          <a href="pages/security/index.html" class="nav-link">Security</a>
+          <a href="pages/signup/index.html">
+            <button class="btn btn-primary btn-sm">Request Access</button>
+          </a>
         </div>
-      </nav>
-    </header>
+        <button class="nav-toggle" id="hamburger-btn">☰</button>
+      </div>
+    </nav>
 
-    <main class="home-main">
-      <section class="hero">
-        <div class="hero-split-container">
-          <div class="hero-left">
-            <h1 class="headline-primary">
-              <span class="highlight">SeeingStone</span> <br />
-              Weaving Email, Contacts & Co. into one AI-enabled network.
-            </h1>
+    <main>
+      <!-- Ultra-Minimal Hero -->
+      <section class="hero-minimal section-dark">
+        <div class="container">
+          <div class="content-split">
+            <!-- Left: Impact -->
+            <div class="text-left">
+              <h1 class="hero-title-massive">
+                Algorithmic <br>
+                <span class="text-orange">Network Intelligence</span>
+              </h1>
+              
+              <p class="hero-lead">
+                SeeingStone uses algorithmic AI to map every connection across your emails, messages, and documents, revealing hidden connections, patterns, and opportunities.
+              </p>
 
-            <p class="headline-secondary">
-              Your data remains strictly private, isolated, and encrypted on
-              European servers. <br />
-              Intelligence without surveillance.
-            </p>
-
-            <div class="">
-              <div class="primary-actions-grid">
-                <!-- <a href="pages/features/index.html" class="btn-hero-large feature-btn"> -->
-                <a
-                  href="pages/features/index.html"
-                  class="btn btn__md btn--primary"
-                >
-                  Explore Features
-                </a>
-                <a
-                  href="pages/security/index.html"
-                  class="btn btn__md btn--outline"
-                >
-                  View Security
-                </a>
+              <div class="hero-cta justify-start mb-6">
+                <a href="pages/signup/index.html" class="btn btn-primary btn-lg">Request Access</a>
+                <a href="pages/features/index.html" class="btn btn-inverse btn-lg">Explore System</a>
               </div>
+              
+              <!-- Subtle "Read More" -->
+              <button onclick="toggleManifesto()" class="text-secondary text-sm hover:text-white underline decoration-dotted underline-offset-4 cursor-pointer" style="background:none; border:none; padding:0;">
+                Read Mission Protocol →
+              </button>
+            </div>
 
-              <div class="founder-note-container">
-                <p class="founder-text">
-                  "Uncompromising security is expensive. We need leverage to
-                  fund it.
-                  <strong
-                    >Your sign-up proves to investors that privacy is a viable
-                    business model.</strong
-                  >"
-                </p>
-                <a href="pages/signup/index.html" class="btn-text-link"
-                  >Request Secure Access →</a
-                >
+            <!-- Right: The Evidence (Demo Box 1) -->
+            <div class="hide-mobile">
+              <div class="card card-dark" style="padding: 0; overflow: hidden; border-color: var(--color-orange); height: 700px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                <iframe
+                  src="components/demo-box-1/index.html"
+                  id="demo-box-1"
+                  title="System Evidence Demo"
+                  style="width: 100%; height: 100%; border: none;"
+                ></iframe>
               </div>
             </div>
-          </div>
-
-          <div class="hero-right">
-            <iframe
-              src="components/demo-box-1/index.html"
-              id="demo-box-1"
-              title="Demo Box 1"
-              class="hero-demo"
-            ></iframe>
           </div>
         </div>
       </section>
     </main>
 
-    <footer>
-      <p>© 2025 Liess Ventures. EU DataPrivacy Encrypted European Servers</p>
+    <!-- Manifesto Modal (Hidden) -->
+    <div id="manifesto-modal" class="modal-overlay">
+        <div class="modal card-dark" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title text-orange">MISSION PROTOCOL</h3>
+                <button onclick="toggleManifesto()" class="modal-close">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-4 text-white text-lg">You write an email. A new contact is created automatically.</p>
+                <p class="mb-4 text-secondary">SeeingStone gathers context, remembers dates, and maintains long-term threads, while you shape the message yourself—with full context available in seconds.</p>
+                <p class="mb-4 text-secondary">Need a collaborator, investor, or domain expert? Query your entire network and surface the right person—fully contextualized and already warm.</p>
+                <div class="p-4 border border-gray-800 bg-black mt-6">
+                    <strong class="text-white block mb-2">OPERATE WITH CLARITY</strong>
+                    <p class="text-dim text-sm">Never lose touch with people, context, or history, even across years.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="toggleManifesto()" class="btn btn-inverse">Close Protocol</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            &copy; 2025 SeeingStone. Institutional-grade privacy. Encrypted on European infrastructure.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="js/navigation.js"></script>
+    <script>
+        function toggleManifesto() {
+            const modal = document.getElementById('manifesto-modal');
+            modal.classList.toggle('open');
+        }
+        
+        // Close on outside click
+        document.getElementById('manifesto-modal').addEventListener('click', function(e) {
+            if (e.target === this) toggleManifesto();
+        });
+    </script>
   </body>
 </html>

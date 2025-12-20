@@ -1,0 +1,213 @@
+/* ============================================================================
+   SEEINGSTONE TERMINAL UI FRAMEWORK
+   Shared styles for all embedded demo components
+   ============================================================================ */
+
+:root {
+  /* Core Palette */
+  --term-bg: #0a0a0a;           /* Deep Black */
+  --term-panel: #111111;        /* Slightly lighter for panels */
+  --term-border: #333333;       /* Standard borders */
+  --term-border-active: #555555;
+  
+  /* Accents */
+  --term-orange: #ff6600;       /* Actions, Warnings, Highlights */
+  --term-green: #00cc88;        /* Success, Stable Status */
+  --term-blue: #0088ff;         /* Information, Tools */
+  --term-red: #cc0000;          /* Critical Alerts */
+  
+  /* Text */
+  --term-text: #ffffff;
+  --term-text-dim: #888888;
+  --term-text-dark: #444444;
+
+  /* Typography */
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Base Reset & Setup */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--term-bg);
+  font-family: var(--font-mono);
+  color: var(--term-text);
+  overflow: hidden; /* Prevent global scrollbar - Dashboard philosophy */
+  font-size: 12px;
+}
+
+/* ============================================================================
+   LAYOUT CONTAINERS
+   ============================================================================ */
+
+/* Main Container - Full viewport fit */
+.terminal-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  border: 1px solid var(--term-border);
+  box-sizing: border-box;
+}
+
+/* Standard Header */
+.terminal-header {
+  height: 28px;
+  background-color: var(--term-border); /* Distinct header bg */
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--term-border);
+  flex-shrink: 0;
+}
+
+.term-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--term-text);
+}
+
+.term-status {
+  font-size: 11px;
+  color: var(--term-text-dim);
+}
+
+.term-status span {
+  color: var(--term-green);
+}
+
+/* Main Content Area */
+.terminal-body {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden; /* Layouts handle their own overflow */
+  position: relative;
+}
+
+/* Standard Footer */
+.terminal-footer {
+  height: 24px;
+  background-color: var(--term-panel);
+  border-top: 1px solid var(--term-border);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--term-text-dim);
+  flex-shrink: 0;
+}
+
+/* ============================================================================
+   COMMON UI ELEMENTS
+   ============================================================================ */
+
+/* 1. Terminal Panels (Split Views) */
+.term-panel-left {
+  width: 300px; /* Fixed width sidebar */
+  border-right: 1px solid var(--term-border);
+  display: flex;
+  flex-direction: column;
+  background: var(--term-panel);
+}
+
+.term-panel-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--term-bg);
+}
+
+/* 2. Data Tables (No Scrolling Lists) */
+.term-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.term-table th {
+  text-align: left;
+  padding: 8px 12px;
+  color: var(--term-text-dim);
+  text-transform: uppercase;
+  font-size: 11px;
+  border-bottom: 1px solid var(--term-border);
+}
+
+.term-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #1a1a1a;
+  color: #ddd;
+}
+
+.term-table tr:hover td {
+  background-color: #1a1a1a;
+  color: var(--term-text);
+}
+
+/* Priority Row Highlight */
+.row-priority td {
+  border-left: 2px solid var(--term-orange);
+  background-color: rgba(255, 102, 0, 0.05);
+}
+
+/* 3. Badges */
+.term-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-orange { background: rgba(255, 102, 0, 0.2); color: var(--term-orange); }
+.badge-green { background: rgba(0, 204, 136, 0.2); color: var(--term-green); }
+.badge-blue { background: rgba(0, 136, 255, 0.2); color: var(--term-blue); }
+
+/* 4. Search/Filter Bar Simulation */
+.term-toolbar {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--term-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.term-input-fake {
+  background: #000;
+  border: 1px solid var(--term-border);
+  color: var(--term-text);
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.blink-cursor::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  color: var(--term-orange);
+  margin-left: 2px;
+  font-size: 10px;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ============================================================================
+   UTILITIES
+   ============================================================================ */
+.text-orange { color: var(--term-orange); }
+.text-green { color: var(--term-green); }
+.text-blue { color: var(--term-blue); }
+.text-dim { color: var(--term-text-dim); }
+.uppercase { text-transform: uppercase; }
+.bold { font-weight: 700; }
+.flex-1 { flex: 1; }
+.h-full { height: 100%; }
+.overflow-hidden { overflow: hidden; }

@@ -3,347 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeeingStone - White Loop</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Thread Intelligence</title>
+    <link rel="stylesheet" href="../terminal.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-        
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
+        /* Specific Styles for Split View */
+        .thread-container {
+            display: flex;
             height: 100%;
-            overflow: hidden;
-            font-family: 'Inter', sans-serif;
-            background-color: #FAFAFA; /* Base White */
-        }
-
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-
-        /* --- STAGE CONTAINER --- */
-        .stage-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background-color: #FAFAFA; /* Always White */
             overflow: hidden;
         }
 
-        /* --- CHAOS ELEMENTS (Outlook Light Mode) --- */
-        .email-header {
-            position: absolute;
-            background: #FFFFFF;
-            color: #333;
-            padding: 10px 14px;
-            /* Outlook Blue Bar */
-            border-left: 4px solid #0078D4; 
-            font-family: "Segoe UI", -apple-system, sans-serif;
-            font-size: 11px;
-            /* Defined Shadow */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            width: 230px;
-            opacity: 0;
-            transform: scale(0.95) translateY(15px);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 10;
-            border-radius: 2px;
+        /* LEFT: INGESTION STREAM */
+        .stream-panel {
+            width: 35%;
+            border-right: 1px solid var(--term-border);
+            background: #080808;
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            user-select: none;
         }
 
-        .email-header.active { opacity: 1; transform: scale(1) translateY(0); }
-        
-        /* Urgent State (Red Accent) */
-        .email-header.urgent { 
-            border-left-color: #D93025; 
-            background: #FFF5F5; 
+        .stream-header {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--term-border);
+            font-size: 10px;
+            color: var(--term-text-dim);
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
-        /* External/Spam State (Grey Accent) */
-        .email-header.external {
-            border-left-color: #999;
-            background: #F9F9F9;
+        .stream-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 0;
+            margin: 0;
+            list-style: none;
         }
 
-        .email-subject { 
-            font-weight: 600; 
-            font-size: 12px;
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis;
-            color: #111;
-        }
-        
-        .email-meta { 
-            font-size: 10px; 
-            color: #666; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-        }
-
-        /* --- ANIMATIONS --- */
-        .suck-animation {
-            transition: all 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) scale(0) rotate(15deg) !important;
-            opacity: 0 !important;
-        }
-
-        /* --- LOGO --- */
-        .logo-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .stream-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #1a1a1a;
+            font-size: 11px;
             opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 50;
-            pointer-events: none;
+            transform: translateX(-10px);
+            animation: slideIn 0.5s forwards;
+            cursor: default;
         }
 
-        /* --- ZEN CARDS (Clean Minimalist) --- */
-        .result-container {
+        .stream-item:hover { background: #111; }
+        
+        .stream-meta { display: flex; justify-content: space-between; color: var(--term-text-dim); margin-bottom: 4px; font-size: 9px; }
+        .stream-subject { color: var(--term-text); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .stream-item.urgent .stream-subject { color: var(--term-orange); }
+        .stream-item.external .stream-meta { color: #555; }
+
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* RIGHT: INTELLIGENCE OUTPUT */
+        .intel-panel {
+            flex-grow: 1;
+            background: var(--term-bg);
+            padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            padding: 20px;
-            width: 100%;
-            max-width: 420px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 40;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
         }
 
-        .zen-card {
-            background: #FFFFFF;
-            /* High-end soft shadow */
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
-            border: 1px solid #EAEAEA;
-            padding: 24px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-            border-radius: 4px;
+        .intel-card {
+            border: 1px solid var(--term-border);
+            background: var(--term-panel);
+            padding: 16px;
             position: relative;
         }
 
-        .zen-card.visible { opacity: 1; transform: translateY(0); }
+        .intel-card::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--term-border);
+        }
 
-        .card-top {
+        .intel-card.consensus::before { background: var(--term-green); }
+        .intel-card.ghost::before { background: var(--term-red); }
+
+        .intel-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .card-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #888;
-        }
-        
-        .status-dot { width: 6px; height: 6px; border-radius: 50%; }
-
-        .card-body {
-            font-size: 15px;
-            font-weight: 500;
-            color: #111;
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-
-        .highlight {
-            background: #F4F4F4;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-            color: #000;
-        }
-
-        .action-btn {
-            width: 100%;
-            background: #111;
-            color: #FFF;
-            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 12px;
             font-size: 10px;
-            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 12px;
-            border-radius: 2px;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.2s;
+            color: var(--term-text-dim);
         }
-        .action-btn:hover { opacity: 0.85; }
+
+        .intel-body {
+            font-size: 13px;
+            color: var(--term-text);
+            line-height: 1.5;
+        }
+
+        .intel-highlight {
+            color: var(--term-green);
+            font-weight: 700;
+        }
         
-        .action-btn.secondary {
-            background: #FFF;
-            color: #111;
-            border: 1px solid #E5E5E5;
+        .intel-alert {
+            color: var(--term-orange);
+            font-weight: 700;
         }
-        .action-btn.secondary:hover {
-            border-color: #111;
+
+        .action-bar {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--term-border);
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-mini {
+            background: transparent;
+            border: 1px solid var(--term-text-dim);
+            color: var(--term-text-dim);
+            padding: 4px 8px;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .btn-mini:hover { border-color: var(--term-blue); color: var(--term-blue); }
+
+        /* LOADING STATE */
+        .processing-overlay {
+            position: absolute;
+            top: 50%; left: 67%; 
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+        
+        .spinner-text {
+            color: var(--term-orange);
+            font-size: 10px;
+            margin-top: 8px;
+            letter-spacing: 2px;
+            animation: blink 1.5s infinite;
         }
 
     </style>
 </head>
 <body>
 
-    <div class="stage-container" id="stage">
-        
-        <!-- CHAOS LAYER -->
-        <div id="chaos-layer" class="w-full h-full relative"></div>
+<div class="terminal-wrapper">
+    <!-- Header -->
+    <div class="terminal-header">
+        <div class="term-title text-blue"></div>
+        <div class="term-status">INGESTION: <span class="text-green">ACTIVE</span></div>
+    </div>
 
-        <!-- LOGO LAYER -->
-        <div id="logo-layer" class="logo-container">
-            <svg width="100" height="100" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <g id="SeeingStone_Logo">
-                    <circle cx="100" cy="100" r="25" fill="#FF6600" />
-                    <path d="M 100, 65 A 35,35 0 1,1 65,100" fill="none" stroke="#0057B8" stroke-width="12" stroke-linecap="round">
-                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="360 100 100" dur="8s" repeatCount="indefinite" />
-                    </path>
-                    <path d="M 100, 145 A 45,45 0 1,1 145,100" fill="none" stroke="#00A862" stroke-width="12" stroke-linecap="round">
-                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100" to="-360 100 100" dur="8s" repeatCount="indefinite" />
-                    </path>
-                </g>
-            </svg>
+    <!-- Main Body -->
+    <div class="terminal-body">
+        
+        <!-- LEFT: STREAM -->
+        <div class="stream-panel">
+            <div class="stream-header">Signal Intake</div>
+            <ul class="stream-list" id="stream-list">
+                <!-- Javascript will populate this -->
+            </ul>
         </div>
-        
-        <!-- ZEN RESULTS LAYER -->
-        <div id="zen-layer" class="result-container">
+
+        <!-- RIGHT: INTEL -->
+        <div class="intel-panel" id="intel-panel">
             
-            <!-- CARD 1: CONSENSUS -->
-            <div id="card-1" class="zen-card">
-                <div class="card-top">
-                    <span class="card-label">Thread Analysis</span>
-                    <span class="status-dot" style="background: #00A862;"></span>
+            <div class="intel-card consensus">
+                <div class="intel-header">
+                    <span>Analysis</span>
+                    <span class="text-green">CONSENSUS</span>
                 </div>
-                <div class="card-body">
-                    Consensus reached.<br>
-                    <span class="highlight">Bar Omakase @ 19:30</span>
+                <div class="intel-body">
+                    Network consensus reached: <br>
+                    <span class="intel-highlight">>> LOC: Bar Omakase</span><br>
+                    <span class="intel-highlight">>> TIME: 19:30</span>
                 </div>
-                <button class="action-btn">Add to Calendar</button>
+                <div class="action-bar">
+                    <button class="btn-mini">ADD TO CALENDAR</button>
+                </div>
             </div>
 
-            <!-- CARD 2: GHOST TRACKING -->
-            <div id="card-2" class="zen-card">
-                <div class="card-top">
-                    <span class="card-label">Ghost Tracker</span>
-                    <span class="status-dot" style="background: #D32F2F;"></span>
+            <div class="intel-card ghost">
+                <div class="intel-header">
+                    <span>Health</span>
+                    <span class="text-orange">STALLED</span>
                 </div>
-                <div class="card-body">
-                    Sent 14 days ago.<br>
-                    <span class="highlight">No Reply / Stalled</span>
+                <div class="intel-body">
+                    "Contract.pdf"<br>
+                    <span class="intel-alert">>> STATUS: NO REPLY (14d)</span>
                 </div>
-                <button class="action-btn secondary">Draft Follow Up</button>
+                <div class="action-bar">
+                    <button class="btn-mini">FOLLOW UP</button>
+                </div>
             </div>
 
+        </div>
+
+        <!-- LOADING OVERLAY -->
+        <div class="processing-overlay" id="loading-overlay">
+            <div class="term-badge badge-orange">ANALYZING</div>
+            <div class="spinner-text">PARSING STREAM...</div>
         </div>
 
     </div>
 
-    <script>
-        // --- CONFIGURATION ---
-        const LOOP_DURATION = 15000; 
-        
-        // --- DATA: EXTENDED CHAOS ---
-        const timeline = [
-            // The Thread (Slow Start)
-            { subject: "Team Lunch??", sender: "Bob", date: "10:00", x: 10, y: 10, delay: 0 },
-            { subject: "RE: Team Lunch??", sender: "Alice", date: "10:05", x: 65, y: 15, delay: 1000 },
-            { subject: "RE: RE: Team Lunch??", sender: "Mike", date: "10:08", x: 15, y: 25, delay: 2000 },
-            
-            // New Content: Spam & Alerts
-            { subject: "Security Alert: New Login", sender: "Google", date: "10:09", x: 40, y: 5, delay: 2500, urgent: true },
-            { subject: "RE: RE: RE: Lunch", sender: "Sarah", date: "10:12", x: 70, y: 30, delay: 3200 },
-            { subject: "Unique Marketing Tips?", sender: "LuLu", date: "10:13", x: 5, y: 50, delay: 3800, external: true },
-            
-            // The Flood
-            { subject: "RE: RE: RE: RE: Pizza?", sender: "Bob", date: "10:15", x: 50, y: 45, delay: 4200 },
-            { subject: "NO PIZZA", sender: "Alice", date: "10:16", x: 80, y: 55, delay: 4800, urgent: true },
-            { subject: "System Alert: Storage", sender: "IT Admin", date: "10:17", x: 10, y: 65, delay: 5200 },
-            { subject: "RE: RE: RE: Sushi?", sender: "Admin", date: "10:18", x: 60, y: 70, delay: 5500 },
-            { subject: "Fwd: Allergy Info", sender: "HR", date: "Yesterday", x: 25, y: 75, delay: 5800 },
-            
-            // Buried Signals
-            { subject: "Contract.pdf", sender: "You", date: "14d ago", x: 75, y: 5, delay: 6200, urgent: true },
-            { subject: "Auto: OOO", sender: "Alex M.", date: "Now", x: 5, y: 85, delay: 6500 },
-            { subject: "RE: Contract?", sender: "You", date: "7d ago", x: 35, y: 60, delay: 6800, urgent: true },
-            { subject: "Updates?", sender: "Boss", date: "10:30", x: 85, y: 20, delay: 7000 }
-        ];
+    <!-- Footer -->
+    <div class="terminal-footer">
+        <div class="text-dim"></div>
+        <div class="text-green"></div>
+    </div>
+</div>
 
-        const stage = document.getElementById('stage');
-        const chaosLayer = document.getElementById('chaos-layer');
-        const logoLayer = document.getElementById('logo-layer');
-        const card1 = document.getElementById('card-1');
-        const card2 = document.getElementById('card-2');
+<script>
+    const streamList = document.getElementById('stream-list');
+    const intelPanel = document.getElementById('intel-panel');
+    const loadingOverlay = document.getElementById('loading-overlay');
 
-        function createEmail(data) {
-            const el = document.createElement('div');
-            el.className = `email-header ${data.urgent ? 'urgent' : ''} ${data.external ? 'external' : ''}`;
-            el.innerHTML = `
-                <div class="email-subject">${data.subject}</div>
-                <div class="email-meta">
+    const dataStream = [
+        { subject: "Team Lunch??", sender: "Bob", date: "10:00" },
+        { subject: "RE: Team Lunch??", sender: "Alice", date: "10:05" },
+        { subject: "Security Alert", sender: "Google", date: "10:09", urgent: true },
+        { subject: "Marketing Tips?", sender: "LuLu", date: "10:13", external: true },
+        { subject: "RE: Lunch", sender: "Sarah", date: "10:12" },
+        { subject: "Contract.pdf", sender: "You", date: "14d ago", urgent: true },
+        { subject: "NO PIZZA", sender: "Alice", date: "10:16", urgent: true },
+        { subject: "Allergy Info", sender: "HR", date: "Yesterday" },
+        { subject: "RE: Contract?", sender: "You", date: "7d ago", urgent: true },
+        { subject: "Updates?", sender: "Boss", date: "10:30" }
+    ];
+
+    function addStreamItem(data, delay) {
+        setTimeout(() => {
+            const li = document.createElement('li');
+            li.className = `stream-item ${data.urgent ? 'urgent' : ''} ${data.external ? 'external' : ''}`;
+            li.innerHTML = `
+                <div class="stream-meta">
                     <span>${data.sender}</span>
                     <span>${data.date}</span>
                 </div>
+                <div class="stream-subject">${data.subject}</div>
             `;
-            el.style.left = `${data.x}%`;
-            el.style.top = `${data.y}%`;
-            
-            chaosLayer.appendChild(el);
-            requestAnimationFrame(() => el.classList.add('active'));
-        }
+            streamList.insertBefore(li, streamList.firstChild); 
+        }, delay);
+    }
 
-        function runSequence() {
-            // --- RESET STATE ---
-            chaosLayer.innerHTML = '';
-            chaosLayer.style.opacity = '1';
-            logoLayer.style.opacity = '0';
-            card1.classList.remove('visible');
-            card2.classList.remove('visible');
+    function runSequence() {
+        streamList.innerHTML = '';
+        intelPanel.style.opacity = '0';
+        loadingOverlay.style.opacity = '1';
 
-            // --- 1. CHAOS PHASE (0s - 7.5s) ---
-            timeline.forEach(msg => {
-                setTimeout(() => {
-                    createEmail(msg);
-                }, msg.delay);
-            });
+        let totalDelay = 0;
+        dataStream.forEach((item, i) => {
+            const delay = i * 1200; // SLOWED DOWN significantly (1.2s per item)
+            addStreamItem(item, delay);
+            totalDelay = delay;
+        });
 
-            // --- 2. IMPLOSION PHASE (8s) ---
+        setTimeout(() => {
+            loadingOverlay.style.opacity = '0';
             setTimeout(() => {
-                const emails = document.querySelectorAll('.email-header');
-                emails.forEach((e, i) => {
-                    setTimeout(() => e.classList.add('suck-animation'), i * 30);
-                });
-                logoLayer.style.opacity = '1';
-            }, 8000);
+                intelPanel.style.opacity = '1';
+            }, 1000);
+        }, totalDelay + 2000);
+    }
 
-            // --- 3. REVEAL CARDS (9s) ---
-            setTimeout(() => {
-                // Hide Chaos
-                chaosLayer.style.opacity = '0';
-                logoLayer.style.opacity = '0';
-                
-                // Show Cards
-                card1.classList.add('visible');
-                setTimeout(() => card2.classList.add('visible'), 400);
-            }, 9000);
-        }
+    runSequence();
+    setInterval(runSequence, 25000); // SLOWED DOWN Loop (25s total)
 
-        // Start Loop
-        runSequence();
-        setInterval(runSequence, LOOP_DURATION);
+</script>
 
-    </script>
 </body>
 </html>

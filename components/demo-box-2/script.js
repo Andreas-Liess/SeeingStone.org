@@ -152,11 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
             edge.data.edgeType = "weak";
         }
     });
+
     const cy = cytoscape({
-            container: document.getElementById('cy'),
-            minZoom: 0.5,
-            maxZoom: 3,
-            elements: {nodes, edges},
+        container: document.getElementById('cy'),
+        elements: {nodes, edges},
         style: [
             {
                 selector: 'node',
@@ -164,29 +163,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     'background-color': (ele) => {
                         const nodeType = ele.data('nodeType');
                         if (nodeType === 'center') return '#FF6600'; // Orange - You
-                        if (nodeType === 'strong') return '#0066CC'; // Blue - Strong ties
-                        return '#666666'; // Grey - Weak ties
+                        if (nodeType === 'strong') return '#0088ff'; // Blue - Strong ties
+                        return '#444444'; // Grey - Weak ties
                     },
-                    'label': (ele) => {
-                        const id = ele.data('id');
-                        return id.length > 15 ? id.substring(0, 13) + '...' : id;
-                    },
-                    'color': '#333333',
-                    'font-size': '10px',
-                    'font-weight': 500,
+                    'label': 'data(id)',
+                    'color': '#ffffff',
+                    'font-family': 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
+                    'font-size': '11px',
                     'text-valign': 'bottom',
-                    'text-margin-y': 10,
-                    'width': 16,
-                    'height': 16,
-                    'text-opacity': 0.9,
+                    'text-margin-y': 8,
+                    'width': 12,
+                    'height': 12,
                     'border-width': 2,
-                    'border-color': (ele) => {
-                        const nodeType = ele.data('nodeType');
-                        if (nodeType === 'center') return '#CC5200'; // Darker orange
-                        if (nodeType === 'strong') return '#004999'; // Darker blue
-                        return '#4D4D4D'; // Darker grey
-                    },
-                    'border-opacity': 0.8
+                    'border-color': '#000',
+                    'text-outline-width': 2,
+                    'text-outline-color': '#0a0a0a'
                 }
             },
             {
@@ -194,66 +185,51 @@ document.addEventListener("DOMContentLoaded", () => {
                 style: {
                     'width': (ele) => {
                         const edgeType = ele.data('edgeType');
-                        return edgeType === 'strong' ? 1.5 : 0.75;
+                        return edgeType === 'strong' ? 1.5 : 1;
                     },
                     'line-color': (ele) => {
                         const edgeType = ele.data('edgeType');
-                        return edgeType === 'strong' ? 'rgba(0, 102, 204, 0.5)' : 'rgba(120, 120, 120, 0.4)';
+                        return edgeType === 'strong' ? '#ffffff' : '#333333';
                     },
                     'curve-style': 'bezier',
-                    'target-arrow-shape': 'triangle',
-                    'target-arrow-color': (ele) => {
-                        const edgeType = ele.data('edgeType');
-                        return edgeType === 'strong' ? 'rgba(0, 102, 204, 0.5)' : 'rgba(120, 120, 120, 0.4)';
-                    },
-                    'arrow-scale': 0.8,
-                    'font-size': '8px',
-                    'text-rotation': 'autorotate',
-                    'text-margin-y': -4,
-                    'color': '#666666'
+                    'target-arrow-shape': 'none',
+                    'opacity': 0.8
                 }
             },
             {
                 selector: '.highlighted',
                 style: {
-                    'background-color': '#3BAFF5',
-                    'line-color': '#285F8D',
-                    'target-arrow-color': '#2D5F8D',
-                    'width': 2.5,
+                    'background-color': '#ffffff',
+                    'line-color': '#FF6600',
+                    'width': 2,
                     'z-index': 999,
-                    'text-opacity': 1
+                    'text-opacity': 1,
+                    'color': '#FF6600'
                 }
             },
             {
                 selector: '.dimmed',
-                style: {'opacity': 0.15}
+                style: {'opacity': 0.2}
             }
         ],
 
         layout: {
             name: 'concentric',
             fit: true,
-            padding: 30,
-            startAngle: 3 / 2 * Math.PI, // Start at top
-            sweep: undefined, // Full circle
-            clockwise: true,
-            equidistant: false,
-            minNodeSpacing: 130, // Spread them out
-            avoidOverlap: true,
+            padding: 50,
+            minNodeSpacing: 80,
             concentric: function( node ){
-                // High value = Center. Low value = Outer Ring.
                 if(node.data('id') === 'You') return 10; 
                 if(node.data('nodeType') === 'strong') return 5; 
-                return 1; // Weak ties on the outside
+                return 1;
             },
-            levelWidth: function( nodes ){ return 2; } // Variation between levels
+            levelWidth: function( nodes ){ return 2; }
         }
-
-
-
-
     });
+
     const infoPanel = document.getElementById('info-panel');
+    infoPanel.innerHTML = '<div class="info-placeholder">Select node to inspect topology</div>';
+
     cy.on('tap', 'node', (evt) => {
         const node = evt.target;
         const id = node.data('id');
@@ -262,20 +238,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const connected = node.neighborhood().add(node);
         connected.addClass('highlighted');
         cy.elements().not(connected).addClass('dimmed');
-        let html = `<div class="detail-name">${id}</div>`;
         
+        let html = `<div class="detail-name">${id}</div>`;
         const conns = nodeConnections[id] || [];
         if (conns.length > 0) {
             conns.forEach(c => {
-                html += `<div class="connection-item"><span class="connection-label">${c.relationship}</span> → <span class="connection-target">${c.target}</span></div>`;
+                html += `<div class="connection-item"><span class="connection-label">${c.relationship}</span><span class="connection-target">${c.target}</span></div>`;
             });
+        } else {
+            html += `<div class="text-dim">No direct edges detected in current scope.</div>`;
         }
         infoPanel.innerHTML = html;
     });
+
     cy.on('tap', (evt) => {
         if (evt.target === cy) {
             cy.elements().removeClass('highlighted dimmed');
-            infoPanel.innerHTML = '';
+            infoPanel.innerHTML = '<div class="info-placeholder">Select node to inspect topology</div>';
         }
     });
 });

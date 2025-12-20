@@ -58,7 +58,7 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 30rem;
+  max-width: 38rem; /* Increased width for terminal view */
   /* Constrain width so buttons don't get absurdly wide */
   margin-left: auto; /* Push to the right in desktop view */
 
@@ -67,6 +67,7 @@
 
 .hero-demo {
   height: 100%;
+  min-height: 650px; /* Further increased for better visibility of thinking process */
   padding: 0.2rem;
   border-radius: var(--border-radius-lg);
   border-color: transparent;

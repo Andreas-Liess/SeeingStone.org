@@ -1,106 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - SeeingStone</title>
-    <link rel="stylesheet" href="../../css/common.css">
-    <link rel="stylesheet" href="css/signup.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Request Access | SeeingStone</title>
+    <link rel="stylesheet" href="../../css-new/main.css">
+    <style>
+        /* Specific Styles for Signup Form */
+        .signup-hero {
+            min-height: calc(100vh - 140px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-4);
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            padding: var(--space-8);
+        }
+
+        .auth-header {
+            margin-bottom: var(--space-6);
+        }
+
+        .auth-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-2);
+        }
+
+        .auth-subtitle {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Form Styling */
+        .form-label {
+            font-weight: 700;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-1);
+            display: block;
+        }
+
+        .form-input, .form-textarea {
+            font-family: var(--font-mono); /* Monospace for data entry */
+            background-color: #000;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+            padding: var(--space-3);
+            width: 100%;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--color-orange);
+            outline: none;
+        }
+
+        .divider-text {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-xs);
+            margin: var(--space-6) 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .divider-text::before, .divider-text::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .divider-text::before { margin-right: 15px; }
+        .divider-text::after { margin-left: 15px; }
+
+    </style>
 </head>
-
-<body class="signup-page">
-
-    <header>
-        <a href="../../index.html" class="logo">
-            <svg width="50" height="50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <g id="SeeingStone_Logo">
-                    <circle cx="100" cy="100" r="25" fill="#FF6600" />
-                    <path d="M 100, 65 A 35,35 0 1,1 65,100" fill="none" stroke="#0057B8" stroke-width="10"
-                        stroke-linecap="round">
-                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100"
-                            to="360 100 100" dur="8s" repeatCount="indefinite" />
-                    </path>
-                    <path d="M 100, 145 A 45,45 0 1,1 145,100" fill="none" stroke="#00A862" stroke-width="10"
-                        stroke-linecap="round">
-                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100"
-                            to="-360 100 100" dur="8s" repeatCount="indefinite" />
-                    </path>
-                </g>
-            </svg>
-            <span>SeeingStone</span>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="../../index.html" class="nav-logo flex items-center gap-2">
+          <svg width="80" height="80" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(38, 38)">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M14 12 H22 V17 H26 V12 H38 V17 H42 V12 H50 V24 H46 V48 H52 V56 H12 V48 H18 V24 H14 V12 Z" fill="#ffffff"/>
+            </g>
+          </svg>
+          <span>SeeingStone</span>
         </a>
-        <nav>
-            <div class="menu-container">
-                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="nav-dropdown" id="nav-dropdown">
-                    <a href="../../index.html">Home</a>
-                    <a href="../features/index.html">Features</a>
-                    <a href="../security/index.html">Security</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+        <div class="nav-menu">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="../features/index.html" class="nav-link">Features</a>
+          <a href="../security/index.html" class="nav-link">Security</a>
+          <a href="index.html" class="nav-link active">
+            <button class="btn btn-primary btn-sm">Request Access</button>
+          </a>
+        </div>
+        <button class="nav-toggle" id="hamburger-btn">☰</button>
+      </div>
+    </nav>
 
-    <main>
-        <section class="signup-section">
-            <div class="signup-container">
-                <div class="signup-header">
-                    <h1><span class="highlight">Request Secure Access</span></h1>
-                    <p>Join our early access program for premium features</p>
+    <main class="bg-dark">
+        <section class="signup-hero">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1 class="auth-title">Request Access</h1>
+                    <p class="auth-subtitle">Tell us about your organization and how you intend to use SeeingStone.</p>
                 </div>
-                
+
                 <form class="signup-form" id="signup-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    <div class="form-group mb-4">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <div class="form-group mb-4">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="jane.smith@company.com" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="company">Company (Optional)</label>
-                        <input type="text" id="company" name="company" placeholder="Your company">
+                    <div class="form-group mb-4">
+                        <label for="company" class="form-label">Where do you work?</label>
+                        <input type="text" id="company" name="company" class="form-input" placeholder="Company or Organization">
                     </div>
                     
-                    <div class="form-group">
-                        <label for="message">What is your biggest networking pain point or feature request? (Optional)</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your use case..."></textarea>
+                    <div class="form-group mb-6">
+                        <label for="message" class="form-label">What do you need?</label>
+                        <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Describe your specific use case or networking requirements..."></textarea>
                     </div>
                     
-                    <button type="submit" class="btn-primary">Request Access</button>
+                    <button type="submit" class="btn btn-primary btn-lg w-full">Request Access</button>
                     
                     <div class="form-message" id="form-message"></div>
                 </form>
-                
-                <p class="form-terms">
-                    By signing up, you agree to our privacy-first approach. <br>
-                    No spam, ever.
-                </p>
 
-                <div class="signup-alternative">
-                    <p>Prefer the classic form?</p>
+                <div class="divider-text">Or use external form</div>
+
+                <div class="text-center">
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLScQQhkDqiSSsq7R3jdKaroPv3yjtNrgHmHv7g_XhIZo81YDUQ/viewform?usp=header" 
-                       target="_blank" rel="noopener noreferrer">
-                        Use Google Forms →
+                       target="_blank" rel="noopener noreferrer" class="btn btn-inverse w-full">
+                        Google Forms
                     </a>
                 </div>
+                
+                <p class="text-center mt-8 text-secondary" style="font-size: 12px;">
+                    Our team reviews all requests manually. <br>
+                    Data processing occurs on sovereign European infrastructure.
+                </p>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>© 2025 Liess Ventures. EU DataPrivacy Encrypted European Servers</p>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 SeeingStone. EU DataPrivacy Encrypted European Servers</p>
+            </div>
+        </div>
     </footer>
 
     <script src="../../js/navigation.js"></script>
-    <script src="js/signup.js"></script></body>
+    <script src="js/signup.js"></script>
+</body>
 </html>

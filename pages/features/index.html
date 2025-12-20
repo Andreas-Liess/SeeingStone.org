@@ -1,109 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Capabilities | SeeingStone</title>
+    <link rel="stylesheet" href="../../css-new/main.css" />
+    <style>
+      /* Features Page Specific Styles - "The Terminal Dashboard" */
+      
+      .dashboard-section {
+        min-height: calc(100vh - 80px);
+        padding-top: var(--space-4);
+        padding-bottom: var(--space-4);
+        display: flex;
+        flex-direction: column;
+      }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Features - SeeingStone</title>
-    <link rel="stylesheet" href="../../css/common.css">
-    <link rel="stylesheet" href="css/features.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-</head>
+      /* Tab Navigation - Mobile Adaptive */
+      .terminal-tabs {
+        display: flex;
+        justify-content: flex-start; /* Start for scrolling on mobile */
+        border-bottom: 1px solid var(--color-border);
+        background-color: var(--color-bg-secondary);
+        overflow-x: auto; /* Enable horizontal scroll on mobile */
+        white-space: nowrap; /* Prevent wrapping */
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+      }
+      
+      .terminal-tabs::-webkit-scrollbar {
+        display: none; /* Hide scrollbar Chrome/Safari */
+      }
 
-<body class="features-page">
+      @media (min-width: 768px) {
+        .terminal-tabs {
+            justify-content: center; /* Center on desktop */
+        }
+      }
 
-    <header>
-        <a href="../../index.html" class="logo">
-            <svg width="50" height="50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <g id="SeeingStone_Logo">
-                    <circle cx="100" cy="100" r="25" fill="#FF6600" />
-                    <path d="M 100, 65 A 35,35 0 1,1 65,100" fill="none" stroke="#0057B8" stroke-width="10"
-                        stroke-linecap="round">
-                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100"
-                            to="360 100 100" dur="8s" repeatCount="indefinite" />
-                    </path>
-                    <path d="M 100, 145 A 45,45 0 1,1 145,100" fill="none" stroke="#00A862" stroke-width="10"
-                        stroke-linecap="round">
-                        <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 100 100"
-                            to="-360 100 100" dur="8s" repeatCount="indefinite" />
-                    </path>
-                </g>
-            </svg>
-            <span>SeeingStone</span>
+      /* Mobile Menu Adjustment for Larger Header */
+      @media (max-width: 768px) {
+        .nav-menu {
+            top: 110px !important; /* Adjust for 80px logo + padding */
+        }
+      }
+
+      .tab-btn {
+        padding: var(--space-3) var(--space-4);
+        background: transparent;
+        border: none;
+        border-right: 1px solid var(--color-border);
+        color: var(--color-text-secondary);
+        font-family: var(--font-mono);
+        font-size: var(--font-size-sm);
+        cursor: pointer;
+        transition: all 0.2s;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        flex-shrink: 0; /* Prevent buttons from shrinking on mobile */
+      }
+
+      .tab-btn:hover {
+        background-color: var(--color-bg-tertiary);
+        color: var(--color-text-primary);
+      }
+
+      .tab-btn.active {
+        background-color: var(--color-bg-primary);
+        color: var(--color-orange);
+        border-top: 2px solid var(--color-orange);
+        border-bottom: 1px solid var(--color-bg-primary);
+        margin-bottom: -1px;
+      }
+
+      /* Viewport Container */
+      .terminal-viewport {
+        height: 900px; /* Increased height to fully fit Protocol Manager */
+        background-color: var(--color-bg-primary);
+        border: 1px solid var(--color-border);
+        border-top: none; /* Merged with tabs */
+        position: relative;
+        overflow: hidden;
+      }
+      
+      @media (max-width: 768px) {
+        .terminal-viewport {
+            height: 70vh; /* Adjust height for mobile */
+        }
+      }
+
+      .demo-frame {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        border: none;
+        visibility: hidden;
+        z-index: 0;
+        background-color: var(--color-bg-primary);
+      }
+
+      .demo-frame.active {
+        visibility: visible;
+        z-index: 10;
+      }
+
+      /* Info Bar */
+      .terminal-info-bar {
+        padding: var(--space-2) var(--space-3);
+        border: 1px solid var(--color-border);
+        border-top: none;
+        background-color: var(--color-bg-secondary);
+        font-family: var(--font-mono);
+        font-size: var(--font-size-xs);
+        color: var(--color-text-secondary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Dynamic One-Liner Text Style */
+      #feature-explanation {
+        color: var(--color-text-primary);
+        font-weight: 600;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="../../index.html" class="nav-logo flex items-center gap-2">
+          <svg width="80" height="80" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(38, 38)">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M14 12 H22 V17 H26 V12 H38 V17 H42 V12 H50 V24 H46 V48 H52 V56 H12 V48 H18 V24 H14 V12 Z" fill="#ffffff"/>
+            </g>
+          </svg>
+          <span>SeeingStone</span>
         </a>
-        <nav>
-            <a href="../signup/index.html" class="btn-nav">Sign Up</a>
-            <div class="menu-container">
-                <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="nav-dropdown" id="nav-dropdown">
-                    <a href="../../index.html">Home</a>
-                    <a href="index.html" class="active">Features</a>
-                    <a href="../security/index.html">Security</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+        <div class="nav-menu">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="index.html" class="nav-link active">Features</a>
+          <a href="../security/index.html" class="nav-link">Security</a>
+          <a href="../signup/index.html">
+            <button class="btn btn-primary btn-sm">Request Access</button>
+          </a>
+        </div>
+        <button class="nav-toggle" id="hamburger-btn">☰</button>
+      </div>
+    </nav>
 
-    <main>
-        <section class="features-hero">
-            <h1><span class="highlight">Features</span></h1>
-            <p>Explore the powerful capabilities that make SeeingStone your intelligent network hub</p>
-        </section>
+    <main class="bg-dark">
+      <section class="dashboard-section container">
+        
+        <!-- Header -->
+        <div class="mb-4">
+          <h1 class="text-primary" style="font-size: 24px; margin-bottom: 4px;">SYSTEM CAPABILITIES</h1>
+          <p class="text-secondary" style="font-family: var(--font-mono); font-size: 12px;">Select a module to inspect capabilities.</p>
+        </div>
 
-        <section class="demo-section">
-            <div class="demo-item">
-                <div class="demo-label">:: SEARCH & RETRIEVAL // AI AGENT ACCESSES ALL DATA CATALOGED LIKE A LIBRARY TO
-                    RESEARCH ANYTHING YOU LIKE</div>
-                <iframe src="../../components/demo-box-1/index.html" class="demo-box-container" id="demo-box-1"
-                    title="Demo Box 1"></iframe>
-            </div>
+        <!-- Terminal Interface -->
+        <div class="flex flex-col flex-grow">
+          
+          <!-- Tabs -->
+          <div class="terminal-tabs">
+            <button class="tab-btn active" onclick="switchTab('demo-box-1', this, 'Search across all connected data sources in milliseconds.')">SEARCH</button>
+            <button class="tab-btn" onclick="switchTab('demo-box-2', this, 'Visualize your entire professional network graph.')">NETWORK GRAPH</button>
+            <button class="tab-btn" onclick="switchTab('demo-box-3', this, 'Filter noise and extract actionable signals automatically.')">COMMUNICATIONS</button>
+            <button class="tab-btn" onclick="switchTab('demo-box-4', this, 'Manage relationships with deterministic outreach protocols.')">CONNECTION</button>
+          </div>
 
-            <div class="demo-item">
-                <div class="demo-label">:: NETWORK TOPOLOGY // MAPS ALL CONNECTIONS BETWEEN EACH PERSON IN YOUR NETWORK;
-                    TRY CLICKING A NODE</div>
-                <iframe src="../../components/demo-box-2/index.html" class="demo-box-container" id="demo-box-2"
-                    title="Demo Box 2"></iframe>
-            </div>
+          <!-- Viewport -->
+          <div class="terminal-viewport">
+            <iframe src="../../components/demo-box-1/index.html" class="demo-frame active" id="demo-box-1" title="Search Demo"></iframe>
+            <iframe src="../../components/demo-box-2/index.html" class="demo-frame" id="demo-box-2" title="Topology Demo"></iframe>
+            <iframe src="../../components/demo-box-3/index.html" class="demo-frame" id="demo-box-3" title="Thread Demo"></iframe>
+            <iframe src="../../components/demo-box-4/index.html" class="demo-frame" id="demo-box-4" title="Protocol Demo"></iframe>
+          </div>
 
-            <div class="demo-item">
-                <div class="demo-label">:: THREAD INTELLIGENCE // ALL COMMUNICATION FILTERED BY NOISE AND WHAT ACTION
-                    YOU NEED TO TAKE</div>
-                <iframe src="../../components/demo-box-3/index.html" class="demo-box-container" id="demo-box-3"
-                    title="Demo Box 3"></iframe>
-            </div>
+          <!-- Info Bar / One-Liner -->
+          <div class="terminal-info-bar">
+            <div id="feature-explanation">Search across all connected data sources in milliseconds.</div>
+            <div class="hide-mobile">ENC: AES-256 // REGION: EU-WEST</div>
+          </div>
 
-            <div class="demo-item">
-                <div class="demo-label">:: PROTOCOL MANAGER // ALL THE PEOPLE YOU CAN CONNECT; NEVER LOSE TOUCH WITH
-                    FORMER COLLEAGUES</div>
-                <iframe src="../../components/demo-box-4/index.html" class="demo-box-container" id="demo-box-4"
-                    title="Demo Box 4"></iframe>
-            </div>
-        </section>
+        </div>
 
-        <section class="features-description">
-            <p>SeeingStone is a private network intelligence hub that extracts clear signal from the noise across
-                every document, message, and service you own. It maps your relationship graph and visualizes
-                conversation threads across all accounts. It combines AI insights with deterministic automation to
-                manage recurring outreach—like birthdays, New Years, and personal dates—ensuring no contact slips
-                through the cracks. Your data is fully integrated yet strictly isolated on encrypted EU servers.</p>
-        </section>
-
-        <section class="features-cta">
-            <h2>Ready to get started?</h2>
-            <a href="../signup/index.html" class="btn-primary">Request Secure Access</a>
-        </section>
+      </section>
     </main>
 
-    <footer>
-        <p>© 2025 Liess Ventures. EU DataPrivacy Encrypted European Servers</p>
-    </footer>
-
     <script src="../../js/navigation.js"></script>
-    <script src="js/features.js"></script>
-</body>
+    <script>
+      function switchTab(boxId, btn, explanationText) {
+        // 1. Hide all frames
+        document.querySelectorAll('.demo-frame').forEach(frame => {
+          frame.classList.remove('active');
+        });
 
+        // 2. Deactivate all buttons
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active');
+        });
+
+        // 3. Activate selected
+        document.getElementById(boxId).classList.add('active');
+        btn.classList.add('active');
+
+        // 4. Update One-Liner Text
+        document.getElementById('feature-explanation').textContent = explanationText;
+      }
+    </script>
+  </body>
 </html>

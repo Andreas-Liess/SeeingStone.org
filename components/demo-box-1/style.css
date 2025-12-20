@@ -1,144 +1,206 @@
-/* CSS for Demo Box 1 */
-.demo-box-content {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-    padding: 8px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background: #FFFFFF;
-    box-sizing: border-box;
-    overflow: hidden; /* Prevent double scrollbars on the main container */
+/* ============================================================================
+   DEMO BOX 1 - BLOOMBERG DARK MODE
+   Engineered Intelligence Feed
+   ============================================================================ */
+
+:root {
+  --color-bg: #0a0a0a;
+  --color-card: #1a1a1a;
+  --color-accent: #ff6600;
+  --color-text: #ffffff;
+  --color-text-dim: #999999;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
-/* Base style for all log entries */
+/* Main Container */
+.demo-box-content {
+  font-family: var(--font-mono);
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  box-sizing: border-box;
+  overflow: hidden;
+  color: var(--color-text);
+}
+
+/* ============================================================================
+   LOG ENTRIES
+   ============================================================================ */
+
+/* Base Entry */
 .log-entry {
-    margin-bottom: 16px;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333333;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
+  margin-bottom: 24px;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+  position: relative;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Style for the labels */
+/* Labels (USER, THINKING, TOOL) */
 .log-label {
-    font-weight: 700;
-    display: block;
-    margin-bottom: 4px;
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
 }
 
-/* Colors */
-.user-query .log-label, .user-query { color: #FF6600; }
-.thinking .log-label { color: #666666; }
-.toolCall .log-label { color: #0066CC; }
-.toolResult .log-label { color: #00A86B; }
-.final-report .log-label { color: #FF6600; font-size: 16px; }
+/* ============================================================================
+   SPECIFIC STATES
+   ============================================================================ */
 
-/* Pre blocks */
-pre {
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-    font-size: 13px;
-    background: #F5F5F5;
-    border: 1px solid #E0E0E0;
-    border-radius: 6px;
-    padding: 12px;
-    white-space: pre-wrap;
-    word-break: break-all;
-    color: #333333;
-    margin: 0;
-}
-
-/* Distinct styling for tools */
-.toolCall pre { background: #E6F2FF; border: 1px solid #99CCFF; border-left: 3px solid #0066CC; }
-.toolResult pre { background: #E6F9F0; border: 1px solid #80D4AA; border-left: 3px solid #00A86B; }
-.thinking pre { background: #F5F5F5; border: 1px solid #CCCCCC; border-left: 3px solid #666666; }
-
-/* Typing cursor */
-.typing::after {
-    content: '█';
-    animation: blink 1s step-end infinite;
-    color: #FF6600;
-    margin-left: 2px;
-}
-@keyframes blink { 50% { opacity: 0; } }
-
-/* User query box - Locked to top */
+/* 1. User Query */
 .user-query {
-    background: #FFF5ED;
-    border: 1px solid #FFCC99;
-    border-radius: 8px;
-    padding: 16px;
-    font-weight: 500;
-    flex-shrink: 0; /* Never shrink */
-    margin-bottom: 16px; /* Space below it */
+  border-bottom: 1px solid #333;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+.user-query .log-label { color: var(--color-accent); }
+.user-query p { margin: 0; font-size: 14px; }
+
+
+/* 2. Thinking (Agent Thought Process) */
+.thinking .log-label { color: #666666; }
+.thinking pre {
+  border-left: 2px solid #666666;
+  color: #888;
 }
 
-.user-query p { margin: 0; color: #1a1a1a; }
+/* 3. Tool Calls (System Action) */
+.toolCall .log-label { color: #0088ff; }
+.toolCall pre {
+  border-left: 2px solid #0088ff;
+  background: #0d1f2e; /* Very subtle blue tint */
+  color: #aaddff;
+}
 
-/* Log list - Takes available space */
+/* 4. Tool Results (Data Return) */
+.toolResult .log-label { color: #00cc88; }
+.toolResult pre {
+  border-left: 2px solid #00cc88;
+  background: #0d2e20; /* Very subtle green tint */
+  color: #aaffdd;
+}
+
+/* Evidence Blocks (Pre) */
+pre {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 2px;
+  padding: 12px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: #ccc;
+  margin: 0;
+}
+
+/* ============================================================================
+   FINAL REPORT
+   ============================================================================ */
+
+.final-report {
+  background: #151515;
+  border: 1px solid #333;
+  border-top: 2px solid var(--color-accent);
+  border-radius: 0; /* Hard edges */
+  padding: 24px;
+  margin-top: 16px;
+  flex-shrink: 0;
+  max-height: 50%; /* Adjusted to ensure thinking logs stay visible */
+  overflow-y: auto;
+}
+
+.final-report h3 { 
+  font-size: 16px; 
+  font-weight: 700; 
+  color: var(--color-text); 
+  margin: 0 0 16px 0; 
+  text-transform: uppercase; 
+  letter-spacing: 0.05em;
+}
+
+.final-report p { 
+  font-size: 13px; 
+  color: var(--color-text-dim); 
+  line-height: 1.6; 
+  margin-bottom: 12px;
+}
+
+.final-report ul { 
+  list-style: none; 
+  padding-left: 0; 
+  margin-top: 16px; 
+}
+
+.final-report li { 
+  position: relative; 
+  padding-left: 16px; 
+  margin-bottom: 12px; 
+  font-size: 13px; 
+  color: #ddd;
+}
+
+.final-report li::before { 
+  content: '>'; 
+  color: var(--color-accent); 
+  position: absolute; 
+  left: 0; 
+  font-weight: bold;
+}
+
+.final-report strong {
+  color: #fff;
+}
+
+/* Draft Email Style */
+.email-draft {
+  background: #000;
+  border: 1px solid #333;
+  padding: 16px;
+  font-family: var(--font-primary); /* Keep clean sans-serif for email body if desired, or mono */
+  font-size: 13px;
+  color: #eee;
+  margin-top: 16px;
+}
+
+/* ============================================================================
+   SCROLLING & LAYOUT
+   ============================================================================ */
+
+/* Log List Container */
 .log-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 16px 0;
-    
-    /* Flex magic: Grow to fill space, shrink if needed, but never smaller than 150px */
-    flex-grow: 1;
-    flex-shrink: 1;
-    min-height: 150px; 
-    
-    overflow-y: auto;
-    overflow-x: hidden;
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+  border-left: 1px solid #222; /* Timeline line */
+  padding-left: 4px;
 }
 
 /* Scrollbar styling */
-.log-list::-webkit-scrollbar, .final-report::-webkit-scrollbar { width: 8px; }
-.log-list::-webkit-scrollbar-track, .final-report::-webkit-scrollbar-track { background: #F5F5F5; border-radius: 4px; }
-.log-list::-webkit-scrollbar-thumb, .final-report::-webkit-scrollbar-thumb { background: #CCCCCC; border-radius: 4px; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
 
-.log-list .log-entry {
-    font-size: 13px;
-    padding-left: 12px;
-    border-left: 2px solid #E0E0E0;
-    margin-bottom: 12px;
+/* Typing cursor */
+.typing::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+  color: var(--color-accent);
+  margin-left: 4px;
 }
-
-.log-list .toolCall, .log-list .toolResult { border-left: none; padding-left: 0; }
-
-/* Final Report - Sticks to bottom, allows growth */
-.final-report {
-    background: #FFFFFF;
-    border: 2px solid #E0E0E0;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05); /* Shadow pointing up to separate from logs */
-    
-    /* Flex magic: Start natural size, shrink if needed, max 70% of screen */
-    flex-shrink: 0; 
-    max-height: 70%;
-    overflow-y: auto;
-}
-
-.final-report .report-content { display: none; }
-.final-report h3 { font-size: 20px; font-weight: 700; color: #1a1a1a; margin: 0 0 12px 0; }
-.final-report p, .final-report ul { font-size: 15px; color: #333333; margin-bottom: 16px; line-height: 1.6; }
-.final-report strong { color: #1a1a1a; font-weight: 600; }
-.final-report ul { list-style: none; padding-left: 0; }
-.final-report li { position: relative; padding-left: 24px; margin-bottom: 8px; }
-.final-report li::before { content: '•'; color: #FF6600; position: absolute; left: 0; top: 0; font-weight: 700; }
-
-.email-draft {
-    background: #F5F5F5;
-    border: 1px solid #E0E0E0;
-    border-radius: 8px;
-    padding: 16px;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 14px;
-}
-.email-draft p { margin-bottom: 12px; }
+@keyframes blink { 50% { opacity: 0; } }
