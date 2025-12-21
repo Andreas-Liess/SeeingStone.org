@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
             name: formData.get('name'),
             email: formData.get('email'),
             company: formData.get('company'),
-            message: formData.get('message')
+            message: formData.get('message'),
+            // Include analytics data if available
+            analytics: window.lvAnalyticsData || null
         };
 
         // Show loading state
