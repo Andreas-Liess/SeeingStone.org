@@ -64,19 +64,10 @@ class AnalyticsOrchestrator {
       // Derive intent
       const intent = Analyzer.deriveIntent(data);
 
-      // Format meta block
-      const metaBlock = Formatter.format(data, intent);
-
-      // Append to message
-      const textarea = document.getElementById('message');
-      if (textarea && !textarea.value.includes('📊 INTERACTION METADATA')) {
-        textarea.value += metaBlock;
-      }
-
       // Store structured JSON data globally for form submission
       window.lvAnalyticsData = this.getStructuredData(data, intent);
 
-      console.log('✅ Analytics data appended');
+      console.log('✅ Analytics data collected');
     } catch (error) {
       console.error('Analytics submission handling failed:', error);
       // Don't block form submission on error
