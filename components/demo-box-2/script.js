@@ -156,6 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const cy = cytoscape({
         container: document.getElementById('cy'),
         elements: {nodes, edges},
+        minZoom: 0.5,
+        maxZoom: 3.0,
         style: [
             {
                 selector: 'node',
@@ -168,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     },
                     'label': 'data(id)',
                     'color': '#ffffff',
-                    'font-family': 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
+                    'font-family': 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
                     'font-size': '11px',
                     'text-valign': 'bottom',
                     'text-margin-y': 8,
@@ -243,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const conns = nodeConnections[id] || [];
         if (conns.length > 0) {
             conns.forEach(c => {
-                html += `<div class="connection-item"><span class="connection-label">${c.relationship}</span><span class="connection-target">${c.target}</span></div>`;
+                html += `<div class="connection-item"><span class="connection-target">${c.target}</span><span class="connection-label">${c.relationship}</span></div>`;
             });
         } else {
             html += `<div class="text-dim">No direct edges detected in current scope.</div>`;
@@ -256,5 +258,11 @@ document.addEventListener("DOMContentLoaded", () => {
             cy.elements().removeClass('highlighted dimmed');
             infoPanel.innerHTML = '<div class="info-placeholder">Select node to inspect topology</div>';
         }
+    });
+
+    // Handle Resize for Responsive Layout
+    window.addEventListener('resize', () => {
+        cy.resize();
+        cy.fit();
     });
 });

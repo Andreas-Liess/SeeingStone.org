@@ -1,0 +1,199 @@
+/* ============================================================================
+   DEMO BOX 3 - BLOOMBERG DARK MODE
+   Thread Intelligence
+   ============================================================================ */
+
+/* Import Shared Terminal Styles */
+@import '../terminal.css';
+
+:root {
+  --term-bg: #0a0a0a;
+  --term-panel: #111111;
+  --term-border: #333333;
+  --term-orange: #ff6600;
+  --term-blue: #0088ff;
+  --term-green: #00cc88;
+  --term-text: #ffffff;
+  --term-text-dim: #888888;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Specific Styles for Split View */
+.thread-container {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-mono); /* Base default */
+}
+
+/* LEFT: INGESTION STREAM */
+.stream-panel {
+    width: 35%;
+    border-right: 1px solid var(--term-border);
+    background: #080808;
+    display: flex;
+    flex-direction: column;
+}
+
+.stream-header {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--term-border);
+    font-size: 11px;
+    color: var(--term-text-dim);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.stream-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.stream-item {
+    padding: 12px 14px;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 13px; /* Increased from 11px */
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: slideIn 0.5s forwards;
+    cursor: default;
+}
+
+.stream-item:hover { background: #111; }
+
+.stream-meta { 
+    display: flex; 
+    justify-content: space-between; 
+    color: var(--term-text-dim); 
+    margin-bottom: 4px; 
+    font-size: 11px; /* Increased from 9px */
+    font-family: var(--font-mono);
+}
+
+.stream-subject { 
+    color: var(--term-text); 
+    font-weight: 500; /* Reduced from 600 for Sans */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    font-family: var(--font-sans); /* Human readable */
+    font-size: 14px;
+}
+
+.stream-item.urgent .stream-subject { color: var(--term-orange); font-weight: 600; }
+.stream-item.external .stream-meta { color: #555; }
+
+@keyframes slideIn {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* RIGHT: INTELLIGENCE OUTPUT */
+.intel-panel {
+    flex-grow: 1;
+    background: var(--term-bg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.intel-card {
+    border: 1px solid var(--term-border);
+    background: var(--term-panel);
+    padding: 16px;
+    position: relative;
+}
+
+.intel-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--term-border);
+}
+
+.intel-card.consensus::before { background: var(--term-green); }
+.intel-card.ghost::before { background: var(--term-red); }
+
+.intel-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--term-text-dim);
+    font-family: var(--font-mono);
+}
+
+.intel-body {
+    font-size: 15px; /* Increased from 13px */
+    color: var(--term-text);
+    line-height: 1.5;
+    font-family: var(--font-sans); /* Human readable */
+}
+
+.intel-highlight {
+    color: var(--term-green);
+    font-weight: 700;
+    font-family: var(--font-mono); /* Data is technical */
+    font-size: 13px;
+    display: block;
+    margin-top: 4px;
+}
+
+.intel-alert {
+    color: var(--term-orange);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    display: block;
+    margin-top: 4px;
+}
+
+.action-bar {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--term-border);
+    display: flex;
+    gap: 8px;
+}
+
+.btn-mini {
+    background: transparent;
+    border: 1px solid var(--term-text-dim);
+    color: var(--term-text-dim);
+    padding: 6px 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-mini:hover { border-color: var(--term-blue); color: var(--term-blue); }
+
+/* LOADING STATE */
+.processing-overlay {
+    position: absolute;
+    top: 50%; left: 67%; 
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.spinner-text {
+    color: var(--term-orange);
+    font-size: 11px;
+    margin-top: 8px;
+    letter-spacing: 2px;
+    animation: blink 1.5s infinite;
+    font-family: var(--font-mono);
+}

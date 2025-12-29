@@ -10,6 +10,7 @@
   --color-text: #ffffff;
   --color-text-dim: #999999;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* Main Container */
@@ -32,7 +33,7 @@
 /* Base Entry */
 .log-entry {
   margin-bottom: 24px;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.5;
   opacity: 0;
   animation: fadeIn 0.3s forwards;
@@ -53,6 +54,7 @@
   font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--color-text-dim);
+  font-family: var(--font-mono); /* Headings keep mono */
 }
 
 /* ============================================================================
@@ -66,14 +68,25 @@
   margin-bottom: 24px;
 }
 .user-query .log-label { color: var(--color-accent); }
-.user-query p { margin: 0; font-size: 14px; }
+.user-query p { 
+  margin: 0; 
+  font-size: 16px; 
+  font-family: var(--font-sans); /* Default text font */
+  color: #ffffff;
+}
 
 
 /* 2. Thinking (Agent Thought Process) */
 .thinking .log-label { color: #666666; }
 .thinking pre {
-  border-left: 2px solid #666666;
-  color: #888;
+  border-left: 2px solid #666666; 
+  color: #888888; /* Darker gray to match Demo Box 4 data rows */
+  font-family: var(--font-sans); /* Default text font */
+  background: transparent;
+  border: none;
+  border-left: 2px solid #666666; /* Keep indicator */
+  padding: 0 0 0 12px; /* Indent only */
+  white-space: pre-wrap;
 }
 
 /* 3. Tool Calls (System Action) */
@@ -82,6 +95,7 @@
   border-left: 2px solid #0088ff;
   background: #0d1f2e; /* Very subtle blue tint */
   color: #aaddff;
+  font-family: var(--font-mono); /* Keep code font */
 }
 
 /* 4. Tool Results (Data Return) */
@@ -90,12 +104,12 @@
   border-left: 2px solid #00cc88;
   background: #0d2e20; /* Very subtle green tint */
   color: #aaffdd;
+  font-family: var(--font-mono); /* Keep code font */
 }
 
-/* Evidence Blocks (Pre) */
+/* Evidence Blocks (Pre) - Base Styles */
 pre {
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   background: #111;
   border: 1px solid #333;
   border-radius: 2px;
@@ -129,13 +143,15 @@ pre {
   margin: 0 0 16px 0; 
   text-transform: uppercase; 
   letter-spacing: 0.05em;
+  font-family: var(--font-sans);
 }
 
 .final-report p { 
-  font-size: 13px; 
+  font-size: 15px; 
   color: var(--color-text-dim); 
   line-height: 1.6; 
   margin-bottom: 12px;
+  font-family: var(--font-sans);
 }
 
 .final-report ul { 
@@ -148,8 +164,9 @@ pre {
   position: relative; 
   padding-left: 16px; 
   margin-bottom: 12px; 
-  font-size: 13px; 
+  font-size: 15px; 
   color: #ddd;
+  font-family: var(--font-sans);
 }
 
 .final-report li::before { 
@@ -169,8 +186,8 @@ pre {
   background: #000;
   border: 1px solid #333;
   padding: 16px;
-  font-family: var(--font-primary); /* Keep clean sans-serif for email body if desired, or mono */
-  font-size: 13px;
+  font-family: var(--font-sans); /* Keep clean sans-serif */
+  font-size: 15px;
   color: #eee;
   margin-top: 16px;
 }
