@@ -6,155 +6,605 @@
     <title>Enterprise & Personal Solutions - SeeingStone</title>
     <link rel="stylesheet" href="../../css-new/main.css">
     <style>
-        /* Founder Story Hero */
-        .founder-hero {
-            background-color: var(--color-bg-primary);
-            padding: var(--space-12) 0;
-            border-bottom: 1px solid var(--color-border);
+        :root {
+            --terminal-green: #00ff88;
+            --terminal-dim: #666666;
+            --grid-line: #1a1a1a;
         }
 
-        @media (max-width: 768px) {
-            .founder-hero {
-                padding: var(--space-8) 0;
+        /* ============================================
+           BLOOMBERG TERMINAL AESTHETIC
+           ============================================ */
+
+        body {
+            background: #000;
+        }
+
+        /* Hero - Sharp, Commanding */
+        .hero-terminal {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: #000;
+            border-bottom: 1px solid var(--grid-line);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-terminal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(90deg, transparent 49.5%, var(--grid-line) 49.5%, var(--grid-line) 50.5%, transparent 50.5%),
+                linear-gradient(0deg, transparent 49.5%, var(--grid-line) 49.5%, var(--grid-line) 50.5%, transparent 50.5%);
+            background-size: 120px 120px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
 
-        .story-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .story-content h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: var(--space-6);
+            line-height: 1.05;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
         }
 
-        .story-content p {
-            font-size: var(--font-size-xl);
-            line-height: 1.7;
-            margin-bottom: var(--space-4);
+        .hero-text h1 span {
+            color: var(--color-orange);
         }
 
-        .story-content p:last-of-type {
-            margin-bottom: 0;
+        .hero-tagline {
+            font-family: var(--font-mono);
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+            max-width: 500px;
         }
 
-        /* Timeline Badge */
-        .timeline-badge {
-            display: inline-block;
-            padding: var(--space-2) var(--space-4);
+        /* Status Panel */
+        .status-panel {
+            background: #0a0a0a;
+            border: 1px solid var(--grid-line);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+        }
+
+        .status-header {
             background: var(--color-orange);
             color: #000;
+            padding: 8px 16px;
             font-weight: 700;
-            font-size: var(--font-size-sm);
-            letter-spacing: 0.05em;
-            margin-bottom: var(--space-4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
         }
 
-        /* Engagement Process Box */
-        .engagement-box {
-            background: var(--color-bg-primary);
-            border: 1px solid var(--color-border);
-            padding: var(--space-8);
-            margin-top: var(--space-8);
+        .status-body {
+            padding: 20px;
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .status-row:last-child {
+            border-bottom: none;
+        }
+
+        .status-label {
+            color: var(--terminal-dim);
+        }
+
+        .status-value {
+            color: #fff;
+        }
+
+        .status-value.active {
+            color: var(--terminal-green);
+        }
+
+        .status-value.pending {
+            color: var(--color-orange);
+        }
+
+        /* ============================================
+           DUAL TRACK LAYOUT
+           ============================================ */
+
+        .dual-track {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
         }
 
         @media (max-width: 768px) {
-            .engagement-box {
-                padding: var(--space-4);
-                margin-top: var(--space-6);
+            .dual-track {
+                grid-template-columns: 1fr;
             }
         }
 
-        .engagement-box h3 {
-            font-size: var(--font-size-2xl);
-            font-weight: 700;
-            margin-bottom: var(--space-2);
-            color: var(--color-text-primary);
+        /* Personal Track */
+        .track-personal {
+            background: #0a0a0a;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid var(--grid-line);
+            position: relative;
         }
 
-        .engagement-box > p {
-            font-size: var(--font-size-lg);
-            color: var(--color-text-secondary);
-            margin-bottom: var(--space-6);
+        @media (max-width: 768px) {
+            .track-personal {
+                border-right: none;
+                border-bottom: 1px solid var(--grid-line);
+                padding: 60px 24px;
+            }
         }
 
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: var(--space-4);
+        .track-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--terminal-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 16px;
         }
 
-        .process-step {
-            background: var(--color-bg-secondary);
-            border: 1px solid var(--color-border);
-            padding: var(--space-4);
-        }
-
-        .step-number {
+        .track-personal h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--color-orange);
-            line-height: 1;
-            margin-bottom: var(--space-3);
+            margin-bottom: 24px;
         }
 
-        .process-step h4 {
-            font-size: var(--font-size-lg);
-            font-weight: 700;
-            color: var(--color-text-primary);
-            margin-bottom: var(--space-2);
-        }
-
-        .process-step p {
-            font-size: var(--font-size-sm);
+        .track-personal p {
             color: var(--color-text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 400px;
+        }
+
+        .launch-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #111;
+            border: 1px solid var(--color-orange);
+            padding: 16px 24px;
+            font-family: var(--font-mono);
+        }
+
+        .launch-date .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-orange);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .launch-date .text {
+            color: var(--color-orange);
+            font-weight: 700;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Enterprise Track */
+        .track-enterprise {
+            background: #000;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .track-enterprise {
+                padding: 60px 24px;
+            }
+        }
+
+        .track-enterprise h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .track-enterprise > p {
+            color: var(--color-text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 450px;
+        }
+
+        .enterprise-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ============================================
+           SECURITY TIERS - DASHBOARD SELECTION
+           ============================================ */
+
+        .security-section {
+            background: #0a0a0a;
+            padding: 100px 0;
+            border-top: 1px solid var(--grid-line);
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .section-header-left {
+            margin-bottom: 60px;
+        }
+
+        .section-header-left h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-header-left p {
+            font-family: var(--font-mono);
+            color: var(--terminal-dim);
+            font-size: 0.875rem;
+        }
+
+        .tier-dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--grid-line);
+            border: 1px solid var(--grid-line);
+        }
+
+        @media (max-width: 1024px) {
+            .tier-dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tier-card {
+            background: #000;
+            padding: 40px 32px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .tier-card:hover {
+            background: #0d0d0d;
+        }
+
+        .tier-card.recommended {
+            background: #0d0d0d;
+        }
+
+        .tier-card.recommended::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--color-orange);
+        }
+
+        .tier-number {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--terminal-dim);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tier-card.recommended .tier-number::after {
+            content: 'RECOMMENDED';
+            background: var(--color-orange);
+            color: #000;
+            padding: 2px 8px;
+            font-size: 0.625rem;
+            font-weight: 700;
+        }
+
+        .tier-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .tier-desc {
+            color: var(--color-text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .tier-specs {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            color: var(--terminal-dim);
+        }
+
+        .spec-value {
+            color: var(--terminal-green);
+        }
+
+        .spec-value.na {
+            color: var(--terminal-dim);
+        }
+
+        /* ============================================
+           ENGAGEMENT TIMELINE
+           ============================================ */
+
+        .engagement-section {
+            background: #000;
+            padding: 100px 0;
+        }
+
+        .engagement-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+            align-items: end;
+        }
+
+        @media (max-width: 768px) {
+            .engagement-header {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        .engagement-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .engagement-header p {
+            color: var(--color-text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--grid-line);
+        }
+
+        @media (max-width: 1024px) {
+            .timeline::before {
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 32px;
+            }
+        }
+
+        .timeline-step {
+            position: relative;
+            padding: 0 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .timeline-step {
+                padding: 0 0 48px 80px;
+            }
+        }
+
+        .step-marker {
+            width: 64px;
+            height: 64px;
+            background: #000;
+            border: 2px solid var(--grid-line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--terminal-dim);
+            margin-bottom: 24px;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 1024px) {
+            .step-marker {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+
+        .timeline-step:hover .step-marker {
+            border-color: var(--color-orange);
+            color: var(--color-orange);
+        }
+
+        .step-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .step-desc {
+            color: var(--color-text-secondary);
+            font-size: 0.9375rem;
             line-height: 1.6;
         }
 
-        /* Philosophy CTA */
-        .philosophy-cta {
-            background: var(--color-bg-primary);
-            border-top: 2px solid var(--color-orange);
-            border-bottom: 2px solid var(--color-orange);
-            padding: var(--space-12) 0;
-            text-align: center;
+        /* ============================================
+           FOUNDER - MINIMAL
+           ============================================ */
+
+        .founder-section {
+            background: #0a0a0a;
+            padding: 80px 0;
+            border-top: 1px solid var(--grid-line);
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+            align-items: start;
         }
 
         @media (max-width: 768px) {
-            .philosophy-cta {
-                padding: var(--space-8) 0;
+            .founder-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
             }
         }
 
-        .philosophy-cta h2 {
-            font-size: var(--font-size-3xl);
-            font-weight: 700;
-            margin-bottom: var(--space-6);
+        .founder-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--terminal-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
         }
 
-        .philosophy-cta p {
-            font-size: var(--font-size-xl);
+        .founder-text {
+            max-width: 700px;
+        }
+
+        .founder-text p {
+            font-size: 1.25rem;
             line-height: 1.7;
-            margin-bottom: var(--space-6);
+            color: var(--color-text-secondary);
+        }
+
+        .founder-text p:first-of-type {
+            color: #fff;
+            margin-bottom: 24px;
+        }
+
+        /* ============================================
+           CTA - TERMINAL COMMAND
+           ============================================ */
+
+        .cta-terminal {
+            background: #000;
+            padding: 100px 0;
+        }
+
+        .cta-box {
+            background: #0a0a0a;
+            border: 1px solid var(--color-orange);
             max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-header {
+            background: var(--color-orange);
+            color: #000;
+            padding: 12px 24px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .cta-body {
+            padding: 48px;
+            text-align: center;
+        }
+
+        .cta-body h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-body p {
+            color: var(--color-text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .philosophy-cta .final-cta {
-            border-top: 1px solid var(--color-border);
-            padding-top: var(--space-8);
-            margin-top: var(--space-8);
+        .cta-command {
+            font-family: var(--font-mono);
+            color: var(--terminal-dim);
+            font-size: 0.875rem;
+            margin-top: 24px;
         }
 
-        .philosophy-cta .final-cta h3 {
-            font-size: var(--font-size-2xl);
-            color: var(--color-orange);
-            margin-bottom: var(--space-6);
-            font-weight: 700;
+        .cta-command span {
+            color: var(--terminal-green);
         }
     </style>
 </head>
@@ -183,156 +633,248 @@
     </nav>
 
     <main>
-        <!-- Founder Story Hero -->
-        <section class="founder-hero">
+        <!-- Hero - Sharp Value Proposition -->
+        <section class="hero-terminal">
             <div class="container">
-                <div class="story-content">
-                    <h1>Enterprise & Personal <span class="text-orange">Solutions</span></h1>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Relationship<br>Intelligence<br><span>Deployed</span></h1>
+                        <p class="hero-tagline">
+                            Algorithmic mapping of every connection across your communications.
+                            Enterprise-grade security. Your infrastructure or ours.
+                        </p>
+                        <a href="../signup/index.html" class="btn btn-primary btn-lg">Request Access</a>
+                    </div>
 
-                    <p class="text-white">
-                        For over a year, I automated complex problems in the finance sector. I built systems to process data, identify patterns, and execute decisions that exceeded human capacity.
-                    </p>
-
-                    <p class="text-secondary">
-                        I then turned that engineering discipline toward relationship intelligence. The result is SeeingStone: a system that maps every connection across communications, surfaces hidden opportunities, and extends human networking capability beyond manual limits.
-                    </p>
-
-                    <p class="text-secondary">
-                        AI operates in a zero-trust environment. Enterprise clients—especially in regulated industries—require verifiable security, transparent data handling, and engineering accountability. We provide all three.
-                    </p>
+                    <div class="status-panel hide-mobile">
+                        <div class="status-header">System Status</div>
+                        <div class="status-body">
+                            <div class="status-row">
+                                <span class="status-label">Platform</span>
+                                <span class="status-value active">Operational</span>
+                            </div>
+                            <div class="status-row">
+                                <span class="status-label">Security</span>
+                                <span class="status-value">GDPR / EU Compliant</span>
+                            </div>
+                            <div class="status-row">
+                                <span class="status-label">Infrastructure</span>
+                                <span class="status-value">European Servers</span>
+                            </div>
+                            <div class="status-row">
+                                <span class="status-label">Consumer Access</span>
+                                <span class="status-value pending">July 2026</span>
+                            </div>
+                            <div class="status-row">
+                                <span class="status-label">Enterprise</span>
+                                <span class="status-value active">Available Now</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Personal Section -->
-        <section class="section section-light">
-            <div class="container container-narrow">
-                <div class="section-header">
-                    <h2 class="section-title">Personal</h2>
-                    <p class="section-description">Consumer prototype in development.</p>
+        <!-- Dual Track: Personal / Enterprise -->
+        <section class="dual-track">
+            <div class="track-personal">
+                <span class="track-label">Consumer</span>
+                <h2>Personal</h2>
+                <p>
+                    Individual relationship intelligence. Map your network.
+                    Surface opportunities. Extend capability beyond manual limits.
+                </p>
+                <div class="launch-date">
+                    <span class="dot"></span>
+                    <span class="text">Prototype Launch: July 2026</span>
                 </div>
+            </div>
 
-                <div class="card" style="text-align: center;">
-                    <div class="timeline-badge">JULY 2026</div>
-                    <p class="card-content">
-                        Prototype launch for individual users. Algorithmic relationship intelligence for personal networks.
-                    </p>
+            <div class="track-enterprise">
+                <span class="track-label">Business</span>
+                <h2>Enterprise</h2>
+                <p>
+                    We send engineers to your team. We assess your security requirements.
+                    We deploy on your terms. Contractual, self-hosted, or integrated into existing infrastructure.
+                </p>
+                <div class="enterprise-cta">
+                    <a href="../signup/index.html" class="btn btn-primary">Initiate Engagement</a>
+                    <a href="#security" class="btn btn-inverse">View Security Tiers</a>
                 </div>
             </div>
         </section>
 
-        <!-- Enterprise Section -->
-        <section class="section section-dark">
+        <!-- Security Tiers - Dashboard -->
+        <section class="security-section" id="security">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Enterprise</h2>
-                    <p class="section-description">Custom security models. On-site engineering. Tailored deployment.</p>
+                <div class="section-header-left">
+                    <h2>Security Models</h2>
+                    <p>SELECT DEPLOYMENT CONFIGURATION</p>
                 </div>
 
-                <!-- Security Tiers -->
-                <div class="grid grid-3">
-                    <!-- Tier 1: Contractual -->
-                    <div class="card">
-                        <div class="mb-3">
-                            <span class="badge badge-secondary">Tier 1</span>
-                        </div>
-                        <h3 class="card-title">Contractual Security</h3>
-                        <p class="card-content mb-4">
-                            European servers under GDPR compliance. Data privacy guaranteed by European law with full legal accountability.
+                <div class="tier-dashboard">
+                    <div class="tier-card">
+                        <div class="tier-number">TIER 01</div>
+                        <h3 class="tier-name">Contractual</h3>
+                        <p class="tier-desc">
+                            European servers. GDPR compliance. Legal data privacy guarantees under EU law.
                         </p>
-                        <ul class="footer-links">
-                            <li class="text-secondary">• EU-based infrastructure</li>
-                            <li class="text-secondary">• GDPR compliant</li>
-                            <li class="text-secondary">• Legal data privacy guarantees</li>
-                            <li class="text-secondary">• Third-party audited</li>
-                        </ul>
+                        <div class="tier-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Infrastructure</span>
+                                <span class="spec-value">EU Managed</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Data Residency</span>
+                                <span class="spec-value">Europe</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Compliance</span>
+                                <span class="spec-value">GDPR</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Audit</span>
+                                <span class="spec-value">Third-Party</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Tier 2: Self-Hosted -->
-                    <div class="card card-dark" style="border-color: var(--color-orange);">
-                        <div class="mb-3">
-                            <span class="badge badge-primary">Tier 2</span>
-                        </div>
-                        <h3 class="card-title">Custom Self-Hosted</h3>
-                        <p class="card-content mb-4">
-                            Complete infrastructure control. Purpose-built deployment on your specified hardware and network architecture.
+                    <div class="tier-card recommended">
+                        <div class="tier-number">TIER 02</div>
+                        <h3 class="tier-name">Self-Hosted</h3>
+                        <p class="tier-desc">
+                            Complete infrastructure control. Purpose-built deployment on your hardware.
                         </p>
-                        <ul class="footer-links">
-                            <li class="text-white">• Full control</li>
-                            <li class="text-white">• Tailored infrastructure</li>
-                            <li class="text-white">• No external dependencies</li>
-                            <li class="text-white">• Custom security protocols</li>
-                        </ul>
+                        <div class="tier-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Infrastructure</span>
+                                <span class="spec-value">Client-Owned</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Data Residency</span>
+                                <span class="spec-value">Your Choice</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Compliance</span>
+                                <span class="spec-value">Custom</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Audit</span>
+                                <span class="spec-value">Full Access</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Tier 3: Integration -->
-                    <div class="card">
-                        <div class="mb-3">
-                            <span class="badge badge-secondary">Tier 3</span>
-                        </div>
-                        <h3 class="card-title">Existing Infrastructure</h3>
-                        <p class="card-content mb-4">
-                            Integration with your current systems. Works within established NMS-hosted environments and existing security frameworks.
+                    <div class="tier-card">
+                        <div class="tier-number">TIER 03</div>
+                        <h3 class="tier-name">Integrated</h3>
+                        <p class="tier-desc">
+                            Works within your existing NMS-hosted environment. Zero infrastructure changes.
                         </p>
-                        <ul class="footer-links">
-                            <li class="text-secondary">• No infrastructure changes required</li>
-                            <li class="text-secondary">• Seamless integration</li>
-                            <li class="text-secondary">• Existing security maintained</li>
-                            <li class="text-secondary">• Minimal deployment overhead</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Engagement Process -->
-                <div class="engagement-box">
-                    <h3>Engagement Model</h3>
-                    <p>We send engineers to your team. We assess requirements. We build what you need.</p>
-
-                    <div class="process-grid">
-                        <div class="process-step">
-                            <div class="step-number">1</div>
-                            <h4>On-Site Assessment</h4>
-                            <p>Engineers at your location. Direct discussion of requirements and constraints.</p>
-                        </div>
-
-                        <div class="process-step">
-                            <div class="step-number">2</div>
-                            <h4>Security Model Selection</h4>
-                            <p>Determine appropriate tier based on regulatory requirements and risk tolerance.</p>
-                        </div>
-
-                        <div class="process-step">
-                            <div class="step-number">3</div>
-                            <h4>Pilot Deployment</h4>
-                            <p>Limited-scope implementation. Validation of integration and security model.</p>
-                        </div>
-
-                        <div class="process-step">
-                            <div class="step-number">4</div>
-                            <h4>Full Delivery</h4>
-                            <p>Production deployment. Ongoing engineering support and system refinement.</p>
+                        <div class="tier-specs">
+                            <div class="spec-row">
+                                <span class="spec-label">Infrastructure</span>
+                                <span class="spec-value">Existing</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Data Residency</span>
+                                <span class="spec-value">Unchanged</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Compliance</span>
+                                <span class="spec-value">Inherited</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Audit</span>
+                                <span class="spec-value">Your Process</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Philosophy & CTA -->
-        <section class="philosophy-cta">
-            <div class="container container-narrow">
-                <h2>Commitment to Power</h2>
+        <!-- Engagement Timeline -->
+        <section class="engagement-section">
+            <div class="container">
+                <div class="engagement-header">
+                    <h2>Engagement Process</h2>
+                    <p>
+                        We assess. We pilot. We deliver.
+                        Tell us what you need. We will build it.
+                    </p>
+                </div>
 
-                <p class="text-white">
-                    We build the most secure, privacy-focused, and powerful technology available. No compromises on capability. No compromises on protection.
-                </p>
+                <div class="timeline">
+                    <div class="timeline-step">
+                        <div class="step-marker">01</div>
+                        <h3 class="step-title">Assessment</h3>
+                        <p class="step-desc">
+                            Engineers on-site. Direct discussion of requirements, constraints, and security needs.
+                        </p>
+                    </div>
 
-                <p class="text-secondary">
-                    Organizations that fail to adopt advanced intelligence systems fall behind. The competitive advantage of relationship intelligence compounds over time.
-                </p>
+                    <div class="timeline-step">
+                        <div class="step-marker">02</div>
+                        <h3 class="step-title">Configuration</h3>
+                        <p class="step-desc">
+                            Security tier selection. Infrastructure mapping. Compliance verification.
+                        </p>
+                    </div>
 
-                <div class="final-cta">
-                    <h3>Contact us. Tell us what you need. We will build it.</h3>
-                    <a href="../signup/index.html" class="btn btn-primary btn-lg">Initiate Engagement</a>
+                    <div class="timeline-step">
+                        <div class="step-marker">03</div>
+                        <h3 class="step-title">Pilot</h3>
+                        <p class="step-desc">
+                            Limited-scope deployment. Validation of integration and security model.
+                        </p>
+                    </div>
+
+                    <div class="timeline-step">
+                        <div class="step-marker">04</div>
+                        <h3 class="step-title">Delivery</h3>
+                        <p class="step-desc">
+                            Production deployment. Ongoing support. Continuous refinement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder - Minimal -->
+        <section class="founder-section">
+            <div class="container">
+                <div class="founder-grid">
+                    <div class="founder-label">Background</div>
+                    <div class="founder-text">
+                        <p>
+                            One year automating complex problems in finance. Building systems that exceed human capacity.
+                        </p>
+                        <p>
+                            That engineering discipline now applied to relationship intelligence.
+                            AI operates in a zero-trust environment. We provide verifiable security,
+                            transparent data handling, and engineering accountability.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Terminal -->
+        <section class="cta-terminal">
+            <div class="container">
+                <div class="cta-box">
+                    <div class="cta-header">Action Required</div>
+                    <div class="cta-body">
+                        <h2>Ready to Deploy?</h2>
+                        <p>
+                            Contact us. Tell us what you need. We will build it.
+                        </p>
+                        <a href="../signup/index.html" class="btn btn-primary btn-lg">Initiate Engagement</a>
+                        <div class="cta-command">
+                            <span>$</span> seeingstone --deploy --security=enterprise
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -341,7 +883,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 SeeingStone. Institutional-grade privacy. Encrypted on European infrastructure.</p>
+                <p class="footer-copyright">© 2025 SeeingStone. Institutional-grade privacy. European infrastructure.</p>
             </div>
         </div>
     </footer>
