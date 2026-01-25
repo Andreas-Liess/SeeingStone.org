@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise & Personal Solutions - SeeingStone</title>
+    <link rel="stylesheet" href="../../css-new/main.css">
+    <style>
+        .founder-story {
+            background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-6);
+        }
+
+        .engagement-process {
+            background: #0a0a0a;
+            padding: var(--space-6);
+            border: 1px solid #1a1a1a;
+            margin-top: var(--space-6);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-4);
+        }
+
+        .process-step {
+            padding: var(--space-4);
+            background: #000;
+            border: 1px solid #1a1a1a;
+        }
+
+        .step-number {
+            color: var(--color-orange);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+        }
+
+        .philosophy-section {
+            background: #000;
+            border-top: 1px solid var(--color-orange);
+            border-bottom: 1px solid var(--color-orange);
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--color-orange);
+            color: #000;
+            font-weight: 700;
+            margin-bottom: var(--space-4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="../../index.html" class="nav-logo flex items-center gap-2">
+          <svg width="80" height="80" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(38, 38)">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M14 12 H22 V17 H26 V12 H38 V17 H42 V12 H50 V24 H46 V48 H52 V56 H12 V48 H18 V24 H14 V12 Z" fill="#ffffff"/>
+            </g>
+          </svg>
+          <span>SeeingStone</span>
+        </a>
+        <div class="nav-menu">
+          <a href="../../index.html" class="nav-link">Home</a>
+          <a href="../features/index.html" class="nav-link">Features</a>
+          <a href="../security/index.html" class="nav-link">Security</a>
+          <a href="../signup/index.html">
+            <button class="btn btn-primary btn-sm">Request Access</button>
+          </a>
+        </div>
+        <button class="nav-toggle" id="hamburger-btn">☰</button>
+      </div>
+    </nav>
+
+    <main>
+        <!-- Founder Story -->
+        <section class="founder-story section-dark">
+            <div class="container">
+                <div class="story-content">
+                    <h1 class="hero-title mb-6">Enterprise & Personal <span class="text-orange">Solutions</span></h1>
+
+                    <p class="text-lg mb-4 text-white">
+                        For over a year, I automated complex problems in the finance sector. I built systems to process data, identify patterns, and execute decisions that exceeded human capacity.
+                    </p>
+
+                    <p class="text-lg mb-4 text-secondary">
+                        I then turned that engineering discipline toward relationship intelligence. The result is SeeingStone: a system that maps every connection across communications, surfaces hidden opportunities, and extends human networking capability beyond manual limits.
+                    </p>
+
+                    <p class="text-lg text-secondary">
+                        AI operates in a zero-trust environment. Enterprise clients—especially in regulated industries—require verifiable security, transparent data handling, and engineering accountability. We provide all three.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Section -->
+        <section class="section section-light">
+            <div class="container container-narrow">
+                <div class="section-header">
+                    <h2 class="section-title">Personal</h2>
+                    <p class="section-description">Consumer prototype in development.</p>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <div class="timeline-badge">JULY 2026</div>
+                    <p class="card-content">
+                        Prototype launch for individual users. Algorithmic relationship intelligence for personal networks.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enterprise Section -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Enterprise</h2>
+                    <p class="section-description">Custom security models. On-site engineering. Tailored deployment.</p>
+                </div>
+
+                <!-- Security Tiers -->
+                <div class="tier-grid">
+                    <!-- Tier 1: Contractual -->
+                    <div class="card">
+                        <div class="mb-3">
+                            <span class="badge badge-secondary">Tier 1</span>
+                        </div>
+                        <h3 class="card-title">Contractual Security</h3>
+                        <p class="card-content mb-4">
+                            European servers under GDPR compliance. Data privacy guaranteed by European law with full legal accountability.
+                        </p>
+                        <ul class="footer-links">
+                            <li class="text-secondary">• EU-based infrastructure</li>
+                            <li class="text-secondary">• GDPR compliant</li>
+                            <li class="text-secondary">• Legal data privacy guarantees</li>
+                            <li class="text-secondary">• Third-party audited</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tier 2: Self-Hosted -->
+                    <div class="card card-dark" style="border-color: var(--color-orange);">
+                        <div class="mb-3">
+                            <span class="badge badge-primary">Tier 2</span>
+                        </div>
+                        <h3 class="card-title">Custom Self-Hosted</h3>
+                        <p class="card-content mb-4">
+                            Complete infrastructure control. Purpose-built deployment on your specified hardware and network architecture.
+                        </p>
+                        <ul class="footer-links">
+                            <li class="text-white">• Full control</li>
+                            <li class="text-white">• Tailored infrastructure</li>
+                            <li class="text-white">• No external dependencies</li>
+                            <li class="text-white">• Custom security protocols</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tier 3: Integration -->
+                    <div class="card">
+                        <div class="mb-3">
+                            <span class="badge badge-secondary">Tier 3</span>
+                        </div>
+                        <h3 class="card-title">Existing Infrastructure</h3>
+                        <p class="card-content mb-4">
+                            Integration with your current systems. Works within established NMS-hosted environments and existing security frameworks.
+                        </p>
+                        <ul class="footer-links">
+                            <li class="text-secondary">• No infrastructure changes required</li>
+                            <li class="text-secondary">• Seamless integration</li>
+                            <li class="text-secondary">• Existing security maintained</li>
+                            <li class="text-secondary">• Minimal deployment overhead</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Engagement Process -->
+                <div class="engagement-process">
+                    <h3 class="text-xl text-white mb-2">Engagement Model</h3>
+                    <p class="text-secondary mb-4">We send engineers to your team. We assess requirements. We build what you need.</p>
+
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h4 class="text-white mb-2">On-Site Assessment</h4>
+                            <p class="text-secondary text-sm">Engineers at your location. Direct discussion of requirements and constraints.</p>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h4 class="text-white mb-2">Security Model Selection</h4>
+                            <p class="text-secondary text-sm">Determine appropriate tier based on regulatory requirements and risk tolerance.</p>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h4 class="text-white mb-2">Pilot Deployment</h4>
+                            <p class="text-secondary text-sm">Limited-scope implementation. Validation of integration and security model.</p>
+                        </div>
+
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <h4 class="text-white mb-2">Full Delivery</h4>
+                            <p class="text-secondary text-sm">Production deployment. Ongoing engineering support and system refinement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="philosophy-section section-dark">
+            <div class="container container-narrow">
+                <div style="text-align: center;">
+                    <h2 class="section-title mb-6">Commitment to Power</h2>
+
+                    <p class="text-lg mb-6 text-white">
+                        We build the most secure, privacy-focused, and powerful technology available. No compromises on capability. No compromises on protection.
+                    </p>
+
+                    <p class="text-lg mb-8 text-secondary">
+                        Organizations that fail to adopt advanced intelligence systems fall behind. The competitive advantage of relationship intelligence compounds over time.
+                    </p>
+
+                    <div style="border-top: 1px solid #1a1a1a; padding-top: var(--space-6); margin-top: var(--space-6);">
+                        <h3 class="text-2xl text-orange mb-4">Contact us. Tell us what you need. We will build it.</h3>
+                        <a href="../signup/index.html" class="btn btn-primary btn-lg">Initiate Engagement</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 SeeingStone. Institutional-grade privacy. Encrypted on European infrastructure.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

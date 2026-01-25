@@ -103,7 +103,7 @@ export class Analyzer {
 
     // Content exploration
     if (signals.contentExploration >= 1) {
-      reasons.push('explored content');
+      reasons.push('discovered content');
     }
 
     // Scroll engagement
