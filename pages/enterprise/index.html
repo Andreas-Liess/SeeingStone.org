@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enterprise & Personal Solutions - SeeingStone</title>
     <link rel="stylesheet" href="../../css-new/main.css">
+    <link rel="stylesheet" href="../../css-new/security-models.css">
     <style>
         :root {
             --terminal-green: #00ff88;
@@ -254,131 +255,7 @@
             flex-wrap: wrap;
         }
 
-        /* ============================================
-           SECURITY TIERS - DASHBOARD SELECTION
-           ============================================ */
-
-        .security-section {
-            background: #0a0a0a;
-            padding: 100px 0;
-            border-top: 1px solid var(--grid-line);
-            border-bottom: 1px solid var(--grid-line);
-        }
-
-        .section-header-left {
-            margin-bottom: 60px;
-        }
-
-        .section-header-left h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .section-header-left p {
-            font-family: var(--font-mono);
-            color: var(--terminal-dim);
-            font-size: 0.875rem;
-        }
-
-        .tier-dashboard {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-            background: var(--grid-line);
-            border: 1px solid var(--grid-line);
-        }
-
-        @media (max-width: 1024px) {
-            .tier-dashboard {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .tier-card {
-            background: #000;
-            padding: 40px 32px;
-            position: relative;
-            transition: all 0.2s ease;
-        }
-
-        .tier-card:hover {
-            background: #0d0d0d;
-        }
-
-        .tier-card.recommended {
-            background: #0d0d0d;
-        }
-
-        .tier-card.recommended::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--color-orange);
-        }
-
-        .tier-number {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--terminal-dim);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .tier-card.recommended .tier-number::after {
-            content: 'RECOMMENDED';
-            background: var(--color-orange);
-            color: #000;
-            padding: 2px 8px;
-            font-size: 0.625rem;
-            font-weight: 700;
-        }
-
-        .tier-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .tier-desc {
-            color: var(--color-text-secondary);
-            font-size: 0.9375rem;
-            line-height: 1.6;
-            margin-bottom: 32px;
-        }
-
-        .tier-specs {
-            font-family: var(--font-mono);
-            font-size: 0.8125rem;
-        }
-
-        .spec-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--grid-line);
-        }
-
-        .spec-row:last-child {
-            border-bottom: none;
-        }
-
-        .spec-label {
-            color: var(--terminal-dim);
-        }
-
-        .spec-value {
-            color: var(--terminal-green);
-        }
-
-        .spec-value.na {
-            color: var(--terminal-dim);
-        }
+        /* Security section styles moved to security-models.css */
 
         /* ============================================
            ENGAGEMENT TIMELINE
@@ -474,6 +351,7 @@
             color: var(--terminal-dim);
             margin-bottom: 24px;
             transition: all 0.2s ease;
+            border-radius: var(--border-radius);
         }
 
         @media (max-width: 1024px) {
@@ -563,6 +441,8 @@
             border: 1px solid var(--color-orange);
             max-width: 800px;
             margin: 0 auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
         }
 
         .cta-header {
@@ -633,48 +513,6 @@
     </nav>
 
     <main>
-        <!-- Hero - Sharp Value Proposition -->
-        <section class="hero-terminal">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Relationship<br>Intelligence<br><span>Deployed</span></h1>
-                        <p class="hero-tagline">
-                            Algorithmic mapping of every connection across your communications.
-                            Enterprise-grade security. Your infrastructure or ours.
-                        </p>
-                        <a href="../signup/index.html" class="btn btn-primary btn-lg">Request Access</a>
-                    </div>
-
-                    <div class="status-panel hide-mobile">
-                        <div class="status-header">System Status</div>
-                        <div class="status-body">
-                            <div class="status-row">
-                                <span class="status-label">Platform</span>
-                                <span class="status-value active">Operational</span>
-                            </div>
-                            <div class="status-row">
-                                <span class="status-label">Security</span>
-                                <span class="status-value">GDPR / EU Compliant</span>
-                            </div>
-                            <div class="status-row">
-                                <span class="status-label">Infrastructure</span>
-                                <span class="status-value">European Servers</span>
-                            </div>
-                            <div class="status-row">
-                                <span class="status-label">Consumer Access</span>
-                                <span class="status-value pending">July 2026</span>
-                            </div>
-                            <div class="status-row">
-                                <span class="status-label">Enterprise</span>
-                                <span class="status-value active">Available Now</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Dual Track: Personal / Enterprise -->
         <section class="dual-track">
             <div class="track-personal">
@@ -704,90 +542,44 @@
             </div>
         </section>
 
-        <!-- Security Tiers - Dashboard -->
+        <!-- Security Models -->
         <section class="security-section" id="security">
             <div class="container">
                 <div class="section-header-left">
                     <h2>Security Models</h2>
-                    <p>SELECT DEPLOYMENT CONFIGURATION</p>
                 </div>
 
-                <div class="tier-dashboard">
-                    <div class="tier-card">
-                        <div class="tier-number">TIER 01</div>
-                        <h3 class="tier-name">Contractual</h3>
-                        <p class="tier-desc">
-                            European servers. GDPR compliance. Legal data privacy guarantees under EU law.
+                <div class="cards">
+                    <div class="card">
+                        <h2 class="headline">Third-Party EU Hosting</h2>
+                        <p class="explanation">
+                            AI services run on a GDPR-compliant European provider. Offers low per-token cost and scalable operations.
                         </p>
-                        <div class="tier-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">Infrastructure</span>
-                                <span class="spec-value">EU Managed</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Data Residency</span>
-                                <span class="spec-value">Europe</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Compliance</span>
-                                <span class="spec-value">GDPR</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Audit</span>
-                                <span class="spec-value">Third-Party</span>
-                            </div>
+                        <div class="section">
+                            <div class="label">SECURITY & TRADEOFFS</div>
+                            <div class="value">Protection relies on EU law and contracts, not technical control. Provides minimal cost per token.</div>
                         </div>
                     </div>
 
-                    <div class="tier-card recommended">
-                        <div class="tier-number">TIER 02</div>
-                        <h3 class="tier-name">Self-Hosted</h3>
-                        <p class="tier-desc">
-                            Complete infrastructure control. Purpose-built deployment on your hardware.
+                    <div class="card">
+                        <h2 class="headline">Dedicated Cloud (Enterprise Compute)</h2>
+                        <p class="explanation">
+                            We implement exclusive AI infrastructure in a rented cloud (e.g., Azure, AWS). Company internal and can be used for other future internal Projects simultaniously.
                         </p>
-                        <div class="tier-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">Infrastructure</span>
-                                <span class="spec-value">Client-Owned</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Data Residency</span>
-                                <span class="spec-value">Your Choice</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Compliance</span>
-                                <span class="spec-value">Custom</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Audit</span>
-                                <span class="spec-value">Full Access</span>
-                            </div>
+                        <div class="section">
+                            <div class="label">SECURITY & TRADEOFFS</div>
+                            <div class="value">Protection via cloud isolation and enterprise controls. Higher cost for exclusive access and flexibility.</div>
                         </div>
                     </div>
 
-                    <div class="tier-card">
-                        <div class="tier-number">TIER 03</div>
-                        <h3 class="tier-name">Integrated</h3>
-                        <p class="tier-desc">
-                            Works within your existing NMS-hosted environment. Zero infrastructure changes.
+                    <div class="card">
+                        <h2 class="headline">Integrated (Client Infrastructure)</h2>
+                        <p class="explanation">
+                            AI runs within the client's existing network and security controls. No new provider or compute boundary.
                         </p>
-                        <div class="tier-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">Infrastructure</span>
-                                <span class="spec-value">Existing</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Data Residency</span>
-                                <span class="spec-value">Unchanged</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Compliance</span>
-                                <span class="spec-value">Inherited</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Audit</span>
-                                <span class="spec-value">Your Process</span>
-                            </div>
+                        <div class="section">
+                            <div class="label">SECURITY & TRADEOFFS</div>
+                            <div class="value">Relies on internal governance. Minimal extra cost, depends on internal maturity.</div>
                         </div>
                     </div>
                 </div>
@@ -848,12 +640,13 @@
                     <div class="founder-label">Background</div>
                     <div class="founder-text">
                         <p>
-                            One year automating complex problems in finance. Building systems that exceed human capacity.
+                            With over a year automating complex problems in financial analytics at a Big 4 consulting firm, and many more years building AI agents that gather and analyze data, detect patterns across my personal and professional networks, and provide actionable insights to help me maintain connections and anticipate opportunities, I create systems that deliver tangible strategic advantages—and now aim to empower others to gain a similar edge in their businesses.
                         </p>
                         <p>
-                            That engineering discipline now applied to relationship intelligence.
-                            AI operates in a zero-trust environment. We provide verifiable security,
-                            transparent data handling, and engineering accountability.
+                            These systems, built with rigorous engineering discipline, operate in a zero-trust environment with verifiable security, transparent data handling, and accountable practices.
+                        </p>
+                        <p>
+                            —Andreas A. D. Liess
                         </p>
                     </div>
                 </div>
@@ -871,9 +664,6 @@
                             Contact us. Tell us what you need. We will build it.
                         </p>
                         <a href="../signup/index.html" class="btn btn-primary btn-lg">Initiate Engagement</a>
-                        <div class="cta-command">
-                            <span>$</span> seeingstone --deploy --security=enterprise
-                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,78 @@
+/* ============================================
+   SECURITY MODELS - EXACT IMPLEMENTATION
+   ============================================ */
+
+.security-section {
+    background: #0a0a0a;
+    padding: 100px 0;
+    border-top: 1px solid var(--grid-line);
+    border-bottom: 1px solid var(--grid-line);
+}
+
+.section-header-left {
+    margin-bottom: 60px;
+}
+
+.section-header-left h2 {
+    font-size: 38px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.section-header-left p {
+    font-family: var(--font-mono);
+    color: var(--terminal-dim);
+    font-size: 0.875rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 1000px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: #0a0a0a;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.headline {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.explanation {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.section {
+    border-top: 1px solid rgba(255,255,255,0.25);
+    padding-top: 20px;
+    margin-top: auto;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+}
+
+.value {
+    font-size: 18px;
+    font-weight: 600;
+}
