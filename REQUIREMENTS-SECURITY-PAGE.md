@@ -1,85 +1,80 @@
-# Requirements: Security Page Redesign
+# Requirements: Privacy Page
 
-## Objective
-Transform the current "Contact Us" button and security page into a professional enterprise offering page targeting law firms and strategy consulting firms in Germany.
+## Job
+Turn the old enterprise/security page into the Privacy page.
 
-## Core Philosophy
-- Utilitarian language: minimal, efficient, elegant
-- No unnecessary elements or colorful language
-- Purely professional, enterprise-level presentation
-- Direct communication of value and capabilities
+The page must feel fast.
+Short lines.
+Plain words.
+No policy-speak.
 
-## Changes Required
+## Core Message
+SeeingStone finds the people inside your data.
 
-### 1. Homepage Button
-**Current:** "Contact Us"
-**New:** "Security" or "Enterprise" (TBD)
-**Action:** Link to the security/enterprise page
+Emails. PDFs. Attachments. Messages.
+It links them to people, promises, dates, deals, and follow-ups.
 
-### 2. Security Page Structure
+## Audience
+- Individuals
+- Founders
+- Startups
+- Small teams
+- Legacy SMEs with years of trapped business memory
 
-#### Section 1: Consumer
-**Message:**
-- Prototype launch: July 2026
-- Clean, minimal presentation
-- Professional tone
+## Privacy Message
+Your database lives on your device.
+We do not access it.
+GDPR compliant.
 
-#### Section 2: Enterprise
-**Core Message:**
-Professional engagement model with three tiers of security:
+Say:
+- Database on your device.
+- We do not access it.
+- GDPR compliant.
+- Small teams can keep company memory private.
 
-**Tier 1: Contractual Security**
-- European servers
-- GDPR compliance
-- Legal data privacy guarantees under European law
+Do not explain hardware setup on the site.
 
-**Tier 2: Custom Self-Hosted**
-- Custom infrastructure
-- Full control
-- Tailored deployment
+## Words To Use
+- People layer
+- Business memory
+- Database on your device
+- We do not access it
+- GDPR compliant
+- One place
+- Old threads
+- PDFs
+- Attachments
+- Clients
+- Suppliers
+- Follow-ups
+- Promises
+- What changed
+- What to do next
 
-**Tier 3: Integration with Existing Infrastructure**
-- Work within client's existing NMS-hosted systems
-- Seamless integration
-- No infrastructure changes required
+## Words To Avoid
+- Enterprise procurement
+- Sales-led SaaS
+- Usage-metered pricing
+- Bespoke services
+- Generic monitoring
+- Professional-services niche language
+- Corporate filler
 
-**Engagement Process:**
-1. We send engineers to your team
-2. We discuss your exact needs
-3. We determine security requirements
-4. We pilot the solution
-5. We deliver what you need
+## Page Structure
 
-**Call to Action:**
-"Contact us. Tell us what you need. We will build it."
+### Privacy Model
+Cards:
+1. For You
+2. For Small Teams
+3. All Your Sources
 
-#### Section 3: Philosophy Statement
-**Key Points:**
-- Commitment to powerful technology
-- CEO passion for technological advancement
-- Promise: Most secure, privacy-focused, and powerful technology
-- Imperative: Adopt or fall behind
+### How It Starts
+Steps:
+1. Ask for Access
+2. Private Setup
+3. Connect Sources
+4. Use Daily
 
-**Tone:**
-- Professional, not over-the-top (German market)
-- Confident without being boastful
-- Factual and direct
-
-## Design Requirements
-- Enterprise-level professional appearance
-- Significantly improved visual design
-- Clean, modern layout
-- German professional aesthetic (understated, precise)
-- Focus on substance over style
-
-## Target Audience
-- Law firms
-- Strategy consulting firms
-- German market (professional, detail-oriented)
-- Decision-makers who value security and privacy
-
-## Key Differentiators
-- Flexible security models (contractual, self-hosted, integrated)
-- Custom engineering engagement
-- European data privacy focus
-- Tailored solutions
+### CTA
+"Get early access"
+"Tell us what you want SeeingStone to remember."

@@ -61,26 +61,26 @@ document.addEventListener("DOMContentLoaded", () => {
         {person: "Börsenmedien AG",
         rel1: "Provided You with financial and market subscription services for professional research.", conn1: "You"
         },
-        {person: "Bain & Company Karriere Team",
-        rel1: "Acted as recruiting and career event contact for You at Bain & Company.", conn1: "You"
+        {person: "Nordlicht Components",
+        rel1: "Served as supplier account connected to quotes, delivery schedules, and quality follow-up threads.", conn1: "You"
         },
-        {person: "John Doe",
-        rel1: "Admin of AI Founders EU Telegram group, connecting AI founders including You.", conn1: "You",
-        rel2: "Indirect collaborator via forwarded pitch from Alex Jakarta and shared interests in AI ethics.", conn2: "Alex Jakarta"
+        {person: "Clara Meyer",
+        rel1: "Commercial contact at Nordlicht Components, managing quote and delivery discussions with You.", conn1: "You",
+        rel2: "Supplier relationship introduced by Markus Stein and supported by Elena Rossi's quality report.", conn2: "Markus Stein"
         },
-        {person: "Jane Doe",
-        rel1: "Sent a LinkedIn coffee invite to You which remains unanswered, indicating interest in discussion of AI ethics.", conn1: "You",
-        rel2: "Shares professional network overlap with John Doe in AI ethics initiatives, potentially facilitating introductions.", conn2: "John Doe"
+        {person: "Elena Rossi",
+        rel1: "Handled the last technical complaint and documented the replacement-batch issue.", conn1: "You",
+        rel2: "Shares supplier context with Clara Meyer through the quality escalation thread.", conn2: "Clara Meyer"
         },
-        {person: "Alex Jakarta",
-        rel1: "Received Your pitch deck 'Conscience as Code' regarding AI ethics projects.", conn1: "You",
-        rel2: "Forwarded the pitch to John Doe to initiate potential collaboration.", conn2: "John Doe",
-        rel3: "Serves as VC contact reviewing ethical AI projects and funding opportunities.", conn3: "You"
+        {person: "Markus Stein",
+        rel1: "Introduced You to Clara Meyer during the first supplier evaluation.", conn1: "You",
+        rel2: "Forwarded the original Nordlicht quote and delivery notes to Clara Meyer.", conn2: "Clara Meyer",
+        rel3: "Maintains procurement context across supplier agreements and renewal discussions.", conn3: "You"
         },
-        {person: "Claude Junker",
-        rel1: "Met You at Munich AI meetup discussing transparent and explainable AI models.", conn1: "You",
-        rel2: "Mentioned You in the AI Founders EU Telegram group to highlight shared interests.", conn2: "You",
-        rel3: "Engaged with You on shared interest in transparent AI research and practical implementations.", conn3: "You"
+        {person: "Lena Hoffmann",
+        rel1: "Advised You on supplier risk and operational planning during a Munich workshop.", conn1: "You",
+        rel2: "Mentioned Nordlicht Components as a useful regional contact.", conn2: "You",
+        rel3: "Shares practical context on procurement, operations, and relationship management.", conn3: "You"
         }
     ];
 

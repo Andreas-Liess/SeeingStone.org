@@ -77,10 +77,10 @@
 
 
 /* 2. Thinking (Agent Thought Process) */
-.thinking .log-label { color: #666666; }
+.thinking .log-label { color: #ffffff; }
 .thinking pre {
   border-left: 2px solid #666666; 
-  color: #888888; /* Darker gray to match Demo Box 4 data rows */
+  color: #ffffff;
   font-family: var(--font-sans); /* Default text font */
   background: transparent;
   border: none;

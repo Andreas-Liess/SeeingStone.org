@@ -16,7 +16,7 @@ export default async function handler(req, res) {
             body: new URLSearchParams({
                 'entry.1816007361': email,      // Email
                 'entry.1782966477': company,    // Company
-                'entry.1997805328': message,    // Networking pain/message
+                'entry.1997805328': message,    // Workspace needs / private knowledge use case
                 'entry.1483401731': analyticsData  // Analytics data field
             })
         });

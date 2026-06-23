@@ -142,8 +142,8 @@ border: var(--border-width) solid var(--color-border);
     <a href="/" class="nav-logo">SeeingStone</a>
     <div class="nav-menu">
       <a href="/features" class="nav-link">Features</a>
-      <a href="/security" class="nav-link">Security</a>
-      <a href="/pricing" class="nav-link">Pricing</a>
+      <a href="/features" class="nav-link">Features</a>
+      <a href="/privacy" class="nav-link">Privacy</a>
       <a href="/signup" class="nav-link">
         <button class="btn btn-primary btn-sm">Sign Up</button>
       </a>
@@ -213,7 +213,7 @@ border: var(--border-width) solid var(--color-border);
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Features</h2>
-      <p class="section-description">Everything you need for secure network monitoring</p>
+      <p class="section-description">Find the people inside your data</p>
     </div>
 
     <div class="features-grid">
@@ -226,10 +226,10 @@ border: var(--border-width) solid var(--color-border);
 <section class="cta-section">
   <div class="container">
     <h2 class="cta-title">Ready to get started?</h2>
-    <p class="cta-description">Join thousands of teams using SeeingStone</p>
+    <p class="cta-description">Find the people inside your data</p>
     <div class="cta-buttons">
-      <button class="btn btn-primary btn-lg">Sign Up Free</button>
-      <button class="btn btn-inverse btn-lg">Talk to Sales</button>
+      <button class="btn btn-primary btn-lg">Get Access</button>
+      <button class="btn btn-inverse btn-lg">How Privacy Works</button>
     </div>
   </div>
 </section>

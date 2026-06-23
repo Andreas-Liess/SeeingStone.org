@@ -12,7 +12,7 @@ The SeeingStone aesthetic is inspired by high-frequency trading terminals (Bloom
 ---
 
 ## 2. Color Palette
-We utilize a strict dark mode palette. There is no light mode.
+We use a strict dark mode palette. There is no light mode.
 
 ### Backgrounds
 *   **Void Black (`#0a0a0a`):** The primary canvas. Used for the body and main content areas.

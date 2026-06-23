@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise & Personal Solutions - SeeingStone</title>
+    <title>Privacy - SeeingStone</title>
     <link rel="stylesheet" href="../../css-new/main.css">
     <link rel="stylesheet" href="../../css-new/security-models.css">
     <style>
@@ -220,8 +220,8 @@
             letter-spacing: 0.05em;
         }
 
-        /* Enterprise Track */
-        .track-enterprise {
+        /* Team Track */
+        .track-team {
             background: #000;
             padding: 80px 60px;
             display: flex;
@@ -230,18 +230,18 @@
         }
 
         @media (max-width: 768px) {
-            .track-enterprise {
+            .track-team {
                 padding: 60px 24px;
             }
         }
 
-        .track-enterprise h2 {
+        .track-team h2 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 24px;
         }
 
-        .track-enterprise > p {
+        .track-team > p {
             color: var(--color-text-secondary);
             font-size: 1.125rem;
             line-height: 1.6;
@@ -249,13 +249,45 @@
             max-width: 450px;
         }
 
-        .enterprise-cta {
+        .team-cta {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
         }
 
         /* Security section styles moved to security-models.css */
+
+        /* ============================================
+           PRIVACY QUOTE
+           ============================================ */
+
+        .privacy-quote-section {
+            background: #000;
+            padding: 80px 0 56px;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .privacy-quote {
+            max-width: 900px;
+            color: #fff;
+        }
+
+        .privacy-quote p {
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            line-height: 1.35;
+            margin: 0 0 24px 0;
+        }
+
+        .privacy-quote-author {
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-top: 32px;
+        }
+
 
         /* ============================================
            ENGAGEMENT TIMELINE
@@ -503,102 +535,121 @@
         <div class="nav-menu">
           <a href="../../index.html" class="nav-link">Home</a>
           <a href="../features/index.html" class="nav-link">Features</a>
-          <a href="index.html" class="nav-link active">Enterprise</a>
+          <a href="index.html" class="nav-link active">Privacy</a>
           <a href="../signup/index.html">
-            <button class="btn btn-primary btn-sm">Request Access</button>
+            <button class="btn btn-primary btn-sm">Get Access</button>
           </a>
         </div>
-        <button class="nav-toggle" id="hamburger-btn">☰</button>
+        <button class="nav-toggle" id="hamburger-btn">&#9776;</button>
       </div>
     </nav>
 
 
 
-        <!-- Security Models -->
+    <main>
+        <!-- Top Quote -->
+        <section class="privacy-quote-section">
+            <div class="container">
+                <div class="privacy-quote">
+                    <p>
+                        "In today's world, as automation increases, the future points toward a renaissance of the value of human capital—relationships, connections, friends, trust.
+                    </p>
+                    <p>
+                        SeeingStone lets you remember every detail, making your business partners feel valued, and value you as competent."
+                    </p>
+                    <p class="privacy-quote-author">
+                        — Andreas A. D. Liess
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Models -->
         <section class="security-section" id="security">
             <div class="container">
                 <div class="section-header-left">
-                    <h2>Security Models</h2>
+                    <h2>Your PC becomes the place where business memorys lives.</h2>
+                    <p>
+                        You install the analysis layer ontop!<br>
+                        Build intelligence around the data you already control.
+                    </p>
                 </div>
 
                 <div class="cards">
                     <div class="card">
-                        <h2 class="headline">Third-Party EU Hosting</h2>
+                        <h2 class="headline">For You</h2>
                         <p class="explanation">
-                            AI services run on a GDPR-compliant European provider. Offers low per-token cost and scalable operations.
+                            Run SeeingStone on your Laptop, your contacts, emails, files, notes, and client history.
                         </p>
                         <div class="section">
-                            <div class="label">SECURITY & TRADEOFFS</div>
-                            <div class="value">Protection relies on EU law and contracts, not technical control. Provides minimal cost per token.</div>
+                            <div class="label">WHAT YOU GET</div>
+                            <div class="value">
+                                A private database on your device.<br>
+                                Your memory stays with you. Never touches our server.<br>
+                                Intelligence relies on a European, GDPR-compliant LLM with zero central databases.
+                            </div>
                         </div>
                     </div>
 
                     <div class="card">
-                        <h2 class="headline">Dedicated Cloud (Enterprise Compute)</h2>
+                        <h2 class="headline">For Small Teams</h2>
                         <p class="explanation">
-                            We implement exclusive AI infrastructure in a rented cloud (e.g., Azure, AWS). Company internal and can be used for other future internal Projects simultaniously.
+                            Turn scattered company memory into shared context.<br>
+                            Clients. Suppliers. Deals. Old threads. Important PDFs.
                         </p>
                         <div class="section">
-                            <div class="label">SECURITY & TRADEOFFS</div>
-                            <div class="value">Protection via cloud isolation and enterprise controls. Higher cost for exclusive access and flexibility.</div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h2 class="headline">Integrated (Client Infrastructure)</h2>
-                        <p class="explanation">
-                            AI runs within the client's existing network and security controls. No new provider or compute boundary.
-                        </p>
-                        <div class="section">
-                            <div class="label">SECURITY & TRADEOFFS</div>
-                            <div class="value">Relies on internal governance. Minimal extra cost, depends on internal maturity.</div>
+                            <div class="label">WHAT YOU GET</div>
+                            <div class="value">
+                                One controlled memory layer for the team.<br>
+                                Your company keeps the database.<br>
+                                Intelligence relies on a your Self Hosted OR European, GDPR-compliant LLM with zero central databases.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Engagement Timeline -->
+        <!-- Access Timeline -->
         <section class="engagement-section">
             <div class="container">
                 <div class="engagement-header">
-                    <h2>Engagement Process</h2>
+                    <h2>How it starts</h2>
                     <p>
-                        We assess. We pilot. We deliver.
-                        Tell us what you need. We will build it.
+                        Connect your sources. Build your private memory layer. Ask better questions.
                     </p>
                 </div>
 
                 <div class="timeline">
                     <div class="timeline-step">
                         <div class="step-marker">01</div>
-                        <h3 class="step-title">Assessment</h3>
+                        <h3 class="step-title">Choose Setup</h3>
                         <p class="step-desc">
-                            Engineers on-site. Direct discussion of requirements, constraints, and security needs.
+                            Personal use, startup, or team.
                         </p>
                     </div>
 
                     <div class="timeline-step">
                         <div class="step-marker">02</div>
-                        <h3 class="step-title">Configuration</h3>
+                        <h3 class="step-title">Choose Your Privacy Level</h3>
                         <p class="step-desc">
-                            Security tier selection. Infrastructure mapping. Compliance verification.
+                            EU-hosted AI, your own private instance, or your existing infrastructure. You pick where the intelligence runs.
                         </p>
                     </div>
 
                     <div class="timeline-step">
                         <div class="step-marker">03</div>
-                        <h3 class="step-title">Pilot</h3>
+                        <h3 class="step-title">Connect Sources</h3>
                         <p class="step-desc">
-                            Limited-scope deployment. Validation of integration and security model.
+                            Add contacts, email, attachments, PDFs, docs, and calendar context.
                         </p>
                     </div>
 
                     <div class="timeline-step">
                         <div class="step-marker">04</div>
-                        <h3 class="step-title">Delivery</h3>
+                        <h3 class="step-title">Use Daily</h3>
                         <p class="step-desc">
-                            Production deployment. Ongoing support. Continuous refinement.
+                            Search. Prepare. Follow up. Remember what matters before it gets lost.
                         </p>
                     </div>
                 </div>
@@ -609,16 +660,10 @@
         <section class="founder-section">
             <div class="container">
                 <div class="founder-grid">
-                    <div class="founder-label">Background</div>
+                    <div class="founder-label">Why</div>
                     <div class="founder-text">
                         <p>
-                            With over a year automating complex problems in financial analytics at a Big 4 consulting firm, and many more years building AI agents that gather and analyze data, detect patterns across my personal and professional networks, and provide actionable insights to help me maintain connections and anticipate opportunities, I create systems that deliver tangible strategic advantages—and now aim to empower others to gain a similar edge in their businesses.
-                        </p>
-                        <p>
-                            These systems, built with rigorous engineering discipline, operate in a zero-trust environment with verifiable security, transparent data handling, and accountable practices.
-                        </p>
-                        <p>
-                            —Andreas A. D. Liess
+                            Most businesses and individuals already have mountains of wisdom and information lying around. It is buried in inboxes, folders, attachments, PDFs, calendar entries, and old threads. SeeingStone makes that memory usable again.
                         </p>
                     </div>
                 </div>
@@ -631,11 +676,11 @@
                 <div class="cta-box">
                     <div class="cta-header"></div>
                     <div class="cta-body">
-                        <h2>Engage us</h2>
+                        <h2>Get early access</h2>
                         <p>
-                            Contact us. Tell us what you need. We will build it.
+                            Tell us what you want SeeingStone to remember.
                         </p>
-                        <a href="../signup/index.html" class="btn btn-primary btn-lg">Initiate Engagement</a>
+                        <a href="../signup/index.html" class="btn btn-primary btn-lg">Get Access</a>
                     </div>
                 </div>
             </div>
@@ -645,7 +690,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 SeeingStone. Institutional-grade privacy. European infrastructure.</p>
+                <p class="footer-copyright">&copy; 2025 SeeingStone. Database on your device. GDPR compliant.</p>
             </div>
         </div>
     </footer>
