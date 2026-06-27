@@ -3,29 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SeeingStone | The People Layer</title>
+    <title>SeeingStone | Intelligence without surrendering your data</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css-new/main.css" />
     <style>
-        /* Home Page Specifics - Ultra Minimal */
+        /* Home Page Specifics - Ultra Minimal & Refined */
+        :root {
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
         .hero-minimal {
-            min-height: calc(100vh - 140px); /* Fill screen minus header/footer */
+            min-height: calc(100vh - 100px);
             display: flex;
             align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 75% 35%, rgba(255, 255, 255, 0.015) 0%, rgba(10, 10, 10, 0) 50%),
+                        var(--color-bg-primary);
+            overflow: hidden;
+        }
+
+        .hero-minimal .content-split {
+            grid-template-columns: 1fr 1fr; /* Widen right side for product preview feel */
+            gap: var(--space-8); /* Reduced gap to bring columns closer */
+            align-items: center; /* Center vertically for integrated preview balance */
+        }
+
+        @media (max-width: 992px) {
+            .hero-minimal .content-split {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
         }
         
         .hero-title-massive {
-            font-size: clamp(3rem, 6vw, 5rem);
+            font-size: clamp(2rem, 3.8vw, 3rem); /* Reduced H1 size by 10-15% for calmer executive hierarchy */
+            font-weight: 700;
             letter-spacing: -0.02em;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: var(--space-4);
+            color: var(--color-white);
         }
         
         .hero-lead {
-            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            font-size: clamp(0.95rem, 1.15vw, 1.05rem); /* Disciplined text size and line-height */
             color: var(--color-text-secondary);
-            line-height: 1.5;
-            max-width: 640px;
-            margin-bottom: var(--space-6);
+            line-height: 1.65;
+            max-width: 540px;
+            margin-bottom: var(--space-8);
+        }
+
+        /* Refined Hero CTA Button overrides */
+        .hero-cta {
+            margin-bottom: var(--space-4);
+        }
+
+        .hero-cta .btn {
+            font-size: 13px; /* Smaller labels and disciplined spacing */
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            padding: 10px 20px;
+            border: 1px solid transparent;
+            border-radius: var(--border-radius); /* 4px */
+            white-space: nowrap;
+        }
+
+        .hero-cta .btn-inverse {
+            background-color: var(--color-white);
+            color: var(--color-black);
+            border-color: var(--color-white);
+        }
+
+        .hero-cta .btn-inverse:hover {
+            background-color: transparent;
+            color: var(--color-white);
+            border-color: var(--color-white);
+        }
+
+        .hero-cta .btn-secondary-outline {
+            background-color: transparent;
+            color: var(--color-text-secondary);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-cta .btn-secondary-outline:hover {
+            color: var(--color-white);
+            border-color: rgba(255, 255, 255, 0.35);
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Demo Box Container - Refined product preview, integrated flat style */
+        .demo-window-container {
+            border: 1px solid rgba(255, 255, 255, 0.05); /* Very thin, integrated border */
+            border-radius: var(--border-radius); /* 4px */
+            background-color: var(--color-bg-primary); /* Blend seamlessly with iframe bg */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 580px; /* Reduced height to feel integrated and balanced */
+            padding: 24px; /* Added breathing room around the iframe content */
+            box-sizing: border-box;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); /* Softer shadow to sit flat in layout */
+            transition: border-color var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .demo-window-container:hover {
+            border-color: rgba(255, 255, 255, 0.12); /* Subtle hover outline */
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+        }
+
+        @media (min-width: 993px) {
+            .demo-window-container {
+                margin-left: -24px; /* Move slightly left to anchor within the layout grid */
+            }
         }
         
         /* Modal for Manifesto */
@@ -69,31 +160,25 @@
           <div class="content-split">
             <!-- Left: Impact -->
             <div class="text-left">
+
               <h1 class="hero-title-massive">
-                Find the People <br>
-                <span class="text-orange">Inside Your Data</span>
+                Intelligence without surrendering your data.
               </h1>
               
               <p class="hero-lead">
-                Emails. PDFs. Attachments. Messages.<br>
-                SeeingStone connects them to people.<br>
-                See what happened. Know what to do next.
+                The most expensive thing in business is trust. SeeingStone extracts hidden relationships from your dark data while keeping 100% of it on your own servers.
               </p>
 
               <div class="hero-cta justify-start mb-6">
-                <a href="pages/features/index.html" class="btn btn-primary btn-lg">See Features</a>
-                <a href="pages/enterprise/index.html" class="btn btn-inverse btn-lg">How Privacy Works</a>
+                <a href="pages/signup/index.html" class="btn btn-inverse">Request Access</a>
+                <a href="pages/enterprise/index.html" class="btn btn-secondary-outline">How Privacy Works</a>
               </div>
-              
-              <!-- Subtle "Read More" -->
-              <button onclick="toggleManifesto()" class="text-secondary text-sm hover:text-white underline decoration-dotted underline-offset-4 cursor-pointer" style="background:none; border:none; padding:0;">
-                See the People Layer ->
-              </button>
             </div>
 
             <!-- Right: The Evidence (Demo Box 1) -->
             <div class="hide-mobile">
-              <div class="card card-dark" style="padding: 0; overflow: hidden; border-color: var(--color-orange); height: 700px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+              <div class="demo-window-container">
+
                 <iframe
                   src="components/demo-box-1/index.html"
                   id="demo-box-1"
