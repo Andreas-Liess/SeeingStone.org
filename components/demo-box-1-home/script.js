@@ -2,7 +2,7 @@
   const question = "What should I know before Monica’s renewal call?";
 
   const thoughts = [
-    { text: "Thinking", hold: 650 },
+    { text: "Thinking", hold: 1550 },
     { text: "Searching Monica across email, docs, calendar", hold: 1250 },
     { text: "Checking the DPA follow-up", hold: 1850 },
     { text: "Comparing proposal and contract", hold: 2150 },
