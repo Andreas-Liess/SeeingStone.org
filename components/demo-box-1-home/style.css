@@ -1,0 +1,351 @@
+:root {
+  --home-demo-bg: var(--color-bg-primary, #0a0a0a);
+  --home-demo-text: var(--color-text-primary, #ffffff);
+  --home-demo-muted: var(--color-text-secondary, #999999);
+  --home-demo-dim: #747474;
+  --home-demo-line: rgba(255, 255, 255, 0.1);
+  --home-demo-line-strong: rgba(255, 255, 255, 0.2);
+  --home-demo-surface: #0d0d0d;
+  --home-demo-accent: var(--color-orange, #ff6600);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--home-demo-bg);
+}
+
+body {
+  font-family: var(--font-primary, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  color: var(--home-demo-text);
+}
+
+p {
+  margin: 0;
+}
+
+.demo-home {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 24px;
+  width: 100%;
+  height: 100vh;
+  min-height: 0;
+  padding: 18px 20px 20px;
+  overflow: hidden;
+  background: var(--home-demo-bg);
+}
+
+.prompt-section {
+  min-width: 0;
+  padding: 4px 0 18px;
+  border-bottom: 1px solid var(--home-demo-line);
+}
+
+.section-label,
+.brief-heading,
+.best-label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.section-label {
+  margin-bottom: 9px;
+  color: var(--home-demo-dim);
+  font-size: 0.67rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.question-line {
+  display: flex;
+  min-height: 28px;
+  align-items: center;
+  color: var(--home-demo-text);
+  font-size: 1.02rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.typed-question {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1.12em;
+  margin-left: 4px;
+  background: var(--home-demo-accent);
+  opacity: 0.75;
+  transform: translateY(1px);
+  animation: cursor-pulse 900ms ease-in-out 2;
+}
+
+.prompt-section.is-submitted .typing-cursor {
+  width: 12px;
+  height: 2px;
+  opacity: 0.68;
+  transform: translateY(9px);
+  animation: none;
+}
+
+.stage {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.response-shell {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(500px, 100%);
+  min-height: 326px;
+  overflow: hidden;
+  border: 2px solid var(--home-demo-line-strong);
+  border-radius: var(--border-radius, 4px);
+  background: var(--home-demo-surface);
+  transform: translate(-50%, -50%);
+}
+
+.thinking-section,
+.brief-section {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity 340ms ease,
+    transform 340ms ease,
+    filter 340ms ease,
+    visibility 340ms ease;
+}
+
+.thinking-section {
+  display: grid;
+  place-items: center;
+  padding: 34px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(7px);
+  filter: blur(4px);
+}
+
+.phase-thinking .thinking-section {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.phase-final .thinking-section {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(7px);
+  filter: blur(5px);
+}
+
+.thinking-line {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  width: min(370px, 100%);
+}
+
+.thinking-loader {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 5px);
+  gap: 7px;
+  align-items: center;
+}
+
+.thinking-loader span {
+  width: 5px;
+  height: 5px;
+  background: #d8d8d8;
+  opacity: 0.32;
+  animation: loader-step 1800ms ease-in-out infinite;
+}
+
+.thinking-loader span:nth-child(2) {
+  animation-delay: 240ms;
+}
+
+.thinking-loader span:nth-child(3) {
+  animation-delay: 480ms;
+}
+
+.thinking-copy {
+  min-width: 0;
+  color: #e5e5e5;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
+  transition:
+    opacity 340ms ease,
+    transform 340ms ease,
+    filter 340ms ease;
+}
+
+.thinking-copy.is-changing {
+  opacity: 0;
+  transform: translateY(5px);
+  filter: blur(4px);
+}
+
+.brief-section {
+  display: grid;
+  align-items: center;
+  padding: 30px 34px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(7px);
+  filter: blur(5px);
+}
+
+.phase-final .brief-section {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.brief-content {
+  width: 100%;
+}
+
+.brief-heading {
+  margin-bottom: 8px;
+  color: var(--home-demo-muted);
+  font-size: 0.67rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.brief-opener {
+  margin-bottom: 15px;
+  color: var(--home-demo-text);
+  font-size: 1.1rem;
+  font-weight: 750;
+  line-height: 1.22;
+}
+
+.insight-list {
+  display: grid;
+  gap: 10px;
+}
+
+.insight-row {
+  display: grid;
+  grid-template-columns: 13px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.insight-marker {
+  width: 7px;
+  height: 7px;
+  margin-top: 8px;
+  border-top: 2px solid var(--home-demo-accent);
+  border-right: 2px solid var(--home-demo-accent);
+  transform: rotate(45deg);
+}
+
+.insight-warning {
+  color: var(--home-demo-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.28;
+}
+
+.insight-support {
+  margin-top: 2px;
+  color: var(--home-demo-muted);
+  font-size: 0.78rem;
+  font-weight: 450;
+  line-height: 1.35;
+}
+
+.best-move {
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid var(--home-demo-line);
+}
+
+.best-label {
+  margin-bottom: 4px;
+  color: var(--home-demo-accent);
+  font-size: 0.7rem;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.best-copy {
+  color: var(--home-demo-text);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+@keyframes cursor-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes loader-step {
+  0%, 100% {
+    opacity: 0.26;
+    transform: translateY(0);
+  }
+  38% {
+    opacity: 0.92;
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-height: 500px) {
+  .demo-home {
+    gap: 18px;
+    padding: 14px 16px;
+  }
+
+  .prompt-section {
+    padding-bottom: 14px;
+  }
+
+  .response-shell {
+    min-height: 300px;
+  }
+
+  .brief-section {
+    padding: 24px 28px;
+  }
+
+  .brief-opener {
+    margin-bottom: 11px;
+  }
+
+  .insight-list {
+    gap: 8px;
+  }
+
+  .best-move {
+    margin-top: 11px;
+    padding-top: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
