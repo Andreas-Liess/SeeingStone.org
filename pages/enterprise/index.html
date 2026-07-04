@@ -295,77 +295,107 @@
 
         .engagement-section {
             background: #000;
-            padding: 100px 0;
+            padding: 112px 0 104px;
         }
 
         .engagement-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 80px;
-            align-items: end;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            max-width: 760px;
+            margin: 0 auto 76px;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
             .engagement-header {
-                grid-template-columns: 1fr;
-                gap: 24px;
+                align-items: flex-start;
+                margin-bottom: 56px;
+                text-align: left;
             }
         }
 
         .engagement-header h2 {
-            font-size: 2rem;
+            font-size: clamp(2rem, 3vw, 2.75rem);
             font-weight: 700;
+            line-height: 1.1;
+            margin: 0;
         }
 
         .engagement-header p {
             color: var(--color-text-secondary);
             font-size: 1.125rem;
             line-height: 1.6;
-            max-width: 500px;
+            max-width: 620px;
+            margin: 0;
         }
 
         /* Timeline */
         .timeline {
+            --timeline-gap: 64px;
             position: relative;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: var(--timeline-gap);
+            max-width: 1120px;
+            margin: 0 auto;
         }
 
         @media (max-width: 1024px) {
             .timeline {
                 grid-template-columns: 1fr;
+                gap: 0;
+                max-width: 680px;
             }
         }
 
         .timeline::before {
-            content: '';
+            content: none;
             position: absolute;
-            top: 32px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--grid-line);
         }
 
         @media (max-width: 1024px) {
             .timeline::before {
+                content: '';
                 width: 2px;
                 height: 100%;
                 top: 0;
                 left: 32px;
+                background: var(--grid-line);
             }
         }
 
         .timeline-step {
             position: relative;
-            padding: 0 24px;
+            padding: 0;
+            text-align: center;
+        }
+
+        .timeline-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 50%;
+            width: calc(100% + var(--timeline-gap));
+            height: 2px;
+            background: var(--grid-line);
+            transform: translateY(-50%);
+            z-index: 0;
         }
 
         @media (max-width: 1024px) {
             .timeline-step {
                 padding: 0 0 48px 80px;
+                text-align: left;
+            }
+
+            .timeline-step:not(:last-child)::after {
+                content: none;
+            }
+
+            .timeline-step:last-child {
+                padding-bottom: 0;
             }
         }
 
@@ -381,9 +411,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--terminal-dim);
-            margin-bottom: 24px;
+            margin: 0 auto 28px;
             transition: all 0.2s ease;
             border-radius: var(--border-radius);
+            position: relative;
+            z-index: 1;
         }
 
         @media (max-width: 1024px) {
@@ -391,6 +423,7 @@
                 position: absolute;
                 left: 0;
                 top: 0;
+                margin: 0;
             }
         }
 
@@ -403,12 +436,22 @@
             font-size: 1.125rem;
             font-weight: 700;
             margin-bottom: 12px;
+            line-height: 1.3;
         }
 
         .step-desc {
             color: var(--color-text-secondary);
             font-size: 0.9375rem;
             line-height: 1.6;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .step-desc {
+                max-width: none;
+                margin: 0;
+            }
         }
 
         /* ============================================
@@ -610,46 +653,38 @@
             </div>
         </section>
 
-        <!-- Access Timeline -->
+        <!-- Outcome Timeline -->
         <section class="engagement-section">
             <div class="container">
                 <div class="engagement-header">
-                    <h2>How it starts</h2>
+                    <h2>Outcome as a Service</h2>
                     <p>
-                        Connect your sources. Build your private memory layer. Ask better questions.
+                        You stay in control. You choose where intelligence runs. We bring the outcome to your infrastructure.
                     </p>
                 </div>
 
                 <div class="timeline">
                     <div class="timeline-step">
                         <div class="step-marker">01</div>
-                        <h3 class="step-title">Choose Setup</h3>
+                        <h3 class="step-title">Choose the Boundary</h3>
                         <p class="step-desc">
-                            Personal use, startup, or team.
+                            Your data stays local &mdash; always. You choose where SeeingStone&rsquo;s AI runs: GDPR-compliant EU hosting, your private cloud, or fully on-premise.
                         </p>
                     </div>
 
                     <div class="timeline-step">
                         <div class="step-marker">02</div>
-                        <h3 class="step-title">Choose Your Privacy Level</h3>
+                        <h3 class="step-title">We Come to You</h3>
                         <p class="step-desc">
-                            EU-hosted AI, your own private instance, or your existing infrastructure. You pick where the intelligence runs.
+                            Our engineers set it up where your privacy requires it &mdash; remotely or on-site.
                         </p>
                     </div>
 
                     <div class="timeline-step">
                         <div class="step-marker">03</div>
-                        <h3 class="step-title">Connect Sources</h3>
+                        <h3 class="step-title">The Outcome Is Now Live</h3>
                         <p class="step-desc">
-                            Add contacts, email, attachments, PDFs, docs, and calendar context.
-                        </p>
-                    </div>
-
-                    <div class="timeline-step">
-                        <div class="step-marker">04</div>
-                        <h3 class="step-title">Use Daily</h3>
-                        <p class="step-desc">
-                            Search. Prepare. Follow up. Remember what matters before it gets lost.
+                            Your private intelligence layer is active &mdash; accessible only to you, under your rules.
                         </p>
                     </div>
                 </div>
