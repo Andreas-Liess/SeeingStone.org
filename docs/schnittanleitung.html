@@ -1,0 +1,883 @@
+<title>Schnittanleitung — mittellanger Stufenschnitt, reiner Scherenschnitt</title>
+
+<style>
+:root{
+  --paper:#E8ECEC;
+  --surface:#FBFCFC;
+  --surface-2:#F1F4F4;
+  --ink:#131C1E;
+  --ink-2:#4E6165;
+  --ink-3:#728488;
+  --rule:#C4CDCE;
+  --rule-soft:#D9E0E1;
+  --accent:#0E5D64;
+  --accent-soft:#DCE9EA;
+  --measure:#8F5E0D;
+  --warn-soft:#F0E6D4;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1518;
+    --surface:#151F22;
+    --surface-2:#1A2529;
+    --ink:#E3EAEA;
+    --ink-2:#9BACAF;
+    --ink-3:#7C8E92;
+    --rule:#2B3639;
+    --rule-soft:#222D31;
+    --accent:#5CBDC4;
+    --accent-soft:#163336;
+    --measure:#DDA850;
+    --warn-soft:#2E2718;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1518;
+  --surface:#151F22;
+  --surface-2:#1A2529;
+  --ink:#E3EAEA;
+  --ink-2:#9BACAF;
+  --ink-3:#7C8E92;
+  --rule:#2B3639;
+  --rule-soft:#222D31;
+  --accent:#5CBDC4;
+  --accent-soft:#163336;
+  --measure:#DDA850;
+  --warn-soft:#2E2718;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-text-size-adjust:100%;
+}
+
+.sheet{
+  max-width:52rem;
+  margin:0 auto;
+  padding:0 1.25rem 6rem;
+}
+
+/* ---------- Kopf ---------- */
+
+.masthead{
+  border-bottom:2px solid var(--ink);
+  padding:3.5rem 0 1.5rem;
+  margin-bottom:2.5rem;
+}
+.eyebrow{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.7rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin:0 0 1.25rem;
+}
+h1{
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:-.022em;
+  text-wrap:balance;
+  font-size:clamp(1.85rem,5.2vw,2.9rem);
+  line-height:1.12;
+  margin:0 0 .85rem;
+}
+.standfirst{
+  color:var(--ink-2);
+  font-size:1.06rem;
+  margin:0;
+  max-width:38rem;
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.4rem 2rem;
+  margin-top:1.75rem;
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-size:.8rem;
+  color:var(--ink-2);
+}
+.meta b{
+  display:block;
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-weight:400;
+  font-size:.66rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin-bottom:.15rem;
+}
+
+/* ---------- Abschnitte ---------- */
+
+section{margin-bottom:3.75rem}
+
+h2{
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:-.014em;
+  text-wrap:balance;
+  font-size:1.4rem;
+  line-height:1.25;
+  margin:0 0 1.1rem;
+  padding-bottom:.5rem;
+  border-bottom:1px solid var(--rule);
+  display:flex;
+  align-items:baseline;
+  gap:.85rem;
+}
+h2 .num{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.82rem;
+  font-weight:400;
+  color:var(--accent);
+  flex:none;
+  font-variant-numeric:tabular-nums;
+}
+h3{
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-weight:650;
+  font-size:1rem;
+  letter-spacing:-.006em;
+  margin:2.25rem 0 .6rem;
+}
+p{margin:0 0 1rem;max-width:38rem}
+section > p:last-child{margin-bottom:0}
+
+strong{font-weight:700}
+em{font-style:italic;color:var(--ink-2)}
+
+.term{
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-weight:650;
+  font-size:.94em;
+  letter-spacing:-.004em;
+}
+.val{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+  font-size:.9em;
+  color:var(--measure);
+  font-weight:500;
+  white-space:nowrap;
+}
+
+/* ---------- Kurzfassung ---------- */
+
+.summary{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+  padding:1.6rem 1.5rem;
+  margin-bottom:3.75rem;
+}
+.summary h2{
+  border:0;
+  padding:0;
+  margin-bottom:.9rem;
+  font-size:1.1rem;
+}
+.summary ol{
+  margin:0;
+  padding-left:1.25rem;
+  display:flex;
+  flex-direction:column;
+  gap:.55rem;
+}
+.summary li{max-width:36rem}
+
+/* ---------- Ablaufplan ---------- */
+
+.plan{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  border-top:1px solid var(--rule);
+}
+.step{
+  display:grid;
+  grid-template-columns:2.6rem 1fr 1fr;
+  gap:0 1.5rem;
+  padding:1.4rem 0;
+  border-bottom:1px solid var(--rule-soft);
+  align-items:start;
+}
+.step-n{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.82rem;
+  font-variant-numeric:tabular-nums;
+  color:var(--accent);
+  padding-top:.28rem;
+}
+.step-do h4{
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-weight:650;
+  font-size:.95rem;
+  margin:0 0 .45rem;
+  letter-spacing:-.006em;
+}
+.step-do p,.step-why p{margin:0 0 .55rem;font-size:.95rem;max-width:none}
+.step-do p:last-child,.step-why p:last-child{margin-bottom:0}
+.step-why{
+  color:var(--ink-2);
+  font-size:.92rem;
+  border-left:1px solid var(--rule);
+  padding-left:1.5rem;
+}
+.step-why::before{
+  content:"Warum";
+  display:block;
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.62rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin-bottom:.4rem;
+}
+.plan-head{
+  display:grid;
+  grid-template-columns:2.6rem 1fr 1fr;
+  gap:0 1.5rem;
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.62rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  padding-bottom:.5rem;
+}
+.plan-head span:first-child{grid-column:2}
+
+@media (max-width:44rem){
+  .step{grid-template-columns:2.2rem 1fr;gap:0 .9rem}
+  .step-why{
+    grid-column:2;
+    border-left:0;
+    padding-left:0;
+    margin-top:.8rem;
+    padding-top:.7rem;
+    border-top:1px dashed var(--rule);
+  }
+  .plan-head{display:none}
+}
+
+/* ---------- Listen ---------- */
+
+.checks{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:.7rem;
+}
+.checks li{
+  padding-left:1.6rem;
+  position:relative;
+  max-width:38rem;
+}
+.checks li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.62em;
+  width:.62rem;
+  height:1px;
+  background:var(--accent);
+}
+.checks.no li::before{background:var(--measure)}
+
+.faults{
+  list-style:none;
+  margin:0;
+  padding:0;
+  counter-reset:f;
+  display:flex;
+  flex-direction:column;
+  gap:1.1rem;
+}
+.faults li{
+  counter-increment:f;
+  display:grid;
+  grid-template-columns:1.9rem 1fr;
+  gap:.9rem;
+  max-width:40rem;
+}
+.faults li::before{
+  content:"F" counter(f);
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.72rem;
+  color:var(--measure);
+  padding-top:.36em;
+  font-variant-numeric:tabular-nums;
+}
+.faults b{
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-weight:650;
+  font-size:.95rem;
+  display:block;
+  margin-bottom:.18rem;
+}
+.faults span{font-size:.95rem;color:var(--ink-2)}
+
+/* ---------- Tabelle ---------- */
+
+.tablewrap{overflow-x:auto;margin:1.5rem 0}
+table{
+  border-collapse:collapse;
+  width:100%;
+  min-width:30rem;
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-size:.9rem;
+}
+th{
+  text-align:left;
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.62rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  font-weight:400;
+  padding:0 1rem .55rem 0;
+  border-bottom:1px solid var(--rule);
+  vertical-align:bottom;
+}
+td{
+  padding:.75rem 1rem .75rem 0;
+  border-bottom:1px solid var(--rule-soft);
+  vertical-align:top;
+  color:var(--ink-2);
+}
+td:first-child{color:var(--ink);font-weight:600}
+td.deg{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+  color:var(--measure);
+  white-space:nowrap;
+  font-weight:500;
+}
+tr:last-child td{border-bottom:0}
+
+/* ---------- Figuren ---------- */
+
+figure{
+  margin:2rem 0;
+  padding:1.5rem;
+  background:var(--surface);
+  border:1px solid var(--rule);
+}
+figure svg{
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:auto;
+  color:var(--ink);
+}
+figcaption{
+  margin-top:1.1rem;
+  padding-top:.85rem;
+  border-top:1px solid var(--rule-soft);
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-size:.83rem;
+  line-height:1.5;
+  color:var(--ink-2);
+}
+.svg-label{
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-size:11px;
+  fill:currentColor;
+}
+.svg-small{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:9.5px;
+  fill:var(--ink-3);
+  letter-spacing:.06em;
+}
+.svg-deg{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:10.5px;
+  fill:var(--measure);
+  font-weight:600;
+}
+.svg-head{fill:var(--surface-2);stroke:currentColor;stroke-width:1.4}
+.svg-part{fill:none;stroke:var(--accent);stroke-width:1.6}
+.svg-dash{fill:none;stroke:currentColor;stroke-width:1;stroke-dasharray:3 3;opacity:.45}
+.svg-hair{fill:none;stroke:currentColor;stroke-width:1.6;opacity:.75}
+.svg-meas{fill:none;stroke:var(--measure);stroke-width:1.5}
+.svg-zone{fill:var(--accent);opacity:.10}
+.svg-bad{fill:none;stroke:var(--measure);stroke-width:1.8;stroke-dasharray:5 3}
+
+/* ---------- Hinweiskasten ---------- */
+
+.note{
+  background:var(--accent-soft);
+  border-left:3px solid var(--accent);
+  padding:1.15rem 1.3rem;
+  margin:1.75rem 0;
+  font-size:.95rem;
+}
+.note p{margin:0;max-width:36rem}
+.note p + p{margin-top:.7rem}
+.note .lbl{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:.62rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:block;
+  margin-bottom:.45rem;
+}
+
+/* ---------- Fuß ---------- */
+
+footer{
+  margin-top:5rem;
+  padding-top:1.5rem;
+  border-top:2px solid var(--ink);
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-size:.82rem;
+  color:var(--ink-2);
+}
+footer p{max-width:38rem}
+
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+
+<div class="sheet">
+
+<header class="masthead">
+  <p class="eyebrow">Arbeitsanleitung · Herrenschnitt · Nass- und Trockenschnitt</p>
+  <h1>Mittellanger Stufenschnitt in welligem Haar, rein mit der Schere</h1>
+  <p class="standfirst">Die Form entsteht über Abhebewinkel und Führungslinie, nicht über Längenverlust. Ziel ist ein Schnitt, der nach hinten und zur Seite fällt und auch nach acht Wochen noch in Form ist.</p>
+  <div class="meta">
+    <div><b>Haar</b>wellig, kräftig, dicht</div>
+    <div><b>Länge ausgezogen</b>bis Mundhöhe, ca. 15–18 cm</div>
+    <div><b>Werkzeug</b>Schere und Kamm</div>
+    <div><b>Ausdrücklich nicht</b>Maschine, Messer, Effilierschere</div>
+  </div>
+</header>
+
+<div class="summary">
+  <h2>Kurzfassung</h2>
+  <ol>
+    <li>Von der Grundlänge geht möglichst wenig weg — Richtwert <span class="val">1–2 cm</span>. Die Form kommt aus der Stufung, nicht aus der Länge.</li>
+    <li>Seiten und Ohrpartie mit <strong>sehr wenig Abheben</strong> schneiden. Das Gewicht bleibt unten, dadurch fällt das Haar hinter das Ohr, statt abzustehen.</li>
+    <li>Im Deckhaar mit <span class="val">45°</span> arbeiten und alle Partien <strong>zu einer festen Führungslinie in der Mitte ziehen</strong>. So bleibt oben Länge, ohne dass 90° gefahren werden muss.</li>
+    <li>Die Gewichtslinie läuft <strong>diagonal von vorn oben nach hinten unten</strong>, nicht waagerecht auf Ohrhöhe.</li>
+    <li>Grundform nass, Feinkorrektur trocken. Wellen springen ein und lassen sich nass nicht beurteilen.</li>
+  </ol>
+</div>
+
+<section>
+  <h2><span class="num">01</span> Haaranalyse und Schrumpfung</h2>
+
+  <p>Vor dem Waschen im trockenen Zustand ansehen: <span class="term">Naturfall</span>, <span class="term">Wuchsrichtung</span> und <span class="term">Wirbel</span>. Der Wirbel am Oberkopf entscheidet mit darüber, wie weit das Deckhaar hinten überhaupt anliegt.</p>
+
+  <p>Das Haar ist wellig mit deutlicher <span class="term">Sprungkraft</span>. Beim Trocknen ist mit einer <span class="term">Schrumpfung</span> von etwa <span class="val">15–25 %</span> zu rechnen. Bei <span class="val">16 cm</span> ausgezogener Länge sind das rund <span class="val">2,5–4 cm</span>, die im Fall verloren gehen.</p>
+
+  <div class="note">
+    <span class="lbl">Konsequenz für den Nassschnitt</span>
+    <p>Nass wirkt jede Strähne länger, als sie später fällt. Alle Längen deshalb bewusst <strong>länger stehen lassen als das Zielmaß</strong>. Was fehlt, lässt sich trocken nicht mehr ergänzen — was zu lang ist, schon.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">02</span> Einteilung</h2>
+
+  <p>Klassische <span class="term">Kreuzabteilung</span>: ein Scheitel von der Stirn über den Oberkopf bis in den Nacken, dazu eine <span class="term">Bogenabteilung</span> von Ohr zu Ohr über den höchsten Punkt. Das ergibt vier Grundsektionen. Die Nackenpartie wird beim Arbeiten zusätzlich waagerecht in schmale Abteilungen gelegt.</p>
+
+  <figure>
+    <svg viewBox="0 0 620 280" role="img" aria-label="Kopfschema in Seitenansicht und Rückansicht mit eingezeichneten Partien: Deckhaar am Oberkopf, Seitenpartie um das Ohr, Nackenpartie unten hinten, getrennt durch die Bogenabteilung von Ohr zu Ohr und die Kranzlinie.">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0,1 L9,5 L0,9 z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <!-- ============ SEITENANSICHT ============ -->
+      <text class="svg-small" x="20" y="24">SEITENANSICHT · GESICHT LINKS</text>
+
+      <!-- Zonen -->
+      <path class="svg-zone" d="M 60 120 A 85 85 0 0 1 230 120 L 230 128 L 60 128 Z"/>
+
+      <!-- Schädel -->
+      <circle class="svg-head" cx="145" cy="120" r="85"/>
+      <!-- Hals -->
+      <path class="svg-head" d="M 112 200 L 112 258 M 186 196 L 186 258" fill="none"/>
+      <!-- Nasenandeutung -->
+      <path class="svg-hair" d="M 60 118 l -11 14 l 11 5"/>
+      <!-- Ohr -->
+      <ellipse cx="163" cy="132" rx="11" ry="15" fill="none" stroke="currentColor" stroke-width="1.3"/>
+
+      <!-- Bogenabteilung Ohr zu Ohr -->
+      <path class="svg-part" d="M 163 117 A 78 78 0 0 0 130 41"/>
+      <!-- Kranzlinie / Übergang Seite zu Nacken -->
+      <path class="svg-part" d="M 163 147 A 60 60 0 0 0 205 168"/>
+
+      <!-- Labels -->
+      <text class="svg-label" x="126" y="72" text-anchor="middle">Deckhaar</text>
+      <text class="svg-label" x="92" y="152" text-anchor="middle">Seitenpartie</text>
+      <text class="svg-label" x="222" y="212" text-anchor="middle">Nacken</text>
+      <line class="svg-dash" x1="212" y1="203" x2="198" y2="180"/>
+
+      <!-- Fallrichtung -->
+      <path class="svg-meas" d="M 150 34 q 60 6 76 62" marker-end="url(#ar)"/>
+      <text class="svg-deg" x="252" y="80">Fallrichtung</text>
+
+      <!-- ============ RÜCKANSICHT ============ -->
+      <text class="svg-small" x="380" y="24">RÜCKANSICHT</text>
+
+      <circle class="svg-head" cx="470" cy="120" r="85"/>
+      <path class="svg-head" d="M 438 200 L 438 258 M 502 200 L 502 258" fill="none"/>
+
+      <!-- Mittelscheitel -->
+      <line class="svg-part" x1="470" y1="35" x2="470" y2="205"/>
+      <!-- Bogenabteilung -->
+      <path class="svg-part" d="M 393 96 A 90 90 0 0 1 547 96"/>
+      <!-- waagerechte Nackenabteilungen -->
+      <line class="svg-dash" x1="400" y1="150" x2="540" y2="150"/>
+      <line class="svg-dash" x1="410" y1="172" x2="530" y2="172"/>
+      <line class="svg-dash" x1="424" y1="192" x2="516" y2="192"/>
+
+      <text class="svg-label" x="470" y="70" text-anchor="middle">Deckhaar</text>
+      <text class="svg-small" x="556" y="153">1</text>
+      <text class="svg-small" x="546" y="175">2</text>
+      <text class="svg-small" x="532" y="195">3</text>
+      <text class="svg-label" x="470" y="234" text-anchor="middle">Nackenpartie, von unten nach oben</text>
+    </svg>
+    <figcaption>Die Bogenabteilung von Ohr zu Ohr trennt das Deckhaar von den Seiten. Alles unterhalb der Kranzlinie gehört zum Nacken und wird zuerst geschnitten, in schmalen waagerechten Abteilungen von unten nach oben.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2><span class="num">03</span> Abhebewinkel je Partie</h2>
+
+  <p>Das ist die eigentliche Entscheidung im Schnitt. Unter 90° bleibt Gewicht erhalten, ab 90° wird Gewicht herausgenommen. Für einen Schnitt, der fallen soll, wird fast überall <strong>unter</strong> 90° gearbeitet.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Partie</th><th>Abhebewinkel</th><th>Wirkung</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nacken, unten</td>
+          <td class="deg">0–20°</td>
+          <td>Weicher Auslauf ohne Kante, Länge bleibt am unteren Rand</td>
+        </tr>
+        <tr>
+          <td>Seiten und Ohrpartie</td>
+          <td class="deg">0–15°, max. 30°</td>
+          <td>Gewicht bleibt unten, das Haar legt sich hinter das Ohr</td>
+        </tr>
+        <tr>
+          <td>Übergang Seite zu Krone</td>
+          <td class="deg">30–45°</td>
+          <td>Weiche Graduation, kein sichtbarer Absatz</td>
+        </tr>
+        <tr>
+          <td>Deckhaar</td>
+          <td class="deg">45° + zur Mitte ziehen</td>
+          <td>Lange, weiche Stufen bei erhaltener Länge oben</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 620 300" role="img" aria-label="Vergleich dreier Abhebewinkel an der Seitenpartie: bei 0 bis 15 Grad bleibt das Gewicht unten und das Haar fällt an, bei 45 Grad entsteht weiche Graduation, bei 90 Grad wird Gewicht entfernt und das Haar steht ab.">
+      <defs>
+        <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,1 L9,5 L0,9 z" fill="var(--measure)"/>
+        </marker>
+      </defs>
+
+      <!-- ---- Panel 1: 0-15 ---- -->
+      <text class="svg-small" x="22" y="22">SEITEN UND OHRPARTIE</text>
+      <circle class="svg-head" cx="100" cy="118" r="62"/>
+      <ellipse cx="126" cy="128" rx="8" ry="11" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <!-- Strähne fast am Kopf -->
+      <path class="svg-meas" d="M 150 108 L 168 178" marker-end="url(#ar2)"/>
+      <path class="svg-dash" d="M 150 108 L 152 180"/>
+      <text class="svg-deg" x="176" y="150">0–15°</text>
+      <!-- Haarfall -->
+      <path class="svg-hair" d="M 40 92 q 8 78 46 100"/>
+      <path class="svg-hair" d="M 155 96 q 12 70 -18 96"/>
+      <text class="svg-label" x="100" y="238" text-anchor="middle">Gewicht bleibt</text>
+      <text class="svg-label" x="100" y="255" text-anchor="middle">Haar fällt an</text>
+
+      <!-- ---- Panel 2: 45 ---- -->
+      <text class="svg-small" x="232" y="22">ÜBERGANG UND DECKHAAR</text>
+      <circle class="svg-head" cx="310" cy="118" r="62"/>
+      <ellipse cx="336" cy="128" rx="8" ry="11" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path class="svg-meas" d="M 358 96 L 418 156" marker-end="url(#ar2)"/>
+      <path class="svg-dash" d="M 358 96 L 360 168"/>
+      <path class="svg-dash" d="M 358 96 L 428 98"/>
+      <text class="svg-deg" x="398" y="122">45°</text>
+      <path class="svg-hair" d="M 250 92 q 8 74 44 98"/>
+      <path class="svg-hair" d="M 365 100 q 8 66 -20 92"/>
+      <text class="svg-label" x="310" y="238" text-anchor="middle">Weiche Stufen,</text>
+      <text class="svg-label" x="310" y="255" text-anchor="middle">Übergang ohne Absatz</text>
+
+      <!-- ---- Panel 3: 90 ---- -->
+      <text class="svg-small" x="452" y="22">HIER NICHT VERWENDEN</text>
+      <circle class="svg-head" cx="520" cy="118" r="62"/>
+      <ellipse cx="546" cy="128" rx="8" ry="11" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path class="svg-bad" d="M 570 104 L 604 104" marker-end="url(#ar2)"/>
+      <path class="svg-dash" d="M 570 104 L 572 172"/>
+      <text class="svg-deg" x="576" y="94">90°</text>
+      <path class="svg-hair" d="M 460 92 q 6 60 30 74"/>
+      <path class="svg-hair" d="M 578 118 q 22 22 6 46"/>
+      <text class="svg-label" x="520" y="238" text-anchor="middle">Gewicht weg,</text>
+      <text class="svg-label" x="520" y="255" text-anchor="middle">Welle stellt sich auf</text>
+    </svg>
+    <figcaption>Derselbe Kopf, drei Abhebewinkel. Der Unterschied zwischen einem Schnitt, der hinter das Ohr fällt, und einem, der seitlich absteht, entsteht fast vollständig hier — nicht in der Länge.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2><span class="num">04</span> Gewichtslinie</h2>
+
+  <p>Bei welligem Haar staut sich die Masse an jeder waagerechten Kante. Läuft die <span class="term">Gewichtslinie</span> quer auf Ohrhöhe, plustern sich die Seiten auf und die Form wird nach unten breiter — die bekannte Dreiecksform. Die Gewichtslinie muss deshalb <strong>diagonal nach hinten unten</strong> laufen, in die Richtung, in die das Haar auch getragen wird.</p>
+
+  <figure>
+    <svg viewBox="0 0 620 290" role="img" aria-label="Vergleich zweier Gewichtslinien. Links waagerecht auf Ohrhöhe, dadurch staut sich die Masse und die Form wird nach unten breiter. Rechts diagonal von vorn oben nach hinten unten, dadurch fällt die Masse nach hinten.">
+      <defs>
+        <marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,1 L9,5 L0,9 z" fill="var(--measure)"/>
+        </marker>
+        <marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+          <path d="M0,1 L9,5 L0,9 z" fill="var(--accent)"/>
+        </marker>
+      </defs>
+
+      <!-- FALSCH -->
+      <text class="svg-small" x="22" y="22">WAAGERECHT — MASSE STAUT SICH</text>
+      <circle class="svg-head" cx="150" cy="120" r="72"/>
+      <ellipse cx="176" cy="132" rx="9" ry="12" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path class="svg-hair" d="M 78 100 q -14 74 6 108"/>
+      <path class="svg-hair" d="M 222 100 q 16 74 -4 108"/>
+      <!-- ausbauchende Form -->
+      <path class="svg-hair" d="M 84 208 q 66 26 132 0"/>
+      <line class="svg-bad" x1="66" y1="186" x2="234" y2="186" marker-end="url(#ar3)"/>
+      <text class="svg-deg" x="150" y="248" text-anchor="middle">breiter Abschluss</text>
+      <text class="svg-label" x="150" y="272" text-anchor="middle">Seiten stehen ab</text>
+
+      <!-- RICHTIG -->
+      <text class="svg-small" x="392" y="22">DIAGONAL — MASSE FÄLLT NACH HINTEN</text>
+      <circle class="svg-head" cx="450" cy="120" r="72"/>
+      <ellipse cx="476" cy="132" rx="9" ry="12" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path class="svg-hair" d="M 380 96 q 4 78 40 106"/>
+      <path class="svg-hair" d="M 520 104 q 20 66 8 100"/>
+      <!-- schmaler nach hinten laufender Abschluss -->
+      <path class="svg-hair" d="M 420 202 q 56 18 108 2"/>
+      <line class="svg-part" x1="378" y1="150" x2="536" y2="214" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#ar4)"/>
+      <text class="svg-label" x="450" y="248" text-anchor="middle">Abschluss läuft nach hinten aus</text>
+      <text class="svg-label" x="450" y="272" text-anchor="middle">Wellen fallen ineinander</text>
+    </svg>
+    <figcaption>Die eine Linie, an der dieser Schnitt gelingt oder scheitert. Rechts liegt die schwerste Stelle hinten unten, deshalb zieht die Masse in die Trageform statt sich seitlich aufzustellen.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2><span class="num">05</span> Schnittfolge</h2>
+
+  <p>Gearbeitet wird auf handtuchtrockenem Haar, nicht tropfnass. Reihenfolge: Nacken, Seiten, Übergang, Deckhaar. Der Nacken zuerst, weil er die kürzeste Bezugslänge und den unteren Rand der ganzen Form festlegt.</p>
+
+  <div class="plan-head"><span>Arbeitsschritt</span><span>Begründung</span></div>
+  <div class="plan">
+
+    <div class="step">
+      <div class="step-n">01</div>
+      <div class="step-do">
+        <h4>Nackenpartie, unterste Abteilung</h4>
+        <p>Schmale waagerechte Abteilungen, <span class="val">0–20°</span> abheben, wandernde Führungslinie von unten nach oben. Wenig Spannung.</p>
+      </div>
+      <div class="step-why"><p>Hier ist noch die volle Haarreserve vorhanden. Fehler im Nacken lassen sich später am schlechtesten ausgleichen, weil alles darüber sich auf diese Länge bezieht.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">02</div>
+      <div class="step-do">
+        <h4>Nackenauslauf weich anlegen</h4>
+        <p>Mit Schere über Kamm freihand auslaufen lassen, dem natürlichen Haaransatz folgend. Keine gerade abgeschnittene Kante, keine gesetzte Kontur.</p>
+      </div>
+      <div class="step-why"><p>Eine harte Nackenkante sieht sofort frisch geschnitten aus und wächst unruhig heraus. Ein weicher Auslauf bleibt auch nach acht Wochen sauber.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">03</div>
+      <div class="step-do">
+        <h4>Seitenpartie von unten aufbauen</h4>
+        <p><span class="val">0–15°</span> abheben, wandernde Führungslinie. Das Ohr mit dem Kamm flach anlegen und an der Kammrückseite schneiden.</p>
+      </div>
+      <div class="step-why"><p>Geringes Abheben lässt das Gewicht unten. Genau dieses Gewicht zieht die Welle hinter das Ohr, statt sie sich aufstellen zu lassen.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">04</div>
+      <div class="step-do">
+        <h4>Über dem Ohr bewusst länger lassen</h4>
+        <p>In der Zone direkt über und hinter dem Ohr so wenig wie möglich wegnehmen, minimale Spannung, eher zu lang stehen lassen.</p>
+      </div>
+      <div class="step-why"><p>Die kritischste Stelle im ganzen Schnitt. Fehlt hier Gewicht, entsteht ein sichtbares Loch, und die Welle klappt beim Trocknen nach außen ab, statt anzuliegen.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">05</div>
+      <div class="step-do">
+        <h4>Übergang Seite zu Krone</h4>
+        <p><span class="val">30–45°</span>, wandernde Führungslinie, diagonale Abteilungen nach hinten unten geneigt.</p>
+      </div>
+      <div class="step-why"><p>Die diagonale Abteilung legt hier bereits die Gewichtslinie an, die nach hinten unten laufen soll. Waagerechte Abteilungen würden an dieser Stelle die Dreiecksform anlegen.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">06</div>
+      <div class="step-do">
+        <h4>Deckhaar mit fester Führungslinie</h4>
+        <p>Eine Führungssträhne mittig zwischen Stirn und Wirbel festlegen. Alle übrigen Partien des Deckhaars <strong>über ihre natürliche Fallrichtung hinaus zu dieser Strähne ziehen</strong> und dort abschneiden. Abhebewinkel <span class="val">45°</span>.</p>
+      </div>
+      <div class="step-why"><p>Weil jede Partie zur Führungslinie hingezogen wird, bleibt sie umso länger, je weiter sie von dieser Linie entfernt liegt. So entsteht oben Länge und außen Stufung, ohne dass 90° gefahren werden muss — 90° würde Volumen und Kürze im Deckhaar erzeugen.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">07</div>
+      <div class="step-do">
+        <h4>Vordere Partie einbinden</h4>
+        <p>Das Haar an der Stirn nicht als eigene kurze Zone behandeln, sondern in die Länge des Deckhaars einbinden. Nur die Spitzen leicht brechen.</p>
+      </div>
+      <div class="step-why"><p>Wird vorn separat gekürzt, entsteht beim Zurücktragen ein sichtbarer Absatz am Haaransatz. Eingebunden läuft die Länge durch und legt sich mit dem Rest nach hinten.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">08</div>
+      <div class="step-do">
+        <h4>Gewichtslinie kontrollieren</h4>
+        <p>Haar in Trageform nach hinten kämmen und die Silhouette von der Seite prüfen. Der schwerste Punkt soll hinten unten liegen, die Außenlinie diagonal nach hinten auslaufen.</p>
+      </div>
+      <div class="step-why"><p>Letzte Gelegenheit, die Form im nassen Zustand zu korrigieren, solange noch Länge zum Arbeiten da ist.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">09</div>
+      <div class="step-do">
+        <h4>Trocknen lassen — in Fallrichtung</h4>
+        <p>Antrocknen lassen oder antrocknen, dabei das Haar nach hinten und leicht zur Seite führen. Nicht in eine andere Richtung trocknen als die spätere Trageform.</p>
+      </div>
+      <div class="step-why"><p>Die Welle zeigt erst trocken, wie sie tatsächlich fällt und wo sie sich stapelt. Ein Urteil im nassen Zustand geht am Ergebnis vorbei.</p></div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">10</div>
+      <div class="step-do">
+        <h4>Trockenkorrektur</h4>
+        <p>Nur einzelne Ausreißer, die Ohrpartie und die Außenkontur nachnehmen. Punktuell pointieren, in Übergängen slicen. <strong>Keine neue Grundlinie mehr anlegen.</strong></p>
+      </div>
+      <div class="step-why"><p>Die Schrumpfung von <span class="val">15–25 %</span> ist jetzt sichtbar. Korrigiert wird nur, was die Welle tatsächlich falsch macht — alles Weitere würde die im nassen Zustand aufgebaute Form wieder auflösen.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">06</span> Techniken</h2>
+
+  <p>Ohne Effilierschere und ohne Messer. Gewicht wird ausschließlich über die Scherenführung herausgenommen.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Technik</th><th>Ausführung</th><th>Einsatz</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pointieren</td>
+          <td>Scherenspitzen senkrecht in die Haarenden hineinarbeiten statt gerade abzuschneiden</td>
+          <td>Alle Außenkonturen, Kanten weich brechen</td>
+        </tr>
+        <tr>
+          <td>Tief pointieren</td>
+          <td>Gleiche Haltung, aber mehrere Zentimeter in die Strähne hinein</td>
+          <td>Stärkere Entlastung in dichten Partien</td>
+        </tr>
+        <tr>
+          <td>Slicen</td>
+          <td>Schere leicht geöffnet, etwa <span class="val">45°</span> zur Strähne, ein durchgehender Zug. Höchstens zwei bis drei Durchgänge, nicht mehrfach nachschließen</td>
+          <td>Nahtlose Übergänge zwischen den Partien</td>
+        </tr>
+        <tr>
+          <td>Innere Entlastung</td>
+          <td>Ansatz mittig im Haarschaft, nie wurzelnah; Schere halb schließen und herausgleiten lassen</td>
+          <td>Volumen unter der Deckschicht wegnehmen, Außenlinie bleibt geschlossen</td>
+        </tr>
+        <tr>
+          <td>Schere über Kamm</td>
+          <td>Freihand am Haaransatz entlang</td>
+          <td>Nackenauslauf, Koteletten</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <span class="lbl">Zur Menge</span>
+    <p>Beim Slicen und bei der inneren Entlastung gilt: lieber zu wenig und ein zweites Mal ansetzen. Nimmt man welligem Haar zu viel Substanz, verliert die Welle das Gewicht, das sie zum Fallen braucht, und die Spitzen werden strähnig.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">07</span> Konturen</h2>
+
+  <h3>Nacken</h3>
+  <p>Natürlich auslaufend, dem Haaransatz folgend. Keine gesetzte gerade oder gerundete Linie. Freihand mit Schere über Kamm ausdünnen.</p>
+
+  <h3>Ohren und Koteletten</h3>
+  <p>Die Koteletten in der Länge an die Seitenpartie angleichen, nicht separat kürzer schneiden, und pointiert schräg auslaufen lassen. Um das Ohr herum das Ohr mit dem Kamm anlegen und an der Kammrückseite arbeiten.</p>
+
+  <h3>Stirn</h3>
+  <p>Kein Pony, keine eigene kurze Zone. Die vordere Partie läuft in der Länge des Deckhaars durch und wird nur an den Spitzen leicht gebrochen, damit beim Zurücktragen keine Stufe am Ansatz steht.</p>
+</section>
+
+<section>
+  <h2><span class="num">08</span> Was den Schnitt kaputt macht</h2>
+
+  <ol class="faults">
+    <li><div><b>Zu hoch abgehoben an den Seiten</b><span>Über 45° an der Ohrpartie erzeugt Volumen statt Fall. Das Haar stellt sich seitlich auf und geht nicht mehr hinter das Ohr.</span></div></li>
+    <li><div><b>Schrumpfung nicht eingerechnet</b><span>Nass auf Zielmaß geschnitten heißt trocken 15–25 % zu kurz — und der Schnitt sieht genau so aus, wie er nicht aussehen soll.</span></div></li>
+    <li><div><b>Zu viel ausgedünnt</b><span>Der häufigste Fehler bei welligem Haar. Ohne Substanz verliert die Welle die Fallrichtung und die Spitzen werden dünn und unruhig.</span></div></li>
+    <li><div><b>Waagerechte Gewichtslinie</b><span>Führt bei welligem Haar zuverlässig zur Dreiecksform, weil sich die Masse an der Kante staut, statt ineinanderzufallen.</span></div></li>
+    <li><div><b>Vordere Partie zu kurz</b><span>Erzeugt einen sichtbaren Absatz, sobald das Haar zurückgetragen wird.</span></div></li>
+    <li><div><b>Harte Nackenkante</b><span>Wirkt konstruiert und wächst innerhalb weniger Wochen unsauber heraus.</span></div></li>
+    <li><div><b>Nur im nassen Zustand beurteilt</b><span>Ohrpartie und Wellenfall lassen sich nass nicht bewerten. Ohne Trockenkontrolle zeigt sich das Abstehen erst zu Hause.</span></div></li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="num">09</span> Nachschnitt</h2>
+
+  <p>Intervall <span class="val">6–8 Wochen</span>, damit die Form erhalten bleibt.</p>
+
+  <ul class="checks">
+    <li>Zuerst korrigiert werden die <strong>Konturen</strong> — Nackenauslauf, Bereich um die Ohren, Koteletten. Sie verlieren als Erstes die Sauberkeit und lassen den ganzen Schnitt ungepflegt wirken, auch wenn die Form oben noch steht.</li>
+    <li>Danach der <strong>Übergang</strong> zwischen Seiten und Deckhaar, damit dort keine Kante entsteht.</li>
+    <li>Das <strong>Deckhaar</strong> zuletzt und nur, wenn die Stufen sich tatsächlich verschoben haben.</li>
+  </ul>
+
+  <div class="note">
+    <span class="lbl">Falls die Länge weiter wachsen soll</span>
+    <p>Dann werden ausschließlich die Konturen geschnitten und der Übergang weich gehalten. Die Länge im Deckhaar bleibt unangetastet, damit das nachwachsende Haar in die bestehenden Stufen hineinwächst, statt eine neue Kante zu bilden.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Zusammengestellt als Gesprächsgrundlage vor dem Schnitt. Die Zahlenangaben sind Richtwerte für welliges Haar dieser Länge — die Beurteilung am Kopf hat immer Vorrang.</p>
+</footer>
+
+</div>
