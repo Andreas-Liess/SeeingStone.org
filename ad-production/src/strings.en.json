@@ -1,0 +1,79 @@
+{
+  "lang": "en",
+  "query": "Did they ever agree to the volume discount?",
+  "corpusLine": "18 months of correspondence · 38,417 documents",
+
+  "hudManual": "MANUAL SEARCH",
+  "hudScanned": "SCANNED",
+  "hudDiscarded": "FALSE POSITIVES",
+  "notFound": "NOT FOUND",
+
+  "capSearch1": "Somewhere in eighteen months of email",
+  "capSearch2": "is one sentence that decides this case.",
+  "capSearch3": "You wrote it. You cannot find it.",
+
+  "wordmark": "SEEINGSTONE",
+
+  "hudSystem": "SEEINGSTONE",
+  "labelSpace": "SEMANTIC SPACE · ENTITIES AND THE RELATIONS BETWEEN THEM",
+  "capSystem1": "Same archive. Already read.",
+  "capSystem2": "Every claim bound to a person, a date, a source.",
+
+  "readout": [
+    ["LINES", 1284902],
+    ["DOCUMENTS", 38417],
+    ["ENTITIES", 41806],
+    ["RELATIONS", 12394],
+    ["EGRESS", 0]
+  ],
+  "readoutEgressNote": "nothing leaves the machine",
+
+  "matchLabel": "MATCH · 1 OF 1",
+  "quote": "“We can live with 12% on volume above 400 units.”",
+  "meta": [
+    ["SOURCE", "thread ‘Re: Framework agreement — Annex B’"],
+    ["MESSAGE", "47 of 112"],
+    ["AUTHOR", "M. Reiter · counterparty"],
+    ["DATE", "14 March 2024"],
+    ["STORED", "local archive · never transmitted"]
+  ],
+  "capAnswer": "Four seconds.",
+
+  "tagline": "Intelligence without surrendering your data.",
+  "url": "SeeingStone.org",
+
+  "entityLabels": ["PERSON", "DATE", "AMOUNT", "CLAUSE", "ORG", "COMMITMENT"],
+  "stream": [
+    "as discussed with [[0|M. Reiter]] on the call,",
+    "we can offer [[2|12% above 400 units]] from",
+    "[[1|1 April 2024]], subject to volume review.",
+    "please find attached Annex B, clean copy.",
+    "[[4|Brandt & Partner]] confirmed the schedule.",
+    "our position on [[3|clause 7.2]] is unchanged.",
+    "[[5|we will send the revised DPA]] this week.",
+    "no reply since [[1|14 March 2024]] on this.",
+    "the discount was agreed in principle only.",
+    "[[0|A. Vogel]] to circulate minutes by Friday.",
+    "[[5|I will confirm the tier before signing]]",
+    "cc [[0|S. Keller]] for the pricing annex.",
+    "[[2|EUR 48,000]] outstanding on invoice 331.",
+    "[[3|indemnity cap]] stays at twelve months.",
+    "meeting moved to [[1|Tuesday 09:00]] CET.",
+    "[[4|Novak Industries]] withdrew the objection."
+  ],
+  "senders": ["M. Reiter", "A. Vogel", "T. Brandt", "S. Keller", "J. Almeida", "K. Novak", "P. Lindqvist", "D. Moreau", "R. Osei", "L. Fischer", "C. Bianchi", "H. Yamada"],
+  "subjects": [
+    "Re: Framework agreement — Annex B",
+    "FW: revised schedule of rates",
+    "Re: Re: volume tiers, second pass",
+    "Minutes — steering call",
+    "Re: outstanding points before signature",
+    "Annex C — clean copy attached",
+    "Re: pricing, as discussed Tuesday",
+    "FW: counterparty comments consolidated",
+    "Re: delivery windows Q3",
+    "Re: indemnity wording",
+    "Position paper — draft 4",
+    "Re: settlement range"
+  ]
+}

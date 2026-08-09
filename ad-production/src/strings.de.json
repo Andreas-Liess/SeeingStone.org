@@ -1,0 +1,79 @@
+{
+  "lang": "de",
+  "query": "Haben sie dem Mengenrabatt jemals zugestimmt?",
+  "corpusLine": "18 Monate Korrespondenz · 38.417 Dokumente",
+
+  "hudManual": "MANUELLE SUCHE",
+  "hudScanned": "GEPRÜFT",
+  "hudDiscarded": "FEHLTREFFER",
+  "notFound": "NICHT GEFUNDEN",
+
+  "capSearch1": "Irgendwo in achtzehn Monaten E-Mail",
+  "capSearch2": "steht der eine Satz, der den Fall entscheidet.",
+  "capSearch3": "Sie haben ihn geschrieben. Sie finden ihn nicht.",
+
+  "wordmark": "SEEINGSTONE",
+
+  "hudSystem": "SEEINGSTONE",
+  "labelSpace": "SEMANTISCHER RAUM · ENTITÄTEN UND IHRE RELATIONEN",
+  "capSystem1": "Dasselbe Archiv. Bereits gelesen.",
+  "capSystem2": "Jede Aussage verknüpft mit Person, Datum, Quelle.",
+
+  "readout": [
+    ["ZEILEN", 1284902],
+    ["DOKUMENTE", 38417],
+    ["ENTITÄTEN", 41806],
+    ["RELATIONEN", 12394],
+    ["AUSGANG", 0]
+  ],
+  "readoutEgressNote": "nichts verlässt das Gerät",
+
+  "matchLabel": "TREFFER · 1 VON 1",
+  "quote": "„Mit 12 % ab 400 Einheiten können wir leben.“",
+  "meta": [
+    ["QUELLE", "Thread ‚Re: Rahmenvertrag — Anlage B‘"],
+    ["NACHRICHT", "47 von 112"],
+    ["AUTOR", "M. Reiter · Gegenseite"],
+    ["DATUM", "14. März 2024"],
+    ["ABLAGE", "lokales Archiv · nie übertragen"]
+  ],
+  "capAnswer": "Vier Sekunden.",
+
+  "tagline": "Intelligenz, ohne Ihre Daten aus der Hand zu geben.",
+  "url": "SeeingStone.org",
+
+  "entityLabels": ["PERSON", "DATUM", "BETRAG", "KLAUSEL", "ORG", "ZUSAGE"],
+  "stream": [
+    "wie mit [[0|M. Reiter]] telefonisch besprochen,",
+    "können wir [[2|12 % ab 400 Einheiten]] anbieten,",
+    "gültig ab [[1|1. April 2024]], vorbehaltlich",
+    "der Mengenprüfung. Anlage B in Reinfassung.",
+    "[[4|Brandt & Partner]] hat den Termin bestätigt.",
+    "unsere Position zu [[3|Ziffer 7.2]] bleibt.",
+    "[[5|wir senden den überarbeiteten AVV]] diese Woche.",
+    "keine Rückmeldung seit [[1|14. März 2024]].",
+    "der Rabatt wurde nur dem Grunde nach zugesagt.",
+    "[[0|A. Vogel]] verteilt das Protokoll bis Freitag.",
+    "[[5|ich bestätige die Staffel vor Unterschrift]]",
+    "cc [[0|S. Keller]] wegen der Preisanlage.",
+    "[[2|EUR 48.000]] offen aus Rechnung 331.",
+    "[[3|Haftungsobergrenze]] bleibt bei zwölf Monaten.",
+    "Termin verschoben auf [[1|Dienstag 09:00]] MEZ.",
+    "[[4|Novak Industries]] hat den Einwand zurückgezogen."
+  ],
+  "senders": ["M. Reiter", "A. Vogel", "T. Brandt", "S. Keller", "J. Almeida", "K. Novak", "P. Lindqvist", "D. Moreau", "R. Osei", "L. Fischer", "C. Bianchi", "H. Yamada"],
+  "subjects": [
+    "Re: Rahmenvertrag — Anlage B",
+    "WG: überarbeitete Preisliste",
+    "Re: Re: Mengenstaffel, zweiter Durchgang",
+    "Protokoll — Steuerungsrunde",
+    "Re: offene Punkte vor Unterzeichnung",
+    "Anlage C — Reinfassung anbei",
+    "Re: Preise, wie am Dienstag besprochen",
+    "WG: Anmerkungen der Gegenseite konsolidiert",
+    "Re: Lieferfenster Q3",
+    "Re: Freistellungsklausel",
+    "Positionspapier — Entwurf 4",
+    "Re: Vergleichsrahmen"
+  ]
+}
