@@ -120,24 +120,6 @@ The whole film hangs on one cut: **40:00 → 00:04**.
 - Concepts ② "Two Degrees" (the Tim/Max weak-tie graph) and ③ "It Never Leaves"
   (the GDPR objection piece) are storyboarded but unbuilt.
 
-### Ad 03 "The Chain" — WRITTEN BUT UNVERIFIED
-
-`src/scene-chain.js` and `src/strings-chain.en.json` are committed, but the
-film has **never been rendered**. There is no `render-chain.html`, not one frame
-has been captured, and nothing has been looked at. Treat it as a draft that has
-not met a compiler, let alone an eye — on both previous films the first render
-needed several rounds of correction, and this one has had none.
-
-Design intent: six fragments, six sources, fourteen months, walked backwards
-from the newest, with the chain jumping to a rejection fourteen months earlier.
-The honesty constraint is load-bearing — every fragment arrives in the user's
-own archive; nothing observes the counterparty.
-
-To pick it up: copy `src/render-introduction.html` to `src/render-chain.html`,
-point its script tag at `scene-chain.js`, then
-`node bin/capture.mjs --film chain --lang en --only 80,300,500,700,900,1000,1200`
-and look at the frames before rendering all 1440.
-
 ---
 
 ## 2026-08-09 (later) — Direction, reviews, and the backlog
@@ -267,6 +249,90 @@ and should probably be built first.
 - **German renders.** Strings exist for ads 01 and 02; neither has been captured
   in German, so the one-edit/two-languages claim is designed but unproven.
 - **1:1 and 16:9** recompositions — layout variants, not crops.
+
+### D9 · Priorities re-derived from evidence (supersedes D7)
+
+D7 was written before ad 02 was reviewed. Redone against what is now known.
+
+**The evidence.** One strong success (ad 01) and one clean failure (ad 02),
+differing on a single variable — whether act one prices a loss. For n=2 that is
+an unusually informative pair.
+
+**The prior that did not survive.** "Work through the pitch's capabilities, one
+film each." Nothing validated this; it came from tidiness, not evidence. The
+binding constraint is not concept coverage. It is the first act.
+
+**The question that now governs everything:** was ad 01's success the *template*
+or that *particular story*? Nothing built so far tests it. That is where the
+information is, so the next build should be chosen to answer it.
+
+**Two D7 calls reversed:**
+
+1. *Sovereignty film drops from #2 to #5.* D4 says sovereignty must land in the
+   same breath as value; a standalone sovereignty film contradicts that
+   principle, and ad 01 already sells it better and wordlessly by holding
+   EGRESS at 0 while the other counters race. It is also blocked on Andreas'
+   GDPR docs and on a ruling about how hard to hit named competitors.
+2. *Rebuilding ad 02 drops to last.* That was sunk-cost reasoning. Its lesson is
+   already extracted, and the warm-contact film covers the same relationship
+   territory with a stake that states itself. Repairing a known failure carries
+   less information than building the easy win.
+
+**Revised order:**
+
+| # | Work | Why here |
+|---|---|---|
+| 1 | "The Anniversary" on the ad-01 skeleton | Tests template transfer — the governing question. Easiest stake. Andreas' (1). |
+| 2 | Sound pass on ad 01 | Multiplier across all films, not one. Raised twice. Safest test on an approved asset. |
+| 3 | Ad 03 rescue | Has a natural stake (a dying renewal) that was buried under process. Tests the template against complexity. |
+| 4 | German ad 01 | ~3 min, no creative risk, proves the two-language claim. |
+| 5 | Sovereignty comparison | Blocked; in tension with D4. |
+| 6 | Employee departure / access control / breadth | Real gaps, but no evidence more concepts is the constraint. |
+| 7 | Ad 02 rebuild | Lesson banked; territory covered better by #1. |
+
+**Consolidation.** Andreas' list is a capability wishlist, not a shipping list.
+One film ≠ one capability — ad 01 already carries retrieval, provenance and
+locality together. "The Anniversary" can carry memory, breadth of sources and
+human-in-the-loop in one film. Three excellent films beat seven adequate ones,
+and this pipeline makes iteration cheap enough that depth is the affordable
+choice.
+
+**Falsifiers — what would overturn this:**
+
+- If "The Anniversary" also fails, the lesson is not stakes but that ad 01's
+  power came from a *measurable binary* (40:00 vs 00:04). Then: hunt only for
+  stories with a hard before/after, and drop the emotional register.
+- If sound materially changes how the films read, silent-first was wrong and ad
+  01 deserves a re-cut on audio-driven timing.
+- A named buyer waiting on a specific film outranks all of the above. Real
+  demand beats inference.
+
+### D10 · Risk flagged on the sovereignty comparison film
+
+Andreas proposed a competitor comparison: a mediator pastes a client document
+into ChatGPT or DeepSeek; the model trains on it, or it is stored abroad as
+state leverage. He flagged it himself as a grey zone. Two hazards, to settle
+before a frame is drawn:
+
+1. **"AI trains on that data" is not true by default** for the OpenAI API or
+   ChatGPT Enterprise. A technical buyer knows this, and one false claim in the
+   sovereignty film destroys credibility in the exact film where credibility is
+   the product.
+2. **Naming competitors is regulated.** German comparative advertising is
+   governed by UWG §6 — lawful when objective and verifiable, actionable when
+   disparaging or unverifiable. "Stored as leverage by a foreign country" is a
+   geopolitical assertion, not a verifiable product claim. The audience is
+   lawyers.
+
+The strong version needs no attack, only the true asymmetry: with them the
+material leaves your control and you must ask the client's permission; with
+SeeingStone it never leaves, so there is nothing to ask. Provable, and it is
+the actual moat.
+
+**Blocked also on access:** the referenced GDPR analysis lives at
+`/home/deviceq12/Coding Projects/SeeingStone/docs/Analysis of GDPR/` on
+Andreas' machine. Sessions run in a cloud container holding only the website
+repo, so the docs must be pasted or pushed to a branch before this film starts.
 
 ### Ad 03 "The Chain" — WRITTEN BUT UNVERIFIED
 
