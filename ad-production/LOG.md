@@ -120,6 +120,175 @@ The whole film hangs on one cut: **40:00 → 00:04**.
 - Concepts ② "Two Degrees" (the Tim/Max weak-tie graph) and ③ "It Never Leaves"
   (the GDPR objection piece) are storyboarded but unbuilt.
 
+### Ad 03 "The Chain" — WRITTEN BUT UNVERIFIED
+
+`src/scene-chain.js` and `src/strings-chain.en.json` are committed, but the
+film has **never been rendered**. There is no `render-chain.html`, not one frame
+has been captured, and nothing has been looked at. Treat it as a draft that has
+not met a compiler, let alone an eye — on both previous films the first render
+needed several rounds of correction, and this one has had none.
+
+Design intent: six fragments, six sources, fourteen months, walked backwards
+from the newest, with the chain jumping to a rejection fourteen months earlier.
+The honesty constraint is load-bearing — every fragment arrives in the user's
+own archive; nothing observes the counterparty.
+
+To pick it up: copy `src/render-introduction.html` to `src/render-chain.html`,
+point its script tag at `scene-chain.js`, then
+`node bin/capture.mjs --film chain --lang en --only 80,300,500,700,900,1000,1200`
+and look at the frames before rendering all 1440.
+
+---
+
+## 2026-08-09 (later) — Direction, reviews, and the backlog
+
+Andreas' input arrives fast and unstructured. This section keeps it in order,
+with the reasoning behind each experiment, so nothing is lost between sessions.
+
+### D1 · Reference brought in: polar.news (Instagram)
+
+Andreas supplied a transcript and asked for the Tim story in that register.
+What that account actually does, extracted:
+
+1. **Timestamps as the spine.** Not "weeks of chasing" but 03:45:30, 03:46,
+   03:50. Precision manufactures authority before any claim is made.
+2. **Flat numerals, no adjectives.** "290,000 hectares." "358 missiles."
+3. **Comparative framing.** "In Europe, it ranks 19th." "Everything you have
+   just watched is 36% of it."
+4. **The argument from absence.** Show what is recorded beside what is not, and
+   let the viewer close the gap. "It knows the minute it stopped seeing the
+   missile. It has never said what time the missile hit the ground."
+5. **Circular close.** Ends on the timestamp it opened on.
+6. Audio: ambient, no music, subtle beeps and clicks, plus a signature sting.
+
+### D2 · Experiment: ad 02 "The Introduction" in that register — FAILED
+
+Built and delivered. Andreas' review, in his words: *hard to follow, a little
+too random; so many unread emails just looks avoidable; were the emails sent by
+you? What was the point — what was the pain? Unclear.*
+
+**He is right, and the diagnosis matters more than the film.**
+
+- **No stake.** The film never says what it costs to not reach Tim. No deal
+  size, no deadline, no consequence. Ad 01 prices its pain exactly — forty
+  minutes, in front of a client, credibility gone. Ad 02 prices nothing.
+- **Therefore the viewer blames the protagonist.** Seven unanswered messages
+  with no stake attached reads as "this person is bad at their job," not as
+  suffering. Sympathy inverts.
+- **Root cause: the borrowed structure was misapplied.** Argument-from-absence
+  works in journalism because the stake is already established — a missile
+  landed in a NATO country. It is a **second-act device**. Used as a first act
+  it has nothing to bite on. The register was right; the position was wrong.
+- The discovery (Max co-founded with Tim) therefore lands as trivia rather than
+  as relief.
+
+### D3 · Principle extracted — applies to every film from here
+
+**Pain must be a loss the viewer can price.** A number, a deadline, or a
+humiliation in front of someone whose opinion matters. If a film cannot state
+in one sentence what is lost and when, it has no first act. Show the pain
+before anything else, then let structure and restraint do their work.
+
+Corollary: the polar register is earned, not free. Deploy it *after* the stake
+lands, never instead of it.
+
+### D4 · Biggest selling point, reasoned backwards
+
+Not the intelligence — the **permission**. The pitch already contains the sale:
+*"This is exactly what I need. [...] call me when you solve GDPR compliance."*
+The product is wanted; the blocker is data sovereignty. A mediator or lawyer
+cannot put privileged client material into a cloud AI without asking the client
+for permission, and the asking is itself a trust cost (the pitch names this:
+*"Sorge, Mandanten um Erlaubnis für externe Datenverarbeitung bitten zu
+müssen"*).
+
+So competitors are not worse for this buyer. They are **unusable**. That is a
+permission advantage, not a feature advantage.
+
+**Consequence for the films: value and sovereignty must land in the same
+breath, never in separate films.** Ad 01 does this correctly and wordlessly by
+pinning EGRESS at 0 while the counters race.
+
+### D5 · Gaps found on a re-read of the pitch
+
+Not yet covered by any film, ranked by how much of the pitch leans on them:
+
+1. **Sovereignty as its own film.** "It Never Leaves" is storyboarded, unbuilt,
+   and by D4 it is the most important one.
+2. **Employee departure.** *"Mitarbeiterabgang — Kontext geht dauerhaft
+   verloren."* The KMU segment's central fear; nothing touches it. Strong
+   priced pain available: the person leaves, the context leaves, and the cost
+   is paid months later by someone who never met them.
+3. **Access control.** The pitch states it is the *only* technical difference
+   between solo and team product. It is the entire upsell path, and invisible.
+4. **Breadth of sources.** Notes, paper, PDFs, PowerPoints sent as attachments,
+   calendar entries. The 55% dark-data claim needs to be *seen*.
+5. **Proposed follow-ups.** *"ohne vom System vorgeschlagene Follow-ups
+   verpufft soziales Kapital ungenutzt."*
+
+### D6 · Andreas' requested films (his numbering preserved)
+
+1. **Keep old contacts warm.** Wish a colleague from six years ago a happy
+   anniversary because the system remembered. **The human triggers the message**
+   — this is a hard constraint, not a detail; the product must never look like
+   an autopilot that fakes warmth. His framing: as automation rises, human
+   capital — relationships, trust — becomes *more* valuable, not less.
+2. **An agent combing vast data for an opening.**
+   - 2.1 find a new lead nobody was looking for;
+   - 2.2 "I already know this person — help me actually reach them" via an old
+     colleague or a shared project.
+   Both should show breadth: internal PDFs, PowerPoints sent as attachments,
+   old calendar entries.
+3. Re-read pitch and website for what is missing → answered in D5.
+
+**Observation worth flagging:** his (1) and the existing ad 02 are the same
+story from opposite ends — one keeps a relationship warm, the other cashes in a
+relationship already gone cold. Ad 02 is the "cold" version and it failed on
+stakes. The "warm" version has an easier emotional job and a clearer stake
+(*this person mattered to you and you forgot*), so it is likely the better film
+and should probably be built first.
+
+### D7 · Backlog, in build order
+
+| # | Film | Why here |
+|---|---|---|
+| 1 | **Rebuild ad 02** with a priced stake in the first act | Known failure, known fix, material already built |
+| 2 | **"It Never Leaves"** — sovereignty | D4 says it is the biggest selling point and it does not exist |
+| 3 | **"The Anniversary"** — warm contacts, human-triggered | Andreas (1); easiest clear stake |
+| 4 | **Ad 03 "The Chain"** — finish and verify | Written, never rendered, unverified |
+| 5 | **"When Someone Leaves"** — institutional memory | Biggest uncovered pitch gap, whole KMU segment |
+| 6 | **"The Opening"** — agent finds a lead across mixed sources | Andreas (2.1/2.2); also carries breadth-of-sources |
+
+### D8 · Still unresolved
+
+- **Sound.** Andreas likes the polar.news treatment: ambient, no music, subtle
+  beeps and clicks, plus a signature audio sting. Nothing built yet. Plan is to
+  synthesise it in ffmpeg so it stays original and licence-free.
+- **German renders.** Strings exist for ads 01 and 02; neither has been captured
+  in German, so the one-edit/two-languages claim is designed but unproven.
+- **1:1 and 16:9** recompositions — layout variants, not crops.
+
+### Ad 03 "The Chain" — WRITTEN BUT UNVERIFIED
+
+`src/scene-chain.js` and `src/strings-chain.en.json` are committed, but the
+film has **never been rendered**. There is no `render-chain.html`, not one frame
+has been captured, and nothing has been looked at. Treat it as a draft that has
+not met a compiler, let alone an eye — on both previous films the first render
+needed several rounds of correction, and this one has had none.
+
+Design intent: six fragments, six sources, fourteen months, walked backwards
+from the newest, with the chain jumping to a rejection fourteen months earlier.
+The honesty constraint is load-bearing — every fragment arrives in the user's
+own archive; nothing observes the counterparty.
+
+Note it inherits ad 02's risk: it too opens on process rather than on a priced
+stake. Apply D3 before rendering it.
+
+To pick it up: copy `src/render-introduction.html` to `src/render-chain.html`,
+point its script tag at `scene-chain.js`, then
+`node bin/capture.mjs --film chain --lang en --only 80,300,500,700,900,1000,1200`
+and look at the frames before rendering all 1440.
+
 ### Honest assessment
 
 The pipeline is proven and the look is right. The unproven part is whether this

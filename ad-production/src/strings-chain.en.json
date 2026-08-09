@@ -1,0 +1,85 @@
+{
+  "lang": "en",
+
+  "titleTop": "SIX FRAGMENTS",
+  "titleSub": "six sources · fourteen months · one conclusion",
+  "capOpen": "None of them mean anything on their own.",
+
+  "axisTop": "14 MONTHS AGO",
+  "axisBottom": "TODAY",
+  "hudLabel": "LINKING",
+  "hudSources": "SOURCES",
+
+  "fragments": [
+    {
+      "id": "01",
+      "y": 1330,
+      "date": "02 APR",
+      "source": "SENT MAIL · renewal_2026.pdf",
+      "quote": "Attached is our proposal for the coming term.",
+      "means": "opened 0 times · no reply · 8 days"
+    },
+    {
+      "id": "02",
+      "y": 610,
+      "date": "03 FEB",
+      "source": "AUTO-REPLY · K. Brandt",
+      "quote": "I am on parental leave until 6 October.",
+      "means": "the recipient is not there"
+    },
+    {
+      "id": "03",
+      "y": 790,
+      "date": "11 FEB",
+      "source": "FORWARDED THREAD · signature block",
+      "quote": "R. Halden · Interim Head of Procurement",
+      "means": "someone else holds the pen"
+    },
+    {
+      "id": "04",
+      "y": 970,
+      "date": "24 FEB",
+      "source": "ATTACHMENT · org_chart.pdf · page 4",
+      "quote": "Procurement (interim) → Division West",
+      "means": "which division decides"
+    },
+    {
+      "id": "05",
+      "y": 430,
+      "date": "09 SEP · 14 months earlier",
+      "source": "RECEIVED MAIL · Division West",
+      "quote": "Not at this price.",
+      "means": "they have refused you once already"
+    },
+    {
+      "id": "06",
+      "y": 1150,
+      "date": "19 MAR",
+      "source": "THREAD · invoice 4471",
+      "quote": "This has still not been credited.",
+      "means": "41 days · unresolved · no reply"
+    }
+  ],
+
+  "capFrag2": "One message. One fact.",
+  "capFrag5": "Fourteen months back.",
+
+  "conclusionLabel": "CONCLUSION",
+  "conclusion": [
+    "Your proposal is sitting in an inbox nobody is reading.",
+    "The person who now decides has already refused you, at this price.",
+    "There is an unpaid credit note behind it."
+  ],
+  "capConclusion": "Six fragments. Nobody had read them together.",
+
+  "actionLabel": "BEST MOVE",
+  "action": [
+    "Resolve invoice 4471 first.",
+    "Re-send to R. Halden, not to K. Brandt.",
+    "Do not lead with price."
+  ],
+
+  "closing": "This was always in your archive.",
+  "tagline": "Intelligence without surrendering your data.",
+  "url": "SeeingStone.org"
+}
