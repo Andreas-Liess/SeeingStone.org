@@ -334,7 +334,59 @@ the actual moat.
 Andreas' machine. Sessions run in a cloud container holding only the website
 repo, so the docs must be pasted or pushed to a branch before this film starts.
 
-### Ad 03 "The Chain" — WRITTEN BUT UNVERIFIED
+### D11 · D9 executed — results
+
+Ran the D9 order autonomously. Outcome per item:
+
+**1. Ad 04 "The Anniversary" — BUILT (43s).** Ad 01's skeleton applied to the
+warm-contact story, which was the point: it tests whether that template
+transfers. Stake priced in the first six seconds — a half-written *"I wanted to
+ask"* over LAST CONTACT 6 YEARS 2 MONTHS / MESSAGES SINCE 0. Escalates through
+six things that happened while you were silent, each sourced from something you
+already held (a changed signature, a calendar invite's location, a CV attached
+in 2019), ending on the one that costs money: his team won the mandate you bid
+for. Binary is 2,247 days → 0.
+
+Andreas' hard constraint is on screen, not implied: the draft is held under
+*"SeeingStone will not send this. You will."* and the send is stamped SENT BY
+YOU. First cut showed that line for ~1 second; extended to ~2, because it is
+the sentence the whole film exists to protect.
+
+**Verdict on template transfer: pending Andreas' review.** That is the D9
+falsifier — if this one also fails, the lesson is not stakes but that ad 01's
+power came from a measurable binary, and the emotional register should be
+dropped entirely.
+
+**2. Sound — BUILT.** `bin/sound.mjs` synthesises the bed from a cue list in
+frames: room tone, typing, ticks accelerating with the scroll, six brighter
+ticks for the false positives, one thump at the failure, then true silence.
+The signature is two partials a fifth apart (396/594 Hz) with a sub under it,
+struck at the rook and again quietly at the end card — identical across films,
+so it becomes the mark. No samples, no licence, deterministic like the picture.
+`bin/mux.sh` marries it to a film with `-c:v copy`, so audio costs no
+generation of video quality. Normalised to −19 LUFS: this is ambience, not a
+mix.
+
+**3. Ad 03 "The Chain" — RESCUED AND RENDERED (53s).** Given the first act it
+lacked: €480,000 and 11 days, then *"You think this one is a formality. It has
+been dead for six weeks."* Only then the six fragments. Verified on frames
+before the full render this time.
+
+**4. German ad 01 — RENDERED (33s).** Correct German quotation marks, umlauts,
+*"nie übertragen"*. The one-edit/two-languages claim is now demonstrated rather
+than designed.
+
+Deliverables in `out/`: ads 01 (EN silent, EN with sound, DE), 03, 04 (silent
+and with sound).
+
+**Still open:** ad 02 rebuild (deprioritised by D9), the sovereignty film
+(blocked per D10), German for ads 03 and 04, 1:1 and 16:9 recompositions, and
+any real voiceover. On the last: muxing a supplied VO is one command; the only
+decision is whether to write the script to the existing cut (no re-render) or
+drive the cut from word-level timestamps (~3 min re-render, and re-recording
+then re-syncs itself).
+
+### Ad 03 "The Chain" — original status (now superseded by D11)
 
 `src/scene-chain.js` and `src/strings-chain.en.json` are committed, but the
 film has **never been rendered**. There is no `render-chain.html`, not one frame

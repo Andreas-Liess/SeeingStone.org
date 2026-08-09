@@ -1,0 +1,66 @@
+{
+  "lang": "en",
+
+  "askLabel": "NEW MESSAGE",
+  "askTo": "To:  Jonas Weiss",
+  "askDraft": "Hi Jonas — long time! Hope all is well. I wanted to ask",
+  "meterLast": "LAST CONTACT",
+  "meterLastValue": "6 YEARS, 2 MONTHS",
+  "meterSince": "MESSAGES SINCE",
+  "meterSinceValue": "0",
+  "capAsk1": "You only write when you want something.",
+  "capAsk2": "He will know that in four seconds.",
+
+  "missedLabel": "WHAT HAPPENED WHILE YOU WERE SILENT",
+  "hudMoments": "MOMENTS TO REACH OUT",
+  "hudTaken": "TAKEN",
+  "missed": [
+    ["02 MAR 2021", "Made partner", "his mail signature changed"],
+    ["14 SEP 2022", "The firm raised its second round", "a press release you were forwarded"],
+    ["20 JAN 2023", "Moved to Munich", "a calendar invite, new location"],
+    ["11 NOV 2023", "Spoke on a panel you also attended", "your own calendar · same room"],
+    ["14 JUN 2024", "Ten years at the firm", "a CV attached to a mail in 2019"],
+    ["03 FEB 2026", "His team won the Kellner mandate", "a client mail · you bid for it too"]
+  ],
+
+  "priceDays": "2,247",
+  "priceDaysLabel": "DAYS OF SILENCE",
+  "priceMessages": "0",
+  "priceMessagesLabel": "MESSAGES SENT",
+  "capPrice": "The mandate went to people who never stopped writing.",
+
+  "wordmark": "SEEINGSTONE",
+
+  "hudSystem": "SEEINGSTONE",
+  "sourcesLabel": "READ FROM YOUR OWN ARCHIVE",
+  "sources": [
+    ["MAIL", 38417],
+    ["CALENDAR", 6204],
+    ["ATTACHMENTS", 11930],
+    ["CONTACTS", 2841]
+  ],
+  "sourceNote": "pdf · pptx · docx · ics · on this machine",
+
+  "personName": "JONAS WEISS",
+  "personRole": "Partner · Ardent · Munich",
+  "facts": [
+    ["Ten years at the firm on 14 June", "CV_2019.pdf · page 1"],
+    ["You worked together 2018–2020", "212 shared threads"],
+    ["The Kellner mandate was yours together", "project folder · 2019"],
+    ["He answers within the hour, before 10:00", "412 replies"]
+  ],
+  "capSystem": "It remembers what you meant to remember.",
+
+  "msgLabel": "DRAFT · NOT SENT",
+  "msgBody": "Jonas — ten years at Ardent tomorrow. I still tell people how you ran the Kellner file in 2019. Congratulations.",
+  "msgHold": "SeeingStone will not send this. You will.",
+  "msgSent": "SENT BY YOU · 14 JUNE · 09:02",
+  "msgReply": "Reply received · 20 minutes",
+  "meterAfter": "DAYS OF SILENCE",
+  "meterAfterValue": "0",
+  "capMessage": "No ask. Not this time.",
+
+  "closing": "The more that is automated, the more a person who trusts you is worth.",
+  "tagline": "Intelligence without surrendering your data.",
+  "url": "SeeingStone.org"
+}

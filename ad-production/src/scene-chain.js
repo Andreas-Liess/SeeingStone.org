@@ -14,11 +14,11 @@ const H = 1920;
 const FPS = 30;
 
 const ACT = {
-  OPEN:       [0,    150],
-  FRAGMENTS:  [150,  870],
-  CONCLUSION: [870,  1140],
-  ACTION:     [1140, 1320],
-  CLOSE:      [1320, 1440],
+  STAKE:      [0,    300],
+  FRAGMENTS:  [300,  1020],
+  CONCLUSION: [1020, 1290],
+  ACTION:     [1290, 1470],
+  CLOSE:      [1470, 1590],
 };
 const TOTAL = ACT.CLOSE[1];
 
@@ -175,21 +175,51 @@ function drawAxis(ctx, S, alpha, revealP) {
   ctx.restore();
 }
 
-/* ---------------------------------------------------------------- ACT: OPEN */
+/* --------------------------------------------------------------- ACT: STAKE */
+/* D3: price the loss before anything else. The original cut opened on process
+   and had nothing at risk, which is exactly why ad 02 failed. */
 
-function actOpen(ctx, t, S) {
-  ctx.globalAlpha = envelope(t, 150, 12, 14);
-  mono(ctx, 64, 700, -1);
+function actStake(ctx, t, S) {
+  /* What is on the table. */
+  ctx.globalAlpha = envelope(t, 172, 12, 14);
+  mono(ctx, 130, 700, -4);
   ctx.textAlign = 'left';
   ctx.fillStyle = C.white;
-  ctx.fillText(S.titleTop, MARGIN, 760);
-
-  mono(ctx, 21, 400, 1);
+  ctx.fillText(S.stakeValue, MARGIN, 620);
+  mono(ctx, 19, 500, 8);
   ctx.fillStyle = C.g50;
-  ctx.fillText(S.titleSub, MARGIN, 806);
+  ctx.fillText(S.stakeValueLabel, MARGIN, 668);
   ctx.globalAlpha = 1;
 
-  caption(ctx, S.capOpen, envelope(t - 54, 92, 10, 12), 1180);
+  /* And the clock on it. */
+  ctx.globalAlpha = envelope(t - 26, 146, 12, 14);
+  mono(ctx, 130, 700, -4);
+  ctx.fillStyle = C.white;
+  ctx.fillText(S.stakeDays, MARGIN, 830);
+  mono(ctx, 19, 500, 8);
+  ctx.fillStyle = C.g50;
+  ctx.fillText(S.stakeDaysLabel, MARGIN, 878);
+  ctx.globalAlpha = 1;
+
+  caption(ctx, S.capStake1, envelope(t - 60, 62, 10, 10), 1180);
+  caption(ctx, S.capStake2, envelope(t - 134, 56, 10, 10), 1180);
+
+  /* Then the framing, on black. */
+  const a2 = envelope(t - 198, 102, 12, 14);
+  if (a2 > 0) {
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalAlpha = a2;
+    mono(ctx, 64, 700, -1);
+    ctx.textAlign = 'left';
+    ctx.fillStyle = C.white;
+    ctx.fillText(S.titleTop, MARGIN, 760);
+    mono(ctx, 21, 400, 1);
+    ctx.fillStyle = C.g50;
+    ctx.fillText(S.titleSub, MARGIN, 806);
+    ctx.globalAlpha = 1;
+    caption(ctx, S.capOpen, envelope(t - 222, 78, 10, 12), 1180);
+  }
 }
 
 /* ----------------------------------------------------------- ACT: FRAGMENTS */
@@ -391,7 +421,7 @@ function draw(ctx, frame, S) {
   ctx.fillRect(0, 0, W, H);
 
   const f = clamp(frame, 0, TOTAL - 1);
-  if (f < ACT.OPEN[1])            actOpen(ctx, f - ACT.OPEN[0], S);
+  if (f < ACT.STAKE[1])           actStake(ctx, f - ACT.STAKE[0], S);
   else if (f < ACT.FRAGMENTS[1])  actFragments(ctx, f - ACT.FRAGMENTS[0], S);
   else if (f < ACT.CONCLUSION[1]) actConclusion(ctx, f - ACT.CONCLUSION[0], S);
   else if (f < ACT.ACTION[1])     actAction(ctx, f - ACT.ACTION[0], S);

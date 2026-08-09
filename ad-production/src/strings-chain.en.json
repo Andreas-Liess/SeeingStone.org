@@ -1,6 +1,13 @@
 {
   "lang": "en",
 
+  "stakeValue": "€480,000",
+  "stakeValueLabel": "ANNUAL VALUE",
+  "stakeDays": "11",
+  "stakeDaysLabel": "DAYS TO RENEWAL",
+  "capStake1": "You think this one is a formality.",
+  "capStake2": "It has been dead for six weeks.",
+
   "titleTop": "SIX FRAGMENTS",
   "titleSub": "six sources · fourteen months · one conclusion",
   "capOpen": "None of them mean anything on their own.",
