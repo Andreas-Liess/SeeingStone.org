@@ -20,11 +20,15 @@ function arg(name, fallback = null) {
 }
 
 const lang = arg('lang', 'en');
-const outDir = arg('out', resolve(ROOT, '.frames', lang));
+/* --film selects which scene to render. Omitted = ad 01, "40 Minutes". */
+const film = arg('film', null);
+const pagePath = film ? `src/render-${film}.html` : 'src/render.html';
+const stringsFile = film ? `src/strings-${film}.${lang}.json` : `src/strings.${lang}.json`;
+const outDir = arg('out', resolve(ROOT, '.frames', film || '40-minutes', lang));
 const only = arg('only', null);
 const scale = parseFloat(arg('scale', '1'));
 
-const strings = JSON.parse(readFileSync(resolve(ROOT, `src/strings.${lang}.json`), 'utf8'));
+const strings = JSON.parse(readFileSync(resolve(ROOT, stringsFile), 'utf8'));
 
 mkdirSync(outDir, { recursive: true });
 
@@ -38,7 +42,7 @@ const page = await browser.newPage({
 
 page.on('pageerror', e => { console.error('PAGE ERROR:', e.message); process.exitCode = 1; });
 
-await page.goto('file://' + resolve(ROOT, 'src/render.html'));
+await page.goto('file://' + resolve(ROOT, pagePath));
 await page.evaluate(() => window.ready);
 await page.evaluate(s => window.setStrings(s), strings);
 

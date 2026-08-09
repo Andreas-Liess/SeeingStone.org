@@ -1,0 +1,64 @@
+{
+  "lang": "en",
+
+  "openTime": "09:12",
+  "openDay": "TUESDAY",
+  "capOpen1": "The first message.",
+  "capOpen2": "It was not answered.",
+
+  "hudAttempts": "ATTEMPTS",
+  "hudReplies": "REPLIES",
+  "statusSent": "SENT",
+
+  "attempts": [
+    ["09:12", "TUE 12 MAR", "EMAIL", "NO REPLY"],
+    ["11:40", "THU 14 MAR", "EMAIL", "OPENED ×2 · NO REPLY"],
+    ["08:05", "MON 18 MAR", "LINKEDIN", "NO REPLY"],
+    ["16:22", "WED 27 MAR", "EMAIL", "OPENED ×4 · NO REPLY"],
+    ["10:03", "TUE 02 APR", "LINKEDIN", "NO REPLY"],
+    ["09:47", "MON 08 APR", "EMAIL", "NO REPLY"],
+    ["14:15", "THU 18 APR", "EMAIL", "NO REPLY"]
+  ],
+
+  "capAtt1": "Six more followed over five weeks.",
+  "capAtt2": "Two on LinkedIn. Four by email.",
+  "capAtt3": "One was opened four times. None were answered.",
+
+  "headerRecorded": "RECORDED",
+  "recorded": [
+    "the minute each message was sent",
+    "the minute each was delivered",
+    "the minute each was opened",
+    "how long each was read",
+    "which device opened it",
+    "which links were followed"
+  ],
+  "headerNotRecorded": "NOT RECORDED",
+  "notRecorded": "that none of them were necessary",
+  "capKnown": "Notice what is known precisely.",
+
+  "fileName": "CV_M_ARNDT.pdf",
+  "fileMeta": "attached 11 March 2019 · 2 pages · opened once",
+  "pageLabel": "PAGE 2 · LINE 4",
+  "lineText": "2014–2016   Co-founder, Ardent Systems",
+  "resolveLabel": "SAME ENTITY",
+  "resolveText": "T. VOSS   Co-founder, Ardent Systems   2014–2016",
+  "capExc1": "An attachment nobody reopened.",
+  "capExc2": "No one hid this. It was attached, delivered, and stored.",
+  "capExc3": "It was simply never read again.",
+
+  "nodeYou": "YOU",
+  "nodeMax": "MAX ARNDT",
+  "nodeMaxSub": "former colleague",
+  "nodeTim": "TIM VOSS",
+  "nodeTimSub": "chief executive · the target",
+  "edgeStale": "last exchange · 2 years 4 months",
+  "edgeFounded": "co-founded · 19 months",
+  "edgeSource": "source · CV_M_ARNDT.pdf · page 2, line 4",
+  "capRel": "Max is in your contacts.",
+
+  "capClose": "The introduction existed before the first message was sent.",
+
+  "tagline": "Intelligence without surrendering your data.",
+  "url": "SeeingStone.org"
+}
