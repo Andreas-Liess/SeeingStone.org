@@ -1,0 +1,50 @@
+{
+  "lang": "en",
+
+  "askLabel": "DRAFT · CONSENT REQUEST",
+  "emailTo": "To:  Kellner GmbH · client",
+  "emailSubject": "Subject:  Consent to external processing",
+  "emailBody": "To analyse your file I would need to transmit your documents to a service provider outside this firm.",
+  "sentLabel": "SENT",
+  "sentValue": "0",
+  "capAsk1": "Every AI tool on the market needs this email first.",
+  "capAsk2": "Nobody sends it.",
+
+  "whyLabel": "WHAT YOUR CLIENT WILL ASK",
+  "why": [
+    "Where is my file?",
+    "Who is allowed to read it?",
+    "What happens if you are wrong?"
+  ],
+  "capWhy1": "You would have to answer all three.",
+  "capWhy2": "In writing.",
+
+  "priceBig": "38,417",
+  "priceBigLabel": "DOCUMENTS IN THE MATTER",
+  "priceZero": "0",
+  "priceZeroLabel": "ANALYSED",
+  "capPrice": "Confidentiality was never the obstacle. Sending it away was.",
+
+  "wordmark": "SEEINGSTONE",
+
+  "routesLabel": "WHERE THE WORK HAPPENS — YOU CHOOSE",
+  "archiveLabel": "YOUR ARCHIVE",
+  "archiveSub": "on your device, or a server in your building",
+  "archiveStays": "NEVER MOVES",
+  "routes": [
+    ["A", "EU-HOSTED API", "GDPR terms · European datacentre", "leaves: the question", "stays: every document"],
+    ["B", "LOCAL MODEL", "running on your own hardware", "leaves: nothing", "stays: everything"],
+    ["C", "YOUR INFRASTRUCTURE", "your servers, your access rules", "leaves: nothing", "stays: everything"]
+  ],
+  "routeNote": "Per firm. Per matter. Switchable.",
+  "capRoutes": "The archive never moves. Only the question ever travels — and only if you let it.",
+
+  "payoffLabel": "CONSENT REQUESTS REQUIRED",
+  "payoffValue": "0",
+  "payoffNote": "there is nothing to consent to",
+  "capPayoff": "The email you could not send. You no longer need it.",
+
+  "closing": "Nothing to ask. Nothing to explain. Nothing leaves.",
+  "tagline": "Intelligence without surrendering your data.",
+  "url": "SeeingStone.org"
+}

@@ -1,5 +1,10 @@
 # ad-production
 
+> **Picking this up fresh, or as a new agent session? Read [`HANDOVER.md`](HANDOVER.md) first.**
+> It carries the mission, the rules, the client feedback so far, and the one
+> open question that blocks further work. `LOG.md` is the full R&D record.
+
+
 Code-generated advertising for SeeingStone. Self-contained: this directory
 imports nothing from the website and the website imports nothing from it.
 

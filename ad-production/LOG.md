@@ -5,6 +5,51 @@ next run (human or agent) starts from evidence instead of guesswork.
 
 ---
 
+## START HERE — cold start
+
+If you are picking this up with no memory of the conversation, read this block,
+then D3, D4, D9 and D12. That is enough to work.
+
+**What this is.** Four finished ad films for SeeingStone, generated entirely
+from code. No After Effects, no stock footage, no editor. A scene is one pure
+function of frame number; frames are captured in headless Chromium and encoded
+with ffmpeg.
+
+**State of play.**
+
+| Film | Length | Status |
+|---|---|---|
+| 01 `40-minutes` | 33s | Built EN + DE + sound. **Andreas' reaction: strongly positive.** The only validated film. |
+| 02 `introduction` | 48s | Built. **Judged a failure** (D2). Kept as evidence, not a candidate. |
+| 03 `chain` | 53s | Built, rescued with a priced first act (D11). **Not yet reviewed.** |
+| 04 `anniversary` | 43s | Built EN + sound. **Not yet reviewed.** This is the open experiment (D9). |
+| 05 `permission` | — | Strings written, scene NOT written. Sovereignty film. |
+
+**The one thing to know:** ad 01 worked, ad 02 did not, and the difference is
+whether the first act prices a loss (D3). Every film since follows that rule.
+
+**The open question:** does ad 01's template transfer, or did ad 01 win on its
+measurable binary (40:00 → 00:04)? Ad 04 was built to answer it and **Andreas
+has not yet given a verdict.** Do not build more films until he has — see D12.
+
+**How to render anything:**
+
+```bash
+node bin/capture.mjs --film anniversary --lang en   # omit --film for ad 01
+bin/encode.sh .frames/anniversary/en out/x.mp4
+node bin/sound.mjs --film anniversary --frames 1300 --out out/x.wav
+bin/mux.sh out/x.mp4 out/x.wav out/x-sound.mp4
+```
+
+Frames land in `.frames/<film>/<lang>` and are gitignored — they do not survive
+a container. Everything re-renders from source in a few minutes.
+
+**Environment gotchas that will cost you an hour if you rediscover them:** the
+Playwright-bundled ffmpeg is VP8-only and cannot make an MP4; ESM ignores
+`NODE_PATH`; PDF text extraction is broken here. All detailed below.
+
+---
+
 ## 2026-08-09 — Pilot: can we generate broadcast-quality ads from code?
 
 **Question being tested:** can a repo produce finished video ads — no After
@@ -385,6 +430,74 @@ any real voiceover. On the last: muxing a supplied VO is one command; the only
 decision is whether to write the script to the existing cut (no re-render) or
 drive the cut from word-level timestamps (~3 min re-render, and re-recording
 then re-syncs itself).
+
+### D12 · Process failure: feedback cadence
+
+Andreas, unprompted: *"I am questioning why you don't ask for my feedback
+enough."* He is right, and this is the most important entry in the log.
+
+**What went wrong.** One film was validated (ad 01, strong positive reaction).
+Four more were then built on top of that single data point without asking for a
+verdict on any of them. Ad 02 was only discovered to be a failure because it was
+reviewed — and it was reviewed by accident, not by design.
+
+**Why it happened.** Building is cheap here (a film renders in three minutes),
+so producing felt like progress. It is not progress if the direction is
+unverified. The pipeline's speed is exactly what made this error easy.
+
+**The rule from here:** after any film that tests something new, stop and get a
+verdict before building the next one. A verdict is a two-minute cost; four films
+built on a wrong assumption is a day.
+
+**A second, smaller error:** the first attempt to fix this asked four questions
+at once, and got none answered. Ask one or two, small, and early.
+
+### D13 · Ad 05 "The Email You Cannot Send" — the sovereignty film
+
+Built after Andreas said "then build it". The D10 hazards were resolved by
+direction, in two steps:
+
+1. He first asked for blunt: *"no names but be blunt, some train on your data,
+   some governments save it as leverage."*
+2. Shown that copy back, he said *"maybe that is too blunt"* and chose a third
+   version instead.
+
+**The version built asserts nothing about anyone.** The doubt is voiced by the
+client: *"Where is my file? Who is allowed to read it? What happens if you are
+wrong?"* — followed by *"You would have to answer all three. In writing."* This
+is stronger than an accusation for this audience, and it cannot be litigated.
+
+Structure follows ad 01's template. Stake first: a consent-request email to a
+client, typed and never finished, over a SENT counter frozen at 0 —
+*"Every AI tool on the market needs this email first. Nobody sends it."* Then
+the client's three questions, then 38,417 documents / 0 analysed.
+
+The payoff act is the diagram the film exists for: a dashed perimeter labelled
+as the client's premises, the archive anchored inside it and marked NEVER
+MOVES, three routes (EU-hosted API, local model, own infrastructure) with what
+leaves and what stays on each — and exactly **one** thin line crossing the
+boundary, labelled *"the question — and only the question."* First cut ran that
+line down through routes B and C, implying they crossed too; moved to the left
+gutter so it plainly belongs to route A alone.
+
+Closing: *"Nothing to ask. Nothing to explain. Nothing leaves."*
+
+### D14 · Sound, revised on feedback
+
+Andreas: he likes the ticks and thumps; the room tone and the audio logo he
+does not — *"maybe less loud maybe verry silent yes. silent."*
+
+Rather than guess the level, both became multipliers (`--roomtone`,
+`--signature`, 0 disables), and two variants were produced for him to choose
+between: **A quiet** (room tone 0.25, signature 0.3) and **B bare** (both off,
+ticks and thumps only).
+
+**A bug caught while doing this:** the WAV writer peak-normalised, so removing
+the signature would have made every remaining tick *louder* — the variants
+would have been incomparable, which is the one thing they exist for. Replaced
+with a fixed gain.
+
+**His choice is not yet recorded. Ask.**
 
 ### Ad 03 "The Chain" — original status (now superseded by D11)
 
