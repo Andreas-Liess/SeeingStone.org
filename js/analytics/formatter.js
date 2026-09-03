@@ -55,8 +55,7 @@ export class Formatter {
     const pageNames = {
       'index.html': 'Home',
       'signup/index.html': 'Signup',
-      'features/index.html': 'Features',
-      'security/index.html': 'Security'
+      'features/index.html': 'Features'
     };
 
     return pageNames[page] || page || 'Unknown';

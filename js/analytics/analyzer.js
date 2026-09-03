@@ -49,7 +49,7 @@ export class Analyzer {
 
     // Content exploration score (0-2)
     const journey = data.journey || [];
-    const contentPages = ['features/index.html', 'security/index.html'];
+    const contentPages = ['features/index.html'];
     const visitedContent = journey.some(page => contentPages.includes(page));
 
     if (journey.length > 2) signals.contentExploration = 2;
