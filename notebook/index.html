@@ -1,0 +1,167 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0b0c"><link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon-192.png"><title>Schwarzes Notizbuch</title></head><body>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: one-column phone app. Header, scrolling content, fixed bottom tab bar. Dark ink-black notebook with a gold pen accent. */
+:root{
+  --bg:#0b0b0c; --surface:#151517; --line:#27272a; --fg:#ececea; --muted:#8d8d93;
+  --gold:#e0be3a; --gold-ink:#17130a; --danger:#e5645a;
+  --display:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#f6f5f1; --surface:#ffffff; --line:#e3e1d8; --fg:#17171a; --muted:#6d6d73;
+  --gold:#8a6d00; --gold-ink:#fffbea; --danger:#b3362d; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#f6f5f1; --surface:#ffffff; --line:#e3e1d8; --fg:#17171a; --muted:#6d6d73;
+  --gold:#8a6d00; --gold-ink:#fffbea; --danger:#b3362d; color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font:16px/1.5 var(--body);padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:0;-webkit-tap-highlight-color:transparent}
+.app{max-width:640px;margin:0 auto;min-height:100%;padding-bottom:96px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+header{padding:20px 0 12px}
+h1{font-size:1.6rem;color:var(--gold)}
+.sub{color:var(--muted);font-size:.9rem;margin-top:2px}
+button,textarea,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.btn{background:var(--gold);color:var(--gold-ink);border:0;border-radius:10px;padding:12px 18px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn.danger{background:transparent;color:var(--danger);border:1px solid var(--danger)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none}
+.chip{flex:none;border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 14px;font-size:.85rem;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--gold);color:var(--gold-ink);border-color:var(--gold);font-weight:600}
+.note{display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
+.note .meta{display:flex;justify-content:space-between;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.note .tag{color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.note p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.empty{color:var(--muted);padding:32px 0;text-align:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.step{display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.step h3{font-size:1.1rem;color:var(--gold)}
+.step .goal{font-weight:600;margin-top:4px}
+.step ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem}
+.step .count{margin-top:10px;font-size:.8rem;color:var(--muted)}
+.big{font-family:var(--display);font-size:2.6rem;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+label{display:block;font-weight:600;margin:14px 0 6px}
+textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;min-height:110px;resize:vertical}
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(76px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;border:0;background:var(--gold);color:var(--gold-ink);font-size:2rem;line-height:1;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:flex;padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+nav button{flex:1;background:none;border:0;padding:10px 4px;color:var(--muted);font-size:.85rem;font-weight:500}
+nav button[aria-current="page"]{color:var(--gold);font-weight:600}
+.sheet{position:fixed;inset:0;background:var(--bg);z-index:20;overflow-y:auto;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.sheet>div{max-width:640px;margin:0 auto}
+.prompts{color:var(--muted);font-size:.92rem;margin:6px 0 0;padding-left:18px}
+select{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:.9rem;z-index:30}
+</style>
+
+<div class="app">
+  <header><h1>Schwarzes Notizbuch</h1><div class="sub" id="sub"></div></header>
+  <main id="main"></main>
+</div>
+<button class="fab" id="fab" aria-label="Neue Notiz">+</button>
+<nav>
+  <button data-tab="book" aria-current="page">Notizen</button>
+  <button data-tab="path">Weg</button>
+  <button data-tab="review">Rückblick</button>
+  <button data-tab="data">Sicherung</button>
+</nav>
+<div class="sheet" id="sheet" hidden><div id="sheetBody"></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const SECS=[
+ {id:'where',t:'1. Wo bin ich?',g:'Die rohe Wahrheit, ohne Schönfärberei',q:['Wie sieht dein Leben heute aus: Geld, Gefühle, Körper?','Was tust du jeden Tag?','Was tust du nur zum Schein?','Was schiebst du auf?'],h:'Das tut weh. Es muss wehtun, damit du klar siehst, was sich ändern muss.'},
+ {id:'should',t:'2. Wo sollte ich sein?',g:'Der Lebensstandard, den du verdienst',q:['Wie viel solltest du verdienen?','Wie sollte dein Tagesablauf aussehen?','Wer solltest du inzwischen geworden sein?','Welche Disziplin traust du dir zu?']},
+ {id:'happened',t:'3. Was ist passiert? Was hat dich abgelenkt?',g:'Ohne jemandem die Schuld zu geben',q:['Welche Entscheidungen haben dich hierher gebracht?','Welche Muster wiederholst du?','Wo hast du dich selbst sabotiert?','Wo warst du schwach?','Was hast du aufgehört zu tun?']},
+ {id:'m1',t:'Monat 1: Aufräumen',g:'Hör auf, dich selbst zu sabotieren',q:['Was hörst du sofort auf zu tun? (z. B. zu viel Social Media, schlechte Gewohnheiten, Menschen die dich runterziehen)','Eine kleine tägliche Gewohnheit: gleiche Aufstehzeit, eine Aufgabe pro Tag']},
+ {id:'m2',t:'Monat 2: Aufbauen',g:'Werde jemand, dem du vertrauen kannst',q:['Eine Grundroutine (morgens und abends)','3 feste Verpflichtungen pro Tag, über die nicht verhandelt wird','Halte deinen Plan, tu was du geplant hast, verhandle nicht mit deiner Faulheit']},
+ {id:'m3',t:'Monat 3: Ausbauen',g:'Hebe deinen Lebensstandard an',q:['Konkrete Ziele: Geld, Produktivität, persönliches Wachstum','Mehr Schwierigkeit: mehr Disziplin, mehr Verantwortung, mehr Handeln']},
+ {id:'free',t:'Freie Notiz',g:'Alles andere',q:[]}
+];
+const RQ=['Was habe ich getan, das mich dem Leben näher bringt, das ich will?','Wo war ich schwach?','Was passe ich morgen an?'];
+const KEY='blacknotebook.v1', DAY=864e5, CYCLE=15;
+let S={notes:[],reviews:[],start:Date.now()}, tab='book', filter='all';
+try{const r=localStorage.getItem(KEY); if(r) S=Object.assign(S,JSON.parse(r));}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=t=>new Date(t).toLocaleDateString('de-DE',{day:'2-digit',month:'short',year:'numeric'});
+const sec=id=>SECS.find(s=>s.id===id)||SECS[6];
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>t.hidden=true,2200)}
+function lastReview(){return S.reviews.length?Math.max(...S.reviews.map(r=>r.ts)):S.start}
+function daysLeft(){return Math.ceil((lastReview()+CYCLE*DAY-Date.now())/DAY)}
+
+function render(){
+  document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===tab?'page':'false'));
+  $('#fab').hidden=!(tab==='book'||tab==='path');
+  const d=daysLeft();
+  $('#sub').textContent=d<=0?'Rückblick ist fällig':'Nächster Rückblick in '+d+' Tagen';
+  ({book:vBook,path:vPath,review:vReview,data:vData})[tab]();
+}
+function vBook(){
+  const list=S.notes.filter(n=>filter==='all'||n.sec===filter).sort((a,b)=>b.ts-a.ts);
+  $('#main').innerHTML=`<div class="chips" role="group" aria-label="Filter">
+    <button class="chip" data-f="all" aria-pressed="${filter==='all'}">Alle</button>
+    ${SECS.map(s=>`<button class="chip" data-f="${s.id}" aria-pressed="${filter===s.id}">${esc(s.t.replace(/^\d\. /,''))}</button>`).join('')}</div>`+
+    (list.length?list.map(n=>`<button class="note" data-n="${n.id}"><div class="meta"><span class="tag">${esc(sec(n.sec).t)}</span><span>${fmt(n.ts)}</span></div><p>${esc(n.text)}</p></button>`).join(''):
+     '<div class="empty">Noch keine Notizen. Tippe auf +, um die erste zu schreiben.</div>');
+  document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()});
+  document.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>edit(b.dataset.n));
+}
+function vPath(){
+  $('#main').innerHTML=`<p class="sub" style="margin:0 0 14px">Nimm dein Notizbuch und einen Stift. Geh an einen Ort, an dem du allein bist. Tippe einen Schritt an, um dazu zu schreiben.</p>`+
+  SECS.slice(0,6).map(s=>{const c=S.notes.filter(n=>n.sec===s.id).length;return `<button class="step" data-s="${s.id}"><h3>${esc(s.t)}</h3><div class="goal">${esc(s.g)}</div><ul>${s.q.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${s.h?`<div class="sub" style="margin-top:8px">${esc(s.h)}</div>`:''}<div class="count">${c?c+(c===1?' Notiz':' Notizen'):'Noch nichts geschrieben'}</div></button>`}).join('');
+  document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>edit(null,b.dataset.s));
+}
+function vReview(){
+  const d=daysLeft(), since=lastReview();
+  const recent=S.notes.filter(n=>n.ts>=since).length;
+  $('#main').innerHTML=`<div class="card"><div class="big">${d<=0?'Jetzt':d}</div><div class="sub">${d<=0?'Zeit für deinen Rückblick (alle 15 Tage)':'Tage bis zum nächsten Rückblick'}</div><div class="sub" style="margin-top:8px">${recent} Notizen seit dem letzten Rückblick</div></div>
+  <button class="btn" id="startRev" style="width:100%">Rückblick schreiben</button>
+  <h2 style="font-size:1.1rem;margin:24px 0 10px">Frühere Rückblicke</h2>`+
+  (S.reviews.length?[...S.reviews].sort((a,b)=>b.ts-a.ts).map(r=>`<div class="card"><div class="sub">${fmt(r.ts)}</div>${RQ.map((q,i)=>`<div style="margin-top:10px"><strong>${esc(q)}</strong><p style="margin:2px 0 0;white-space:pre-wrap;overflow-wrap:anywhere">${esc(r.a[i]||'')}</p></div>`).join('')}</div>`).join(''):'<div class="empty">Noch kein Rückblick.</div>');
+  $('#startRev').onclick=()=>reviewSheet();
+}
+function vData(){
+  $('#main').innerHTML=`<div class="card"><h3>Sicherung</h3><p class="sub">Deine Notizen liegen nur in diesem Browser. Kopiere sie regelmäßig und speichere den Text irgendwo sicher (z. B. in einer Mail an dich selbst).</p>
+  <div class="row"><button class="btn" id="exp">Alles kopieren</button></div>
+  <label for="imp">Sicherung einfügen</label><textarea id="imp" placeholder="Gesicherten Text hier einfügen"></textarea>
+  <div class="row" style="margin-top:10px"><button class="btn ghost" id="impBtn">Wiederherstellen</button></div></div>`;
+  $('#exp').onclick=async()=>{const t=JSON.stringify(S);try{await navigator.clipboard.writeText(t);toast('Kopiert')}catch(e){$('#imp').value=t;$('#imp').select();toast('Text markiert, bitte selbst kopieren')}};
+  $('#impBtn').onclick=()=>{try{const o=JSON.parse($('#imp').value);if(!Array.isArray(o.notes))throw 0;S=Object.assign({notes:[],reviews:[],start:Date.now()},o);save();toast('Wiederhergestellt');render()}catch(e){toast('Das ist keine gültige Sicherung')}};
+}
+function open(html){$('#sheetBody').innerHTML=html;$('#sheet').hidden=false;$('#sheet').scrollTop=0}
+function close(){$('#sheet').hidden=true;render()}
+function edit(id,pre){
+  const n=id?S.notes.find(x=>x.id===id):null, cur=n?n.sec:(pre||(filter!=='all'?filter:'free'));
+  open(`<h2 style="margin:8px 0 14px">${n?'Notiz bearbeiten':'Neue Notiz'}</h2>
+  <label for="selSec">Abschnitt</label><select id="selSec">${SECS.map(s=>`<option value="${s.id}"${s.id===cur?' selected':''}>${esc(s.t)}</option>`).join('')}</select>
+  <ul class="prompts" id="pr"></ul>
+  <label for="txt">Notiz</label><textarea id="txt" style="min-height:240px">${n?esc(n.text):''}</textarea>
+  <div class="row" style="margin-top:16px"><button class="btn" id="sv">Speichern</button><button class="btn ghost" id="cn">Abbrechen</button>${n?'<button class="btn danger" id="del">Löschen</button>':''}</div>`);
+  const pr=()=>{$('#pr').innerHTML=sec($('#selSec').value).q.map(x=>`<li>${esc(x)}</li>`).join('')};
+  pr();$('#selSec').onchange=pr;$('#cn').onclick=close;
+  $('#sv').onclick=()=>{const text=$('#txt').value.trim();if(!text){toast('Schreib erst etwas');return}
+    if(n){n.text=text;n.sec=$('#selSec').value}else S.notes.push({id:uid(),ts:Date.now(),sec:$('#selSec').value,text});
+    save();toast('Gespeichert');close()};
+  if(n)$('#del').onclick=function(){if(this.dataset.ok){S.notes=S.notes.filter(x=>x.id!==id);save();close()}else{this.dataset.ok=1;this.textContent='Wirklich löschen?'}};
+}
+function reviewSheet(){
+  open(`<h2 style="margin:8px 0 4px">Rückblick</h2><div class="sub">Beantworte ehrlich. Die letzten Notizen siehst du unten.</div>
+  ${RQ.map((q,i)=>`<label for="r${i}">${esc(q)}</label><textarea id="r${i}"></textarea>`).join('')}
+  <div class="row" style="margin-top:16px"><button class="btn" id="rs">Rückblick speichern</button><button class="btn ghost" id="rc">Abbrechen</button></div>
+  <h3 style="margin:28px 0 10px;font-size:1rem">Notizen seit dem letzten Rückblick</h3>
+  ${S.notes.filter(n=>n.ts>=lastReview()).sort((a,b)=>b.ts-a.ts).map(n=>`<div class="note"><div class="meta"><span class="tag">${esc(sec(n.sec).t)}</span><span>${fmt(n.ts)}</span></div><p>${esc(n.text)}</p></div>`).join('')||'<div class="sub">Keine.</div>'}`);
+  $('#rc').onclick=close;
+  $('#rs').onclick=()=>{const a=RQ.map((_,i)=>$('#r'+i).value.trim());if(!a.some(Boolean)){toast('Schreib erst etwas');return}S.reviews.push({id:uid(),ts:Date.now(),a});save();toast('Rückblick gespeichert');close()};
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
+$('#fab').onclick=()=>edit(null);
+render();
+</script>
+</body><script>if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{})</script></html>
